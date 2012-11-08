@@ -11,14 +11,28 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121106225801) do
+ActiveRecord::Schema.define(:version => 20121108220530) do
 
-  create_table "blogs", :force => true do |t|
-    t.string   "title"
-    t.text     "content"
-    t.string   "url"
+  create_table "commit_parsers", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "commits", :force => true do |t|
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "username"
+    t.string   "content"
+    t.string   "commit_time"
+    t.string   "link"
+  end
+
+  create_table "gh_events", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "category"
+    t.string   "content"
+    t.string   "eventdate"
   end
 
   create_table "posts", :force => true do |t|
