@@ -1,4 +1,6 @@
 Teamline::Application.routes.draw do
+  resources :commits
+
   resources :posts
 
   # The priority is based upon order of creation:
