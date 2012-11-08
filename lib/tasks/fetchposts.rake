@@ -1,5 +1,5 @@
-task :fetchpost => :environment do 
+task :aggregate_posts => :environment do 
 
-  RssParser.posts_from_feed("http://blog.seldomatt.com/atom.xml")
+  RssParser.fetch_feeds(["http://blog.seldomatt.com/atom.xml", "http://kcurtin.github.com/atom.xml"])
 
 end

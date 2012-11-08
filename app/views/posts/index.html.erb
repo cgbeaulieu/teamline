@@ -3,6 +3,7 @@
 <table>
   <tr>
     <th>Title</th>
+    <th>Date</th>
     <th>Content</th>
     <th>Url</th>
     <th></th>
@@ -13,7 +14,10 @@
 <% @posts.each do |post| %>
   <tr>
     <td><%= post.title %></td>
-    <td><%= raw(post.content) %></td>
+    <td><%= time_ago_in_words(post.created_at) %> ago</td>
+    <td><%= raw( post.content.gsub(/<img([^>])+>/,"").truncate(250, :separator => ' ', :omission => '...') ) %>
+        <%= link_to "Read more", post.url %>
+    </td>
     <td><%= post.url %></td>
     <td><%= link_to 'Show', post %></td>
     <td><%= link_to 'Edit', edit_post_path(post) %></td>

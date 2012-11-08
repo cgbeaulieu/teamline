@@ -20,8 +20,11 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
+group :development, :test do
+  gem 'rspec-rails'
+end
 
+gem 'jquery-rails'
 gem 'feedzirra'
 
 # To use ActiveModel has_secure_password
@@ -38,3 +41,4 @@ gem 'feedzirra'
 
 # To use debugger
 # gem 'debugger'
+
