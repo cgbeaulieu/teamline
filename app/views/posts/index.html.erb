@@ -14,7 +14,7 @@
 <% @posts.each do |post| %>
   <tr>
     <td><%= post.title %></td>
-    <td><%= time_ago_in_words(post.created_at) %> ago</td>
+    <td><%= time_ago_in_words(post.published_at) %> ago</td>
     <td><%= raw( post.content.gsub(/<img([^>])+>/,"").truncate(250, :separator => ' ', :omission => '...') ) %>
         <%= link_to "Read more", post.url %>
     </td>
