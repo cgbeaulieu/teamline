@@ -8,7 +8,9 @@ class RssParser
     feeds.each_value { |value| self.posts_from_feed(value) }
   end
 
-
-  updated_feeds = Feedzirra::Feed.update(feeds.values)
-
+  def self.update_feeds(feeds)
+    date = Post.last
+    #start parsing the feed
+    #when the date is equal to Post.last, stop parsing
+  end
 end
