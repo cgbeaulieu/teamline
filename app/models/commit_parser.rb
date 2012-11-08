@@ -8,11 +8,14 @@ class CommitParser < ActiveRecord::Base
 		# first.commit.committer.date
 	# fist bump and twerk when works	
 
-	def commit_parser(username)
-		repos = Octokit.repos(username)
-			repos.map do |repo|
-				repo.name
-			end
+	def repo_parser(username)
+		repos = Octokit.repos(username).map {|repo| repo.name}
+	end
+
+	def commit_parser(username, repos)
+		repos.each do |repo|
+			Octokit.commits(username + "/" + repo)
+		end
 	end
 
 end
