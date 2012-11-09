@@ -1,0 +1,2 @@
+module GhEventsHelper
+end

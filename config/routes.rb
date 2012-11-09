@@ -1,6 +1,6 @@
 Teamline::Application.routes.draw do
   resources :tweets
-
+  resources :gh_events
   resources :posts
 
   # The priority is based upon order of creation:
