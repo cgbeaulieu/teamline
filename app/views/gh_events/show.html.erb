@@ -1,5 +1,19 @@
 <p id="notice"><%= notice %></p>
 
+<p>
+  <b>Username:</b>
+  <%= @gh_event.username %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @gh_event.category %>
+</p>
+
+<p>
+  <b>Event Date:</b>
+  <%= @gh_event.eventdate %>
+</p>
 
 <%= link_to 'Edit', edit_gh_event_path(@gh_event) %> |
 <%= link_to 'Back', gh_events_path %>
