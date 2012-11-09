@@ -1,24 +1,38 @@
-<h1>Listing gh_events</h1>
+  <div class="container">
+    <%= image_tag "flatiron.png", {:align => "left", :size => "110x120"}  %>
+    <h2>The Flatiron School<br/>
+      Student Github Activity</h2></a>
+    
 
-<table>
-  <tr>
-    <th>Username</th>
-    <th>Category</th>
-    <th>EventDate</th>
-  </tr>
+    <div id="timelineContainer">
 
-<% @gh_events.each do |gh_event| %>
-  <tr>
-    <td><%= gh_event.username %></td>
-    <td><%= gh_event.category %></td>
-    <td><%= gh_event.eventdate %></td>
-    <td><%= link_to 'Show', gh_event %></td>
-    <td><%= link_to 'Edit', edit_gh_event_path(gh_event) %></td>
-    <td><%= link_to 'Destroy', gh_event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+      <div class="timelineToggle"><p><a class="expandAll">+ expand all</a></p></div>
 
-<br />
+      <br class="clear">
 
-<%= link_to 'New Gh event', new_gh_event_path %>
+      <% @gh_events.each do |gh_event| %>
+
+      <div class="timelineMajor">
+        <h2 class="timelineMajorMarker"><span><%= time_ago_in_words(gh_event.eventdate) %> ago</span></h2>
+        <dl class="timelineMinor">
+          <dt id="<%= gh_event.id %>"><a>Github Activity: <%= gh_event.username %> <%= gh_event.category %></a></dt>
+          <dd class="timelineEvent" id="<%= gh_event.id %>EX" style="display: none; ">
+            <p><%= link_to "#{gh_event.username}", "http://github.com/#{gh_event.username}" %></p>
+              <br class="clear">
+          </dd><!-- /.timelineEvent -->    
+        </dl><!-- /.timelineMinor -->
+     </div><!-- /.timelineMajor -->
+
+      <br class="clear">
+
+      <% end %>
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(function() {  
+      $.timeliner();
+      // Colorbox Modal
+      // $(".CBmodal").colorbox({inline:true, initialWidth:100, maxWidth:682, initialHeight:100, transition:"elastic",speed:750});
+    });
+  </script>

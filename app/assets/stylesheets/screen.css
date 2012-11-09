@@ -290,7 +290,7 @@ div.timelineMajor {
 }
 
 	.timelineMajor h2 {
-		background:url(../images/timeline_century_tick.gif) left center no-repeat;
+		background:url(timeline_century_tick.gif) left center no-repeat;
 		color:#7097AF!important;
 		cursor: pointer;
 		font-family:Palatino,"Times New Roman", Times, serif;
@@ -332,7 +332,7 @@ dl.timelineMinor {
 }
 
 	.timelineMinor dt {
-		background:url(../images/timeline_decade_tick.gif) left center no-repeat;
+		background:url(timeline_decade_tick.gif) left center no-repeat;
 		clear:left;
 		font-size:1.6em!important;
 		list-style-type:none!important;

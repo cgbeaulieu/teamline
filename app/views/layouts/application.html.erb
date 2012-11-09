@@ -8,6 +8,11 @@
 </head>
 <body>
 
+<div id="notice_bar">
+<p id="title">TEAMLINE <em>a timeline for teams</em></p>
+<p id="nav"><%= link_to "All", root_url %>/ <%= link_to "Blog Posts", posts_path %> / <%= link_to "Github Activity", gh_events_path %> / <%= link_to "Tweets", tweets_path %>
+</div>
+
 <%= yield %>
 
 </body>
