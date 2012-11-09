@@ -2,13 +2,16 @@
 
 <table>
   <tr>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Username</th>
+    <th>Category</th>
+    <th>EventDate</th>
   </tr>
 
 <% @gh_events.each do |gh_event| %>
   <tr>
+    <td><%= gh_event.username %></td>
+    <td><%= gh_event.category %></td>
+    <td><%= gh_event.eventdate %></td>
     <td><%= link_to 'Show', gh_event %></td>
     <td><%= link_to 'Edit', edit_gh_event_path(gh_event) %></td>
     <td><%= link_to 'Destroy', gh_event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
