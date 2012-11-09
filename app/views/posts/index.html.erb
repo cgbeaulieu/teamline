@@ -1,13 +1,10 @@
-  <link rel="stylesheet" href="css/screen.css" type="text/css" media="screen">
-  <link rel="stylesheet" href="inc/colorbox.css" type="text/css" media="screen">
-
 <div id="notice_bar">
 <p id="title">TEAMLINE <em>a timeline for teams</em></p>
 <p id="nav"><a href="#">All</a> / <a href="#">Blog Posts</a> / <a href="#">Github Activity</a> / <a href="#">Tweets</a></p>
 </div>
 
   <div class="container">
-     <img src="images/flatiron.png" align="left" width="110" height="120">
+    <%= image_tag "flatiron.png", {:align => "left", :size => "110x120"}  %>
     <h2>The Flatiron School<br/>
       Student Blog Posts</h2></a>
     
@@ -39,11 +36,6 @@
     </div>
   </div>
 
-
-  <!-- GLOBAL CORE SCRIPTS -->
-  <script src="js/jquery.min.js"></script> 
-  <script type="text/javascript" src="inc/colorbox.js"></script>
-  <script type="text/javascript" src="js/timeliner.min.js"></script>
   <script>
     $(document).ready(function() {  
       $.timeliner();
@@ -51,5 +43,3 @@
       $(".CBmodal").colorbox({inline:true, initialWidth:100, maxWidth:682, initialHeight:100, transition:"elastic",speed:750});
     });
   </script>
-
-
