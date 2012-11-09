@@ -1,0 +1,41 @@
+  <div class="container">
+    <%= image_tag "flatiron.png", {:align => "left", :size => "110x120"}  %>
+    <h2>The Flatiron School<br/>
+      Student Activity</h2></a>
+    
+
+    <div id="timelineContainer">
+      
+      <div class="timelineToggle"><p><a class="expandAll">+ expand all</a></p></div>
+      
+      <br class="clear">
+
+      <%= @events.each do |event| %>
+
+        <% case event.class %>
+        <% when "GhEvent" %>
+        <div class="timelineMajor">
+          <h2 class="timelineMajorMarker"><span><%= time_ago_in_words(event.published_at) %> ago</span></h2>
+          <dl class="timelineMinor">
+            <dt id="<%= event.id %>"><a>Github Activity: <%= event.username %> <%= event.category %></a></dt>
+            <dd class="timelineEvent" id="<%= event.id %>EX" style="display: none; ">
+              <p><%= link_to "#{event.username}", "http://github.com/#{event.username}" %></p>
+                <br class="clear">
+            </dd><!-- /.timelineEvent -->    
+          </dl><!-- /.timelineMinor -->
+        </div><!-- /.timelineMajor -->
+        <% when "Tweet" %>
+        <% when "Post" %>
+        <% end %>
+        <br class="clear">
+    <% end %>
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(function() {  
+      $.timeliner();
+      // Colorbox Modal
+      // $(".CBmodal").colorbox({inline:true, initialWidth:100, maxWidth:682, initialHeight:100, transition:"elastic",speed:750});
+    });
+  </script>

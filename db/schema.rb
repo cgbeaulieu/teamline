@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121109012949) do
+ActiveRecord::Schema.define(:version => 20121109201906) do
 
   create_table "commit_parsers", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -28,11 +28,11 @@ ActiveRecord::Schema.define(:version => 20121109012949) do
   end
 
   create_table "gh_events", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
     t.string   "category"
     t.string   "content"
-    t.string   "eventdate"
+    t.date     "published_at", :limit => 255
     t.string   "username"
   end
 

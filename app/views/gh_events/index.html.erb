@@ -13,7 +13,7 @@
       <% @gh_events.each do |gh_event| %>
 
       <div class="timelineMajor">
-        <h2 class="timelineMajorMarker"><span><%= time_ago_in_words(gh_event.eventdate) %> ago</span></h2>
+        <h2 class="timelineMajorMarker"><span><%= time_ago_in_words(gh_event.published_at) %> ago</span></h2>
         <dl class="timelineMinor">
           <dt id="<%= gh_event.id %>"><a>Github Activity: <%= gh_event.username %> <%= gh_event.category %></a></dt>
           <dd class="timelineEvent" id="<%= gh_event.id %>EX" style="display: none; ">
