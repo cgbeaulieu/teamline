@@ -1,25 +1,49 @@
-<h1>Listing posts</h1>
+  <link rel="stylesheet" href="css/screen.css" type="text/css" media="screen">
+  <link rel="stylesheet" href="inc/colorbox.css" type="text/css" media="screen">
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Date</th>
-    <th>Content</th>
-    <th>Url</th>
-  </tr>
+  <div class="container">
+    <h1>TEAMLINE</h1>
+    <img src="images/flatiron.png" align="left" width="110" height="120">
+    <h2>The Flatiron School<br/>
+      Student Blog Posts</h2>
+    
 
-<% @posts.each do |post| %>
-  <tr>
-    <td><%= post.title %></td>
-    <td><%= time_ago_in_words(post.published_at) %> ago</td>
-    <td><%= raw( post.content.gsub(/<img([^>])+>/,"").truncate(250, :separator => ' ', :omission => '...') ) %>
-        <%= link_to "Read more", post.url %>
-    </td>
-    <td><%= post.url %></td>
-  </tr>
-<% end %>
-</table>
+    <div id="timelineContainer">
+
+      <div class="timelineToggle"><p><a class="expandAll">+ expand all</a></p></div>
+
+      <br class="clear">
+
+      <% @posts.each do |post| %>
+
+      <div class="timelineMajor">
+        <h2 class="timelineMajorMarker"><span><%= time_ago_in_words(post.published_at) %> ago</span></h2>
+        <dl class="timelineMinor">
+          <dt id="<%= post.id %>"><a>Blog Post: <%= post.title %></a></dt>
+          <dd class="timelineEvent" id="<%= post.id %>EX" style="display: none; ">
+            <h3><%= post.url %></h3>
+            <p><%= raw( post.content.gsub(/<img([^>])+>/,"").truncate(250, :separator => ' ', :omission => '...') ) %>
+        <%= link_to "Read more", post.url %></p>
+
+              <br class="clear">
+          </dd><!-- /.timelineEvent -->         
+        </dl><!-- /.timelineMinor -->
+      </div><!-- /.timelineMajor -->
+      <br class="clear">
+      <% end %>
+    </div>
+  </div>
 
 <br />
 
-
+  <!-- GLOBAL CORE SCRIPTS -->
+  <script src="js/jquery.min.js"></script> 
+  <script type="text/javascript" src="inc/colorbox.js"></script>
+  <script type="text/javascript" src="js/timeliner.min.js"></script>
+  <script>
+    $(document).ready(function() {  
+      $.timeliner();
+      // Colorbox Modal
+      $(".CBmodal").colorbox({inline:true, initialWidth:100, maxWidth:682, initialHeight:100, transition:"elastic",speed:750});
+    });
+  </script>

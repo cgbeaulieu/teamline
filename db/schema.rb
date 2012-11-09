@@ -22,11 +22,6 @@ ActiveRecord::Schema.define(:version => 20121109012949) do
     t.string   "username"
   end
 
-  create_table "octokit_wrappers", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "posts", :force => true do |t|
     t.string   "title"
     t.text     "content"
