@@ -13,13 +13,18 @@
 
 ActiveRecord::Schema.define(:version => 20121108234656) do
 
-  create_table "posts", :force => true do |t|
-    t.string   "title"
-    t.text     "content"
-    t.string   "url"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-    t.date     "published_at"
+  create_table "commit_parsers", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "commits", :force => true do |t|
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "username"
+    t.string   "content"
+    t.string   "commit_time"
+    t.string   "link"
   end
 
   create_table "gh_events", :force => true do |t|
@@ -28,7 +33,20 @@ ActiveRecord::Schema.define(:version => 20121108234656) do
     t.string   "category"
     t.string   "content"
     t.string   "eventdate"
+  end
 
+  create_table "octokit_wrappers", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "posts", :force => true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.string   "url"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.date     "published_at"
   end
 
   create_table "tweets", :force => true do |t|
