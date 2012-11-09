@@ -7,52 +7,6 @@
 *
 * Designed and built with all the love in the world @twitter by @mdo and @fat.
 */
-#notice_bar {
-	width: 100%;
-	margin-left: auto;
-	margin-right: auto;
-	background: #3579D4;
-	position: fixed;
-	z-index: 999;
-	padding-top: 22px;
-	border-bottom: #888 1px solid;
-}
-
-#notice_bar p#title{
-	font-family:Palatino,"Times New Roman", Times, serif;
-	color: #fff;
-	float: left;
-	padding-left: 44px;
-	font-size: 26px;
-}
-#notice_bar p#nav{
-	font-family:Palatino,"Times New Roman", Times, serif;
-	color: #fff;
-	float: right;
-	padding: 10px 100px 0px 22px;	
-	font-size: 12px;
-}
-#notice_bar p#nav a{
-	background: #0f3d7b;
-	-webkit-border-radius:6px;
-	-moz-border-radius:6px;
-	border-radius:6px;
-	color: #fff;
-	padding: 10px;
-}
-#notice_bar p#nav a:hover{
-	background: #3eca00;
-	color: #fff;
-}
-
-#notice_bar em{
-	font-size: 18px;
-}
-
-pre {
-	background-color: #000;
-}
-
 .clearfix {
 	*zoom: 1;
 }
@@ -106,7 +60,6 @@ html {
 	font-size: 100%;
 	-webkit-text-size-adjust: 100%;
 	-ms-text-size-adjust: 100%;
-	background: #000;
 }
 a:focus {
 	outline: thin dotted #333;
@@ -179,7 +132,7 @@ textarea {
 
 /* =============== SITE CSS =============== */
 body {
-	background: #2c405c url("bg.jpg") repeat fixed;
+	background: #2c405c url("../images/bg.jpg") no-repeat fixed;
 	color:#eeefef;
 	font-size:62.5%;
 	font-family:Arial, Helvetica, sans-serif;
@@ -191,7 +144,7 @@ body {
 	width:940px;
 	margin-left:auto;
 	margin-right:auto;
-	padding:120px;
+	padding:10px;
 	*zoom:1;
 }
 
@@ -222,13 +175,12 @@ h3 {
 }
 
 a:link,a:visited {
-	color:#3eca00;
+	color:#7097af;
 	text-decoration:none;
 }
 
 a:hover {
-	text-decoration: underline;
-	color:#7DBADF;
+	color:#3579D4;
 }
 
 a img {
@@ -259,14 +211,12 @@ div#timelineContainer {
 }
 
 div.timelineToggle {
-	float:left;
 	float:right;
 	margin-right:0;
 	white-space:nowrap;
 }
 
 a.expandAll {
-	color:#3eca00!important;
 	color:#ccc!important;
 	cursor:pointer;
 	background:#000;
@@ -280,8 +230,7 @@ a.expandAll {
 
 a.expandAll:hover {
 	border:none!important;
-	color:#000!important;
-	background:#3eca00;
+	color:#3579D4!important;
 	cursor:pointer;
 }
 
@@ -289,8 +238,6 @@ div.timelineMajor {
 	clear:left;
 	float:left;
 	margin:0 0 12px;
-	width:800px;
-	background:url(timeline_century_tick.gif) left center no-repeat;
 	width:900px;
 }
 
@@ -306,15 +253,14 @@ div.timelineMajor {
 	}
 
 	.timelineMajor h2 span {
-		background:#ccc;
-		border:none;
-		-webkit-border-radius:4px;
-		-moz-border-radius:4px;
-		border-radius:4px;
-		color:#131313;
-		letter-spacing:.1em;
-		line-height:1.7em;
-		padding:3px 5px 1px;
+		background:#3579D4;
+		border: 2px solid #888;
+		-webkit-border-radius:8px;
+		-moz-border-radius:8px;
+		border-radius:8px;
+		color:#fff;
+		line-height:2em;
+		padding:3px 25px 1px;
 	}
 
 	.timelineMajor h2 a:hover {
@@ -343,22 +289,22 @@ dl.timelineMinor {
 	}
 
 		.timelineMinor dt a {
-			color:#999;
+			color:#fff;
 			cursor:pointer;
 		}
 
 		.timelineMinor dt a.closed {
-			color:#999;
+			color:#fff;
 			font-size:1em;
 			margin-left:0;
 		}
 
 		.timelineMinor dt a.open {
-			color:#3eca00;
+			color:#3579D4;
 		}
 
 		.timelineMinor dt a:hover {
-			color:#7DBADF;
+			color:#3579D4;
 		}
 
 	.timelineMinor dd {
@@ -380,7 +326,7 @@ dl.timelineMinor {
 	float:left;
 	line-height:1.5em!important;
 	margin:6px 0 10px;
-	width:700px;
+	width:500px;
 }
 
 .timelineEvent h4 {
@@ -396,12 +342,12 @@ dl.timelineMinor {
 	clear:left;
 	float:left;
 	padding:0 30px;
-	width:700px;
+	width:400px;
 }
 
 .timelineEvent blockquote * {
 	float:none;
-	width:700px;
+	width:400px;
 }
 
 .timelineEvent ul.moreInfo {
