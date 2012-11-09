@@ -7,6 +7,53 @@
 *
 * Designed and built with all the love in the world @twitter by @mdo and @fat.
 */
+
+#notice_bar {
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	background: #3579D4;
+	position: fixed;
+	z-index: 999;
+	padding-top: 22px;
+	border-bottom: #888 1px solid;
+}
+
+#notice_bar p#title{
+	font-family:Palatino,"Times New Roman", Times, serif;
+	color: #fff;
+	float: left;
+	padding-left: 44px;
+	font-size: 26px;
+}
+#notice_bar p#nav{
+	font-family:Palatino,"Times New Roman", Times, serif;
+	color: #fff;
+	float: right;
+	padding: 10px 100px 0px 22px;	
+	font-size: 12px;
+}
+#notice_bar p#nav a{
+	background: #0f3d7b;
+	-webkit-border-radius:6px;
+	-moz-border-radius:6px;
+	border-radius:6px;
+	color: #fff;
+	padding: 10px;
+}
+#notice_bar p#nav a:hover{
+	background: #3eca00;
+	color: #fff;
+}
+
+#notice_bar em{
+	font-size: 18px;
+}
+
+pre {
+	background-color: #000;
+}
+
 .clearfix {
 	*zoom: 1;
 }
@@ -132,7 +179,7 @@ textarea {
 
 /* =============== SITE CSS =============== */
 body {
-	background: #2c405c url("../images/bg.jpg") no-repeat fixed;
+	background: #2c405c url("../images/bg.jpg") repeat fixed;
 	color:#eeefef;
 	font-size:62.5%;
 	font-family:Arial, Helvetica, sans-serif;
@@ -144,7 +191,7 @@ body {
 	width:940px;
 	margin-left:auto;
 	margin-right:auto;
-	padding:10px;
+	padding:120px;
 	*zoom:1;
 }
 
@@ -175,12 +222,12 @@ h3 {
 }
 
 a:link,a:visited {
-	color:#7097af;
+	color:#3eca00;
 	text-decoration:none;
 }
 
 a:hover {
-	color:#3579D4;
+	text-decoration: underline;
 }
 
 a img {
@@ -211,13 +258,13 @@ div#timelineContainer {
 }
 
 div.timelineToggle {
-	float:right;
+	float:left;
 	margin-right:0;
 	white-space:nowrap;
 }
 
 a.expandAll {
-	color:#ccc!important;
+	color:#3eca00!important;
 	cursor:pointer;
 	background:#000;
 	border:none;
@@ -230,7 +277,8 @@ a.expandAll {
 
 a.expandAll:hover {
 	border:none!important;
-	color:#3579D4!important;
+	color:#000!important;
+	background:#3eca00;
 	cursor:pointer;
 }
 
@@ -238,7 +286,7 @@ div.timelineMajor {
 	clear:left;
 	float:left;
 	margin:0 0 12px;
-	width:900px;
+	width:800px;
 }
 
 	.timelineMajor h2 {
@@ -254,13 +302,19 @@ div.timelineMajor {
 
 	.timelineMajor h2 span {
 		background:#3579D4;
-		border: 2px solid #888;
+		border: 3px solid #0F3D7B;
 		-webkit-border-radius:8px;
 		-moz-border-radius:8px;
 		border-radius:8px;
 		color:#fff;
 		line-height:2em;
 		padding:3px 25px 1px;
+	}
+
+	.timelineMajor h2 span:hover {
+		background:#3eca00;
+		border: 3px solid #339308;
+		color: #fff;
 	}
 
 	.timelineMajor h2 a:hover {
@@ -274,7 +328,7 @@ dl.timelineMinor {
 	margin:0 12px 0 0!important;
 	padding:4px 4px 4px 0!important;
 	position:relative;
-	width:880px;
+	width:700px;
 }
 
 	.timelineMinor dt {
@@ -300,11 +354,11 @@ dl.timelineMinor {
 		}
 
 		.timelineMinor dt a.open {
-			color:#3579D4;
+			color:#3eca00;
 		}
 
 		.timelineMinor dt a:hover {
-			color:#3579D4;
+			color:#3eca00;
 		}
 
 	.timelineMinor dd {
@@ -326,7 +380,7 @@ dl.timelineMinor {
 	float:left;
 	line-height:1.5em!important;
 	margin:6px 0 10px;
-	width:500px;
+	width:700px;
 }
 
 .timelineEvent h4 {
@@ -342,12 +396,12 @@ dl.timelineMinor {
 	clear:left;
 	float:left;
 	padding:0 30px;
-	width:400px;
+	width:700px;
 }
 
 .timelineEvent blockquote * {
 	float:none;
-	width:400px;
+	width:700px;
 }
 
 .timelineEvent ul.moreInfo {
