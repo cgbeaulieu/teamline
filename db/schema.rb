@@ -23,11 +23,6 @@ ActiveRecord::Schema.define(:version => 20121112155038) do
     t.integer  "person_id"
   end
 
-  create_table "octokit_wrappers", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "people", :force => true do |t|
     t.string   "name"
     t.string   "rss_feed"
@@ -35,22 +30,6 @@ ActiveRecord::Schema.define(:version => 20121112155038) do
     t.string   "gh_username"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
-  end
-
-<<<<<<< HEAD
-=======
-  create_table "commit_parsers", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "commits", :force => true do |t|
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.string   "username"
-    t.string   "content"
-    t.string   "commit_time"
-    t.string   "link"
   end
 
   create_table "gh_events", :force => true do |t|
@@ -61,12 +40,6 @@ ActiveRecord::Schema.define(:version => 20121112155038) do
     t.string   "eventdate"
   end
 
-  create_table "octokit_wrappers", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
->>>>>>> front end v0.01
   create_table "posts", :force => true do |t|
     t.string   "title"
     t.text     "content"
@@ -74,10 +47,7 @@ ActiveRecord::Schema.define(:version => 20121112155038) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.date     "published_at"
-<<<<<<< HEAD
     t.integer  "person_id"
-=======
->>>>>>> front end v0.01
   end
 
   create_table "tweets", :force => true do |t|
