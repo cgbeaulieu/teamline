@@ -11,21 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121109201906) do
-
-  create_table "commit_parsers", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "commits", :force => true do |t|
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.string   "username"
-    t.string   "content"
-    t.string   "commit_time"
-    t.string   "link"
-  end
+ActiveRecord::Schema.define(:version => 20121112155038) do
 
   create_table "gh_events", :force => true do |t|
     t.datetime "created_at",                  :null => false
@@ -34,11 +20,21 @@ ActiveRecord::Schema.define(:version => 20121109201906) do
     t.string   "content"
     t.date     "published_at", :limit => 255
     t.string   "username"
+    t.integer  "person_id"
   end
 
   create_table "octokit_wrappers", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "people", :force => true do |t|
+    t.string   "name"
+    t.string   "rss_feed"
+    t.string   "twitter_handle"
+    t.string   "gh_username"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "posts", :force => true do |t|
@@ -48,6 +44,7 @@ ActiveRecord::Schema.define(:version => 20121109201906) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.date     "published_at"
+    t.integer  "person_id"
   end
 
   create_table "tweets", :force => true do |t|
@@ -56,6 +53,7 @@ ActiveRecord::Schema.define(:version => 20121109201906) do
     t.string   "handle"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.integer  "person_id"
   end
 
 end

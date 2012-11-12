@@ -1,5 +1,8 @@
 class Post < ActiveRecord::Base
   attr_accessible :content, :title, :url, :published_at
+  
+  belongs_to :person
+
   default_scope order('published_at DESC')
 
   def self.update_from_feed(feed)
@@ -13,3 +16,5 @@ class Post < ActiveRecord::Base
            :url => entry.url, :published_at => entry.published)    
   end
 end
+
+

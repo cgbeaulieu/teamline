@@ -1,6 +1,8 @@
 class Tweet < ActiveRecord::Base
   attr_accessible :content, :handle, :published_at
 
+  belongs_to :person
+
   default_scope order("published_at DESC")
 
   def self.update_from_timeline(timeline)
