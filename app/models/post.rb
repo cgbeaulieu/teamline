@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  attr_accessible :content, :title, :url, :published_at
+  attr_accessible :content, :title, :url, :published_at, :person
   
   belongs_to :person
 
@@ -13,11 +13,16 @@ class Post < ActiveRecord::Base
 
   def self.create_from_entry(entry)
     create(:title => entry.title, :content => entry.content, 
-           :url => entry.url, :published_at => entry.published, :person_id => Person.find_by_rss_feed(rss_fee))    
+           :url => entry.url, :published_at => entry.published, :person => Person.find_by_rss_feed(feed_url_from_entry_url(entry.url)))    
   end
 
-  def domain_from_entry_url(entry_url)
+private
+  def self.domain_from_entry_url(entry_url)
     URI.parse(entry_url).hostname
+  end
+
+  def self.feed_url_from_entry_url(entry_url)
+    "http://#{domain_from_entry_url(entry_url)}/atom.xml"
   end
 end
 
