@@ -5,7 +5,12 @@ class Person < ActiveRecord::Base
   has_many :posts
   has_many :gh_events
 
+
   def self.all_feeds
     self.all.collect { |person| person.rss_feed }
+  end
+
+  def self.all_handles
+    self.all.collect { |person| person.twitter_handle}
   end
 end

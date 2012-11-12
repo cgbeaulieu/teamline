@@ -1,5 +1,5 @@
 class Tweet < ActiveRecord::Base
-  attr_accessible :content, :handle, :published_at
+  attr_accessible :content, :handle, :published_at, :person
 
   belongs_to :person
 
@@ -14,9 +14,11 @@ class Tweet < ActiveRecord::Base
 
   def self.create_from_tweet(tweet)
     content = linkup_mentions_and_hashtags(tweet.attrs[:text])
+    handle = tweet.attrs[:user][:screen_name]
     create(:content => content, 
-            :handle => tweet.attrs[:user][:screen_name],
-            :published_at => tweet.attrs[:created_at])
+            :handle => handle,
+            :published_at => tweet.attrs[:created_at], 
+            :person => Person.find_by_twitter_handle(handle))
   end
 
 
