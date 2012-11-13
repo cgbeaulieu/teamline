@@ -1,40 +1,8 @@
-  <div class="container">
-    <%= image_tag "flatiron.png", {:align => "left", :size => "110x120"}  %>
-    <h2>The Flatiron School<br/>
-      Student Blog Posts</h2></a>
-    
-
-    <div id="timelineContainer">
-
-      <div class="timelineToggle"><p><a class="expandAll">+ expand all</a></p></div>
-
-      <br class="clear">
-
-      <% @posts.each do |post| %>
-
-      <div class="timelineMajor">
-        <h2 class="timelineMajorMarker"><span><%= time_ago_in_words(post.published_at) %> ago</span></h2>
-        <dl class="timelineMinor">
-          <dt id="<%= post.id %>"><a>Blog Post: <%= post.title %></a></dt>
-          <dd class="timelineEvent" id="<%= post.id %>EX" style="display: none; ">
-            <h3><%= post.url %></h3>
-            <p><%= raw( post.content.gsub(/<img([^>])+>/,"").truncate(250, :separator => ' ', :omission => '...') ) %>
-        <%= link_to "Read more", post.url %></p>
-              <br class="clear">
-          </dd><!-- /.timelineEvent -->    
-        </dl><!-- /.timelineMinor -->
-     </div><!-- /.timelineMajor -->
-
-      <br class="clear">
-
-      <% end %>
-    </div>
-  </div>
-
-  <script>
-    $(document).ready(function() {  
-      $.timeliner();
-      // Colorbox Modal
-      // $(".CBmodal").colorbox({inline:true, initialWidth:100, maxWidth:682, initialHeight:100, transition:"elastic",speed:750});
-    });
-  </script>
+<% @posts.each do |date, posts| %>
+  <%= time_ago_in_words(date) %> ago
+  <ul>
+    <% posts.each do |post| %>
+    <li><%= raw((post.content).truncate(140)) %></li>
+    <% end %>
+  </ul>
+<% end %>
