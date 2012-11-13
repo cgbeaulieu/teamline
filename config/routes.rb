@@ -4,7 +4,7 @@ Teamline::Application.routes.draw do
   resources :tweets
   resources :gh_events
   resources :posts
-  root :to => 'posts#index'
+  root :to => 'timeline#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
