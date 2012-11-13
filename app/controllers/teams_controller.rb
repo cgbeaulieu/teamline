@@ -1,6 +1,5 @@
 class TeamsController < ApplicationController
-  # GET /teams
-  # GET /teams.json
+
   def index
     @teams = Team.all
 
@@ -10,8 +9,6 @@ class TeamsController < ApplicationController
     end
   end
 
-  # GET /teams/1
-  # GET /teams/1.json
   def show
     @team = Team.find(params[:id])
 
@@ -21,8 +18,6 @@ class TeamsController < ApplicationController
     end
   end
 
-  # GET /teams/new
-  # GET /teams/new.json
   def new
     @team = Team.new
 
@@ -32,13 +27,10 @@ class TeamsController < ApplicationController
     end
   end
 
-  # GET /teams/1/edit
   def edit
     @team = Team.find(params[:id])
   end
 
-  # POST /teams
-  # POST /teams.json
   def create
     @team = Team.new(params[:team])
 
@@ -53,8 +45,6 @@ class TeamsController < ApplicationController
     end
   end
 
-  # PUT /teams/1
-  # PUT /teams/1.json
   def update
     @team = Team.find(params[:id])
 
@@ -69,8 +59,6 @@ class TeamsController < ApplicationController
     end
   end
 
-  # DELETE /teams/1
-  # DELETE /teams/1.json
   def destroy
     @team = Team.find(params[:id])
     @team.destroy
