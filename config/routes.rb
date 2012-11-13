@@ -1,12 +1,19 @@
 Teamline::Application.routes.draw do
   resources :teams
-
   resources :people
-
+  match '/people/:person_id/posts' => 'person_posts#index'
   resources :tweets
-  resources :gh_events
   resources :posts
   root :to => 'timeline#index'
+  resources :gh_events
+  resources :people do 
+    resources :tweets
+    resources :gh_events
+    resources :posts
+  end
+
+
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
