@@ -1,4 +1,6 @@
 Teamline::Application.routes.draw do
+  resources :teams
+
   resources :people
 
   resources :tweets

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121112163702) do
+ActiveRecord::Schema.define(:version => 20121113164905) do
 
   create_table "gh_events", :force => true do |t|
     t.datetime "created_at",                  :null => false
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(:version => 20121112163702) do
     t.string   "gh_username"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.integer  "team_id"
   end
 
   create_table "posts", :force => true do |t|
@@ -46,6 +47,13 @@ ActiveRecord::Schema.define(:version => 20121112163702) do
     t.datetime "updated_at",   :null => false
     t.date     "published_at"
     t.integer  "person_id"
+  end
+
+  create_table "teams", :force => true do |t|
+    t.string   "name"
+    t.string   "website"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "tweets", :force => true do |t|
