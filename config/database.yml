@@ -20,8 +20,9 @@ test:
 
 production:
   adapter: postgresql
+  database: teamline_production
   host: localhost
   username: teamline
-  password:
+  password: teamline
   pool: 5
   timeout: 5000
