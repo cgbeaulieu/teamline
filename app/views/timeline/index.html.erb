@@ -1,6 +1,6 @@
 
 <% @events.each do |date, events| %>
-  <%= time_ago_in_words(date) ago %>
+  <%= time_ago_in_words(date) %> ago
   <ul>
   <% events.each do |event| %>
     <li><%= event.class %></li>
