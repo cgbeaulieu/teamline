@@ -1,38 +1,16 @@
-  <div class="container">
-    <%= image_tag "github.png", {:align => "left", :size => "110x120"}  %>
-    <h2>The Flatiron School<br/>
-      Student Github Activity</h2></a>
-    
-
-    <div id="timelineContainer">
-
-      <div class="timelineToggle"><p><a class="expandAll">+ expand all</a></p></div>
-
-      <br class="clear">
-
-      <% @gh_events.each do |gh_event| %>
-
-      <div class="timelineMajor">
-        <h2 class="timelineMajorMarker"><span><%= time_ago_in_words(gh_event.published_at) %> ago</span></h2>
-        <dl class="timelineMinor">
-          <dt id="<%= gh_event.id %>"><a>Github Activity: <%= gh_event.username %> <%= gh_event.category %></a></dt>
-          <dd class="timelineEvent" id="<%= gh_event.id %>EX" style="display: none; ">
-            <p><%= link_to "#{gh_event.username}", "http://github.com/#{gh_event.username}" %></p>
-              <br class="clear">
-          </dd><!-- /.timelineEvent -->    
-        </dl><!-- /.timelineMinor -->
-     </div><!-- /.timelineMajor -->
-
-      <br class="clear">
-
+<% @gh_events.each do |date, gh_events| %>
+  <%= time_ago_in_words(date) %> ago
+    <ul>
+      <% gh_events.each do |event| %>
+        <li><%= event.username %> - <%= event.category %> - <%= event.content %></li>
       <% end %>
-    </div>
-  </div>
+      </ul>
+    <% end %>
 
-  <script>
-    $(document).ready(function() {  
-      $.timeliner();
-      // Colorbox Modal
-      // $(".CBmodal").colorbox({inline:true, initialWidth:100, maxWidth:682, initialHeight:100, transition:"elastic",speed:750});
-    });
-  </script>
+
+
+
+
+
+
+     

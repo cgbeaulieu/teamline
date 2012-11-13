@@ -1,11 +1,13 @@
 Teamline::Application.routes.draw do
   resources :teams
   resources :people
-  match '/people/:person_id/posts' => 'person_posts#index'
   resources :tweets
   resources :posts
-  root :to => 'timeline#index'
   resources :gh_events
+  match '/people/:person_id/posts' => 'person_posts#index'
+  match '/people/:person_id/tweets' => 'person_tweets#index'
+  match '/people/:person_id/gh_events' => 'person_gh_events#index'
+  root :to => 'timeline#index'
   resources :people do 
     resources :tweets
     resources :gh_events

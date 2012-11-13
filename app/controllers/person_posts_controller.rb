@@ -2,7 +2,7 @@ class PersonPostsController < ApplicationController
 
   def index
     @person = Person.find(params[:person_id])
-    @posts = @person.posts
+    @posts = Sorter.group_by_date(@person.posts)
 
     render 'posts/index'
   end
