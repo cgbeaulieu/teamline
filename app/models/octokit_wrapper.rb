@@ -23,7 +23,6 @@ class OctokitWrapper
     else
       exit = true
     end
-    return if exit
-    GhEvent.create_from_octokit_event(event)
+    GhEvent.create_from_octokit_event(event) unless exit
   end
 end
