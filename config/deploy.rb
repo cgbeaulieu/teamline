@@ -1,9 +1,9 @@
 require 'bundler/capistrano'
 
-set :application, "teamline"
+set :application, "teamline-app"
 set :repository,  "git@github.com:flatiron-school/teamline.git"
 
-set :user, 'kevin'
+set :user, 'teamline'
 set :deploy_to, "/home/#{ user }/#{ application }"
 set :use_sudo, false
 
