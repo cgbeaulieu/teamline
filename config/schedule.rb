@@ -20,6 +20,7 @@
 # Learn more: http://github.com/javan/whenever
 
 set :output, "/home/teamline/teamline-app/current/log/cron.log"
+env :PATH, ENV['PATH']
 
 every 5.minutes do
   rake "fetch:all"
