@@ -5,3 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+Person.delete_all
+
+@avi = Person.create(
+  :gh_username => "aviflombaum",
+  :twitter_handle => "aviflombaum",
+  :name => "Avi Flombaum"
+)
+puts "Created #{@avi.name}"
