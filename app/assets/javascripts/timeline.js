@@ -3,24 +3,35 @@ $(function(){
   // start a polling loop that polls the server
   // every minute
 
-  setTimeout(pollServer, 5000)
+  setTimeout(pollServer, 2000)
 })
 
-function pollServer(){
-  // What data should this submit about the current
-  // data or the last poll time that will
-  // help the server not send back already inserted
-  // content?
+function pollServer(last_date){
 
-  // How to best parse this json and insert it into
-  // the dom as HTML?
+  $.get(
+    '/timeline/poll', 
+    { created_at: last_date},
+    function(json){
 
-  $.get('/timeline/poll', function(json){
-    //save a reference to the last element that was returned
-    //create_at > last objects create_at
-    // var = date
-    console.log(json);
-  }, 'json')
-
-  setTimeout(pollServer, 5000)
+      console.log(json);
+      // $('body').append("JSON:" + json[1])
+  
+  }, 'json').success(function(json){
+    var new_date = json[json.length-1]['created_at'];
+    setTimeout(pollServer(new_date), 2000)
+  });
 };
+
+// {
+//   '2012-11-14 16:25:42 UTC': [
+//     {
+//       content: "RT <a href="http://twitter.com/withloudhands">@withloudhands</a>: Don't forget that <a href="http://twitter.com/holman">@holman</a> from <a href="http://twitter.com/github">@github</a> will be speaking at <a href="http://twitter.com/DUMBOdevs">@DUMBOdevs</a> at <a href="http://twitter.com/galapagosDUMBO">@galapagosDUMBO</a> Friday! Free pizza and pop! ...",
+//       created_at: "2012-11-14T17:10:53Z",
+//       handle: "aviflombaum",
+//       id: 1,
+//       person_id: 1,
+//       published_at: "2012-11-14T16:25:42Z",
+//       updated_at: "2012-11-14T17:10:53Z"
+//     }
+//   ]
+// }
