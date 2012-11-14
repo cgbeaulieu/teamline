@@ -11,10 +11,10 @@ class Person < ActiveRecord::Base
   end
 
   def self.all_handles
-    self.all.collect { |person| person.twitter_handle}
+    self.all.collect { |person| person.twitter_handle }
   end
 
   def self.all_gh_usernames
-    self.all.collect {|person| person.gh_username}
+    self.all.collect { |person| person.gh_username }
   end
 end

@@ -1,10 +1,14 @@
 class OctokitWrapper
-  def self.get_gh_events(ghuser)
-  	Octokit.user_events(ghuser).each { |event| self.parse_and_create(event) }  		  
+  def self.create_gh_event(event)
+    GhEvent.create_from_octokit_event(event)
   end
 
-  def self.parse_and_create(event)
-    exit = false
+  def self.get_gh_events(ghuser)
+  	Octokit.user_events(ghuser).each { |event| self.parse_content(event) }  		  
+  end
+
+  def self.parse_content(event)
+    ignore_event = false
     case event.type
     when 'WatchEvent'
       event.content = event.repo.url
@@ -21,8 +25,8 @@ class OctokitWrapper
     when 'PullRequestEvent'
       event.content = event.payload.pull_request.patch_url
     else
-      exit = true
+      ignore_event = true
     end
-    GhEvent.create_from_octokit_event(event) unless exit
+     self.create_gh_event(event) unless ignore_event
   end
 end

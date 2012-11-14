@@ -29,6 +29,4 @@ class Tweet < ActiveRecord::Base
     text.gsub!(/#([\w]+)(\W)?/, '<a href="http://twitter.com/search?q=%23\1">#\1</a>\2')
     text
   end
-
-
 end

@@ -5,6 +5,4 @@ class TwitterWrapper
       Tweet.update_from_timeline(timeline)
     end
   end
-
-
 end

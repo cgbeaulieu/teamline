@@ -1,6 +1,4 @@
 class TweetsController < ApplicationController
-  # GET /tweets
-  # GET /tweets.json
   def index
     @tweets = Sorter.group_by_date(Tweet.all)
 
@@ -10,8 +8,6 @@ class TweetsController < ApplicationController
     end
   end
 
-  # GET /tweets/1
-  # GET /tweets/1.json
   def show
     @tweet = Tweet.find(params[:id])
 
@@ -21,8 +17,6 @@ class TweetsController < ApplicationController
     end
   end
 
-  # GET /tweets/new
-  # GET /tweets/new.json
   def new
     @tweet = Tweet.new
 
@@ -32,13 +26,10 @@ class TweetsController < ApplicationController
     end
   end
 
-  # GET /tweets/1/edit
   def edit
     @tweet = Tweet.find(params[:id])
   end
 
-  # POST /tweets
-  # POST /tweets.json
   def create
     @tweet = Tweet.new(params[:tweet])
 
@@ -53,8 +44,6 @@ class TweetsController < ApplicationController
     end
   end
 
-  # PUT /tweets/1
-  # PUT /tweets/1.json
   def update
     @tweet = Tweet.find(params[:id])
 
@@ -69,8 +58,6 @@ class TweetsController < ApplicationController
     end
   end
 
-  # DELETE /tweets/1
-  # DELETE /tweets/1.json
   def destroy
     @tweet = Tweet.find(params[:id])
     @tweet.destroy
