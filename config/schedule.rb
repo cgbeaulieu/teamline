@@ -22,7 +22,5 @@
 set :output, "/home/teamline/teamline-app/current/log/cron.log"
 
 every 5.minutes do
-  rake "fetch_posts"
-  rake "fetch_tweets"
-  rake "fetchevents"
+  rake "fetch:all"
 end
