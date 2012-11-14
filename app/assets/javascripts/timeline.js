@@ -16,6 +16,9 @@ function pollServer(){
   // the dom as HTML?
 
   $.get('/timeline/poll', function(json){
+    //save a reference to the last element that was returned
+    //create_at > last objects create_at
+    // var = date
     console.log(json);
   }, 'json')
 
