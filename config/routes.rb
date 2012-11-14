@@ -8,12 +8,13 @@ Teamline::Application.routes.draw do
   match '/people/:person_id/tweets' => 'person_tweets#index'
   match '/people/:person_id/gh_events' => 'person_gh_events#index'
   root :to => 'timeline#index'
-  resources :people do 
+  resources :people do
     resources :tweets
     resources :gh_events
     resources :posts
   end
 
+  get 'timeline/poll' => 'timeline#poll', :as => 'poll_timeline'
 
 
 
