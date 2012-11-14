@@ -1,4 +1,5 @@
 require 'bundler/capistrano'
+require 'whenever/capistrano'
 
 set :application, "teamline-app"
 set :repository,  "git@github.com:flatiron-school/teamline.git"

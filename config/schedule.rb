@@ -19,9 +19,9 @@
 
 # Learn more: http://github.com/javan/whenever
 
-set :output, "/home/teamline/teamline-app/current/logs/cron_log.log"
+set :output, "/home/teamline/teamline-app/current/log/cron.log"
 
-every 2.minutes do 
+every 5.minutes do
   rake "fetch_posts"
   rake "fetch_tweets"
   rake "fetchevents"
