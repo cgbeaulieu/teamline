@@ -13,8 +13,8 @@ class TimelineController < ApplicationController
     else
       new_events = [Tweet.all,Post.all,GhEvent.all].flatten
     end
-    # @events = Sorter.group_by_date(new_events)
-    @events = new_events.sort_by { |event| event.created_at }
+    @events = Sorter.group_by_date(new_events)
+    # @events = new_events.sort_by { |event| event.created_at }
     render :json => @events
   end
 end
