@@ -14,11 +14,11 @@
 ActiveRecord::Schema.define(:version => 20121115163114) do
 
   create_table "gh_events", :force => true do |t|
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.string   "category"
     t.string   "content"
-    t.datetime "published_at", :limit => 255
+    t.datetime "published_at"
     t.string   "username"
     t.integer  "person_id"
     t.string   "url"

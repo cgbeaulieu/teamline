@@ -3,7 +3,7 @@ class Tweet < ActiveRecord::Base
   validates_uniqueness_of :published_at, :scope => :person_id 
   belongs_to :person
 
-  default_scope order("published_at DESC")
+  # default_scope order("published_at DESC")
 
   def self.update_from_timeline(timeline)
     timeline.each { |tweet| create_from_tweet(tweet) }

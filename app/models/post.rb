@@ -3,7 +3,7 @@ class Post < ActiveRecord::Base
   
   belongs_to :person
 
-  default_scope order('published_at DESC')
+  # default_scope order('published_at DESC')
 
   def self.update_from_feed(feed)
     feed_url = feed.feed_url

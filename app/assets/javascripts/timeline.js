@@ -1,6 +1,6 @@
 $(function(){
   var last_date = $('li:first').data('date');
-  // setTimeout(pollServer(last_date), 2000)
+  setTimeout(pollServer(last_date), 2000)
 })
 
 function pollServer(last_date){
@@ -11,11 +11,12 @@ function pollServer(last_date){
       function(json){
         var last_event;
         var date_query;
-
+        console.log(json.length);
+        
         for(var i = 0; i < json.length; i++){
           last_event = json[i];
           var time_ago = last_event.published_at;
-          $("ul:first").prepend("<li data-date=" + json[i].created_at + ">" + "<span>" + time_ago + "</span><p>" + json[i].content + "</p></li>");
+          $("li:first").prepend("<li data-date=" + json[i].created_at + ">" + "<span>" + time_ago + "</span><p>" + json[i].content + "</p></li>");
         }
 
         if(last_event == null){
