@@ -1,26 +1,22 @@
 class Tweet < ActiveRecord::Base
   attr_accessible :content, :handle, :published_at, :person
-
+  validates_uniqueness_of :published_at, :scope => :person_id 
   belongs_to :person
 
   default_scope order("published_at DESC")
 
   def self.update_from_timeline(timeline)
-    timeline.each do |tweet|
-      date = DateTime.parse(tweet.attrs[:created_at]) 
-      create_from_tweet(tweet) unless self.find_by_published_at(date)
-    end
+    timeline.each { |tweet| create_from_tweet(tweet) }
   end
 
   def self.create_from_tweet(tweet)
     content = linkup_mentions_and_hashtags(tweet.attrs[:text])
-    handle = tweet.attrs[:user][:screen_name]
+    handle  = tweet.attrs[:user][:screen_name]
     create(:content => content, 
             :handle => handle,
             :published_at => tweet.attrs[:created_at], 
             :person => Person.find_by_twitter_handle(handle))
   end
-
 
   private
 

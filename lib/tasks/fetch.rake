@@ -2,7 +2,7 @@ namespace :fetch do
   desc 'Fetch all content'
   task :all => [:environment] do
     Rake::Task['fetch:github'].invoke()
-    # Rake::Tasks['fetch:posts'].invoke()
+    Rake::Task['fetch:posts'].invoke()
     Rake::Task['fetch:tweets'].invoke()
   end
 
