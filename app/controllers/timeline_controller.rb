@@ -1,8 +1,9 @@
 class TimelineController < ApplicationController
 	def index
     # all_events = [GhEvent.all, Post.all, Tweet.all].flatten
-    all_events = Tweet.all
-    @events = Sorter.group_by_date(all_events)
+    # all_events = Tweet.all
+    @events = Tweet.all
+    # @events = Sorter.group_by_date(all_events)
   end
 
   def poll
