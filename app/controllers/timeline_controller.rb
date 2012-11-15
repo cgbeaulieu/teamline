@@ -9,9 +9,6 @@ class TimelineController < ApplicationController
     # gh_events = GhEvent.where('created_at > ?', params[:created_at])
     # posts = Post.where('created_at > ?', params[:created_at])
     @events = Tweet.where('created_at > ?', DateTime.parse(params[:created_at]).advance(seconds: 1))
-    puts "RETURNED #{DateTime.parse(params[:created_at]).advance(seconds: 1)}"
-    puts "RETURNED #{@events.count} TWEETS"
-    puts "RETURNED #{@events.inspect}"
     # new_events = Tweet.where('content = ?','TEST')
     # new_events = [tweets, posts, gh_events].flatten
     # @events = Sorter.group_by_date(all_events)
@@ -19,3 +16,7 @@ class TimelineController < ApplicationController
     render :json => @events
   end
 end
+
+# puts "RETURNED #{DateTime.parse(params[:created_at]).advance(seconds: 1)}"
+# puts "RETURNED #{@events.count} TWEETS"
+# puts "RETURNED #{@events.inspect}"

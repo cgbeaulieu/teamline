@@ -3,8 +3,9 @@
   <%= time_ago_in_words(date) %> ago
   <ul>
   <% events.each do |event| %>
-    <li><%= event.class %></li>
-    <li><%= raw(event.content) %></li>
+    <%= content_tag :li,  :data => {:date => "#{event.created_at}"} do -%>
+      <%= raw(event.content) %> 
+    <% end -%>
   <% end %>
   </ul>
 <% end %>
