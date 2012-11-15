@@ -7,9 +7,35 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 Person.delete_all
 
-@avi = Person.create(
-  :gh_username => "aviflombaum",
-  :twitter_handle => "aviflombaum",
-  :name => "Avi Flombaum"
+@kevin = Person.create(
+  :gh_username => "kcurtin",
+  :twitter_handle => "kcurtin",
+  :name => "Kevin Curtin",
+  :rss_feed => 'http://kcurtin.github.com/atom.xml'
 )
-puts "Created #{@avi.name}"
+puts "Created #{@kevin.name}"
+
+@matt = Person.create(
+  :gh_username => "seldomatt",
+  :twitter_handle => "seldomatt",
+  :name => "Matt",
+  :rss_feed => 'http://blog.seldomatt.com/atom.xml'
+)
+puts "Created #{@matt.name}"
+
+@david = Person.create(
+  :gh_username => "davidbakertv",
+  :twitter_handle => "davidbakertv",
+  :name => "David",
+  :rss_feed => 'http://dbtvblog.herokuapp.com/atom.xml'
+)
+
+puts "Created #{@david.name}"
+
+@ericka = Person.create(
+  :gh_username => "EJW1",
+  :twitter_handle => "ErickaJoy_",
+  :name => "Ericka",
+  :rss_feed => 'http://erickaward.herokuapp.com/atom.xml'
+)
+puts "Created #{@ericka.name}"

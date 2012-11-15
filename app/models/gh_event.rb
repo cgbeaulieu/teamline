@@ -1,5 +1,6 @@
 class GhEvent < ActiveRecord::Base
   attr_accessible :published_at, :category, :username, :content, :url, :person
+  validates_uniqueness_of :published_at, :scope => :person_id
 
   belongs_to :person
 
