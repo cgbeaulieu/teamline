@@ -88,6 +88,8 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.19)
+    momentjs-rails (1.7.0)
+      railties (~> 3.1)
     multi_json (1.3.7)
     multipart-post (1.1.5)
     net-scp (1.0.4)
@@ -183,6 +185,7 @@ DEPENDENCIES
   debugger
   feedzirra
   jquery-rails
+  momentjs-rails
   octokit
   pg
   rails (= 3.2.8)

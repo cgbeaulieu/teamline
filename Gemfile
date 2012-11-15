@@ -33,6 +33,7 @@ gem 'feedzirra'
 gem 'twitter'
 gem 'octokit'
 gem 'capistrano'
+gem 'momentjs-rails'
 gem 'debugger'
 
 gem 'whenever', :require => false
