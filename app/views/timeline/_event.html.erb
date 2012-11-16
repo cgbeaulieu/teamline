@@ -1,7 +1,14 @@
-<% @events.each do |event| %>
-      <%= content_tag :li,  :data => {:date => "#{event.created_at.to_s(:db)}"} do -%>
-        <span><%= time_ago_in_words(event.published_at) %></span>
-        <p><%= raw(event.content.truncate(200)) %></p>
-      <% end -%>
-    <% end %>
-  
+<% @events.each_with_index do |event, index| %>
+  <%= content_tag :li, :class => spine_position(index),  :data => {:date => "#{event.created_at.to_s(:db)}"} do -%>
+     <i class="pointer"></i>
+
+       <div class="unit-<%= event.class.to_s.downcase %>">
+          <div class="storyUnit">          
+            <p><%= raw(event.content) %></p>
+          </div>
+        <ol class="storyActions">
+        <li><%= time_ago_in_words(event.published_at) %></li>
+      </ol>      
+    </div>
+  <% end -%>
+<% end %>

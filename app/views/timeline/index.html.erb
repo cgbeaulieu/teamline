@@ -1,7 +1,12 @@
+<div class="container">
+
 <div id="timeline">
-  <ul>
-    <%= render 'event' %>
-  </ul>
+<ol class="timeline clearfix">
+      <%= render 'event' %>
+</ol>
+
 </div>
 
-<%= will_paginate @events %>
+
+</div>
+      <%= will_paginate @events %>
