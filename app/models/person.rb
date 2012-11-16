@@ -1,5 +1,5 @@
 class Person < ActiveRecord::Base
-  attr_accessible :gh_username, :name, :rss_feed, :twitter_handle
+  attr_accessible :gh_username, :name, :rss_feed, :twitter_handle, :avatar_url
 
   has_many :tweets
   has_many :posts

@@ -1,6 +1,6 @@
 <% @tweets.each do |tweet| %>
   <%= time_ago_in_words(tweet.published_at) %> ago
   <ul>
-    <li><%= raw(tweet.content) %></li>
+    <li><%= image_tag(tweet.person.avatar_url) %><%= raw(tweet.content) %></li>
   </ul>
 <% end %>

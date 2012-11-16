@@ -12,10 +12,11 @@ class Tweet < ActiveRecord::Base
   def self.create_from_tweet(tweet)
     content = linkup_mentions_and_hashtags(tweet.attrs[:text])
     handle  = tweet.attrs[:user][:screen_name]
-    create(:content => content, 
+    person = Person.find_by_twitter_handle(handle)
+    person.update_attributes(:avatar_url => tweet.user.profile_image_url)
+    person.tweets.create(:content => content, 
             :handle => handle,
-            :published_at => tweet.attrs[:created_at], 
-            :person => Person.find_by_twitter_handle(handle))
+            :published_at => tweet.attrs[:created_at])
   end
 
   private

@@ -9,7 +9,7 @@ Person.delete_all
 
 @kevin = Person.create(
   :gh_username => "kcurtin",
-  :twitter_handle => "kcurtin",
+  :twitter_handle => "KCurtin",
   :name => "Kevin Curtin",
   :rss_feed => 'http://kcurtin.github.com/atom.xml'
 )

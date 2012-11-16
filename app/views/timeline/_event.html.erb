@@ -1,7 +1,7 @@
 <% @events.each do |event| %>
       <%= content_tag :li,  :data => {:date => "#{event.created_at.to_s(:db)}"} do -%>
         <span><%= time_ago_in_words(event.published_at) %></span>
-        <p><%= raw(event.content) %></p>
+        <p><%= raw(event.content.truncate(200)) %></p>
       <% end -%>
     <% end %>
   
