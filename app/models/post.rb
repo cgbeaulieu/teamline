@@ -6,9 +6,13 @@ class Post < ActiveRecord::Base
   # default_scope order('published_at DESC')
 
   def self.update_from_feed(feed)
-    feed_url = feed.feed_url
-    feed.entries.each do |entry|
-      create_from_entry(entry, feed_url) unless Post.find_by_url(entry.url)
+    begin
+      feed_url = feed.feed_url
+      feed.entries.each do |entry|
+        create_from_entry(entry, feed_url) unless Post.find_by_url(entry.url)
+      end
+    rescue => e
+      puts "Error parsing feed"
     end
   end
 

@@ -2,7 +2,7 @@ require 'will_paginate/array'
 class TimelineController < ApplicationController
 	def index
     all_events = [GhEvent.all, Post.all, Tweet.all].flatten
-    @events = Sorter.sort_by_published_at(all_events).paginate(:page => 3, :per_page => 20)
+    @events = Sorter.sort_by_published_at(all_events).paginate(:page => 1, :per_page => 20)
   end
 
   def poll
