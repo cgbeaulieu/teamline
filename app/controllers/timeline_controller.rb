@@ -6,7 +6,7 @@ class TimelineController < ApplicationController
 
   def poll
     if params[:created_at]
-      query_date = DateTime.parse(params[:created_at])+2.seconds
+      query_date = DateTime.parse(params[:created_at])+5.seconds
       
       gh_events = GhEvent.where('created_at > ?', query_date)
       posts = Post.where('created_at > ?', query_date)

@@ -1,14 +1,6 @@
-<h1>Listing teams</h1>
+<div class="container">
 
 <table>
-  <tr>
-    <th>Name</th>
-    <th>Website</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
 <% @teams.each do |team| %>
   <tr>
     <td><%= team.name %></td>
@@ -23,3 +15,4 @@
 <br />
 
 <%= link_to 'New Team', new_team_path %>
+</div>

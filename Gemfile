@@ -35,6 +35,7 @@ gem 'octokit'
 gem 'capistrano'
 gem 'momentjs-rails'
 gem 'debugger'
+gem 'html_truncator'
 
 gem 'whenever', :require => false
 
