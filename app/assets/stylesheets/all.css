@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 body{
-    background:#fefefe;
+    background:#ff00b4;
     font-size: 18px; 
     line-height:1.6;
     font-weight: 200;
@@ -12,7 +12,7 @@ body{
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  background: #cfceca;
+  background: #00ff3c;
   position: fixed;
   z-index: 999;
   padding-top: 22px;
@@ -56,11 +56,11 @@ body{
     margin-bottom:20px;
     margin-left:auto;
     margin-right:auto;
-    padding-top: 80px;
+    padding-top: 110px;
 }
 
 a, a:visited{
-    color:#333;
+    color:#fff;
     text-decoration:none;
 }
 
