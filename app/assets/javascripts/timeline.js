@@ -1,6 +1,6 @@
 $(function(){
   var last_date = $('li:first').data('date');
-  setTimeout(pollServer(last_date), 2000)
+  // setTimeout(pollServer(last_date), 2000)
 })
 
 function pollServer(last_date){
