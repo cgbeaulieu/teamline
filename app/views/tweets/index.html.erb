@@ -1,8 +1,6 @@
-<% @tweets.each do |date, tweets| %>
-  <%= time_ago_in_words(date) %> ago
+<% @tweets.each do |tweet| %>
+  <%= time_ago_in_words(tweet.published_at) %> ago
   <ul>
-    <% tweets.each do |tweet| %>
     <li><%= raw(tweet.content) %></li>
-    <% end %>
   </ul>
 <% end %>

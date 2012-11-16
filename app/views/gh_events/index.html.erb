@@ -1,9 +1,7 @@
-<% @gh_events.each do |date, gh_events| %>
-  <%= time_ago_in_words(date) %> ago
+<% @gh_events.each do |event| %>
+  <%= time_ago_in_words(event.published_at) %> ago
     <ul>
-      <% gh_events.each do |event| %>
-        <li><%= event.username %> - <%= event.category %> - <%= event.content %></li>
-      <% end %>
+      <li><%= event.username %> - <%= event.category %> - <%= event.content %></li>
       </ul>
     <% end %>
 

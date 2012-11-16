@@ -1,6 +1,6 @@
 class TweetsController < ApplicationController
   def index
-    @tweets = Sorter.group_by_date(Tweet.all)
+    @tweets = Sorter.sort_by_published_at(Tweet.all)
 
     respond_to do |format|
       format.html # index.html.erb

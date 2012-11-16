@@ -1,8 +1,6 @@
-<% @posts.each do |date, posts| %>
-  <%= time_ago_in_words(date) %> ago
+<% @posts.each do |post| %>
+  <%= time_ago_in_words(post.published_at) %> ago
   <ul>
-    <% posts.each do |post| %>
     <li><%= raw((post.content).truncate(140)) %></li>
-    <% end %>
   </ul>
 <% end %>

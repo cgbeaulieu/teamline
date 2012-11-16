@@ -13,11 +13,12 @@ function pollServer(last_date){
         var date_query;
         console.log(json.length);
         
-        for(var i = 0; i < json.length; i++){
-          last_event = json[i];
+        $.each(json, function(i, object){
+          last_event = object;
           var time_ago = last_event.published_at;
-          $("li:first").prepend("<li data-date=" + json[i].created_at + ">" + "<span>" + time_ago + "</span><p>" + json[i].content + "</p></li>");
-        }
+          $("li:first").prepend("<li data-date=" + object.created_at + ">" + "<span>" + time_ago + "</span><p>" + 
+                                 object.content + "</p></li>");
+        });
 
         if(last_event == null){
           date_query = last_date
@@ -33,10 +34,8 @@ function pollServer(last_date){
 };
 
 
-// var new_date = json[json.length-1];
-  // $.each(json, function(datetime, events){
-  //   for(var i = 0; i < events.length; i++){
-  //     last_event = events[i];
-  //     $("ul").prepend("<li>" + events[i].content + "</li>");
-  //   }
-  // })
+        // for(var i = 0; i < json.length; i++){
+        //   last_event = json[i];
+        //   var time_ago = last_event.published_at;
+        //   $("li:first").prepend("<li data-date=" + json[i].created_at + ">" + "<span>" + time_ago + "</span><p>" + json[i].content + "</p></li>");
+        // }

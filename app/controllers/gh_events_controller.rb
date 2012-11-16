@@ -2,7 +2,7 @@ class GhEventsController < ApplicationController
   # GET /gh_events
   # GET /gh_events.json
   def index
-    @gh_events = GhEvent.all
+    @gh_events = Sorter.sort_by_published_at(GhEvent.all)
 
     respond_to do |format|
       format.html # index.html.erb
