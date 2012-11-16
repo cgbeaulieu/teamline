@@ -4,7 +4,11 @@ class OctokitWrapper
   end
 
   def self.get_gh_events(ghuser)
+    begin
   	Octokit.user_events(ghuser).each { |event| self.parse_content(event) }  		  
+    rescue => e
+      puts "Rate limit exceeded"
+    end
   end
 
   def self.parse_content(event)
