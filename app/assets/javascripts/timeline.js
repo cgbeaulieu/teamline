@@ -34,8 +34,3 @@ function pollServer(last_date){
 };
 
 
-        // for(var i = 0; i < json.length; i++){
-        //   last_event = json[i];
-        //   var time_ago = last_event.published_at;
-        //   $("li:first").prepend("<li data-date=" + json[i].created_at + ">" + "<span>" + time_ago + "</span><p>" + json[i].content + "</p></li>");
-        // }

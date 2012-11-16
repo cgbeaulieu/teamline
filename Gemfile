@@ -38,6 +38,8 @@ gem 'debugger'
 
 gem 'whenever', :require => false
 
+gem 'will_paginate'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
