@@ -36,7 +36,7 @@ gem 'capistrano'
 gem 'momentjs-rails'
 gem 'debugger'
 gem 'html_truncator'
-
+gem 'timecop'
 gem 'whenever', :require => false
 
 gem 'will_paginate'

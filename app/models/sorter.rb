@@ -8,6 +8,6 @@ class Sorter
   end
 
   def self.sort_by_created_at(events)
-    events.sort_by { |event| event.created_at }.reverse  
+    events.sort_by { |event| event.created_at }  
   end
 end
