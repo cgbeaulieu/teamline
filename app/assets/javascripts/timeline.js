@@ -4,19 +4,25 @@ $(function(){
 })
 
 function pollServer(last_date){
+  var date_query;
   setTimeout(function(){
-    $.get(
-      '/timeline/poll', 
-      { created_at: last_date },
-      function(json){
-        var last_event = json[json.length-1];        
-        var date_query = getQueryDate(last_event, last_date);
-        displayNew(json);
-        pollServer(date_query);
-      }, 
-    'json')
-  }, 3000);
-};
+    $.ajax({
+      url: '/timeline/poll',
+      type: 'GET',
+      data: {created_at: last_date},
+      dataType: 'json'
+    }).success(function(data){
+      var last_event = data[data.length-1];        
+      date_query = getQueryDate(last_event, last_date);
+      displayNew(data);
+    }).error(function(data){
+      console.log(data)
+    }).done(function(){
+      pollServer(date_query);
+    });
+  }, 2000);
+}
+
 
 function formatTimestamp(timestamp){
   return timestamp.replace(/Z/,'').replace(/T/, ' ');
