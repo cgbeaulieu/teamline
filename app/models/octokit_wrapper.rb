@@ -14,31 +14,24 @@ class OctokitWrapper
   def self.parse_content(event)
     ignore_event = false
     case event.type
-    when 'WatchEvent'
-      event.content = event.repo.url
-    when 'FollowEvent'
-      event.content = event.payload.target.login
-    when 'ForkEvent'
-      event.content = event.repo.name
     when 'PushEvent'
-      event.content = event.repo.name
-      #name = event.actor.login
-      #repo_name = event.repo.name
-      #commit_messages = event.payload.commits.first.message
-      #sha = event.payload.commits.first.sha
-      #commit_links = http://www.github.com/[name]/[repo_name]/commit/[sha]
+      commit_messages = event.payload.commits.map { |commmit| commit.message }.join(',')
+      
+      event.headline = "#{event.actor.login} pushed to #{event.repo.name}"
+      event.content  = commit_messages
+      event.url      = "http://www.github.com/#{event.actor.login}/#{event.repo.name}"
     when 'CreateEvent'
-      event.content = event.payload.description
-      # name = event.actor.login
-      # repo_name = event.repo.name
-      # repo_link = http://www.github.com/[ghuser]/[repo_name]
-      # description = event.payload.description
+      event.headline = "#{event.actor.login} created #{event.repo.name}"
+      event.content  = event.payload.description
+      event.url      = "http://www.github.com/#{event.actor.login}/#{event.repo.name}"
     when 'GistEvent'
-      event.content = event.payload.gist.description
-      #link = event.payload.gist.html_url
+      event.headline = "#{event.actor.login} created a new gist"
+      event.content  = event.payload.gist.description
+      event.url      = event.payload.gist.html_url
     when 'PullRequestEvent'
-      event.content = event.payload.pull_request.patch_url
-      #title = event.payload.pull_request.title
+      event.headline = "#{event.actor.login} #{event.payload.action} a Pull Request for #{event.repo.name}" 
+      event.content  = event.payload.pull_request.title
+      event.url      = event.payload.pull_request.diff_url
     else
       ignore_event = true
     end
