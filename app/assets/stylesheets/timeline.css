@@ -1,12 +1,18 @@
+body {
+  line-height: 1;
+  font-family: 'Montserrat', sans-serif;
+  background: #000 url("dark_dotted.png") repeat;
+  }
+
 #timeline {
-  background: url("images/spine.png") center repeat-y; 
+  background: url("spine.png") center repeat-y; 
   margin: 0 auto;
   width: 80%;
   z-index: 1;
 }
 
 #timeline-top {
-  background: url("images/spine-top.png") center no-repeat; 
+  background: url("spine-top.png") center no-repeat; 
   margin: 0 auto;
   width: 80%;
   z-index: 1;
@@ -14,7 +20,7 @@
 }
 
 #timeline-bottom {
-  background: url("images/spine-bottom.png") center no-repeat; 
+  background: url("spine-bottom.png") center no-repeat; 
   margin: 0 auto;
   width: 80%;
   z-index: 1;
@@ -147,17 +153,21 @@ li#github {
   width: 8%;
   height: 15px;
   margin-top: 10px;
-  margin-left: -9%;
-  margin-right: 10px;
-  float: left;
-  z-index: 1;
   position: relative;
   border-radius: 5px;
+
 }
 
 .pointer.right {
+  
+  margin-left: -9%;
+  margin-right: 10px;
+  float: left;
+  
+}
+
+.pointer.left {
   margin-right: -9%;
-  z-index: 1;
   float: right;
 }
 

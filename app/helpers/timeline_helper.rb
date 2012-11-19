@@ -6,4 +6,8 @@ module TimelineHelper
       "left"
     end
   end
+
+  def event_type(event)
+    event.class.to_s.downcase
+  end
 end

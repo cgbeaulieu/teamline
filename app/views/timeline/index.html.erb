@@ -1,9 +1,21 @@
-<div class="container">
-  <div id="timeline">
-    <ol class="timeline clearfix" id="spine">
-      <%= render 'event' %>
+<nav>
+    <ol id="filter-nav">
+      <li id="topnav">Filters</li>
+      <li class="subnav" id="all">All</li>
+      <li class="subnav" id="blog">Blog</li>
+      <li class="subnav" id="tweet">Tweet</li>
+      <li class="subnav" id="github">Github</li>
     </ol>
+  </nav>
+<!-- <div class="container"> -->
+  <div id="teamline">
+    <div id="date-header"><h2>November 18, 2012</h2></div>
+    <div id="timeline-top"> </div>
+    <div id="timeline">
+      <ol class="timeline" id="spine">
+        <%= render 'event' %>
+      </ol>
+    </div>
   </div>
-</div>
 
 <%= will_paginate @events %>
