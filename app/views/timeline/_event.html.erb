@@ -1,5 +1,5 @@
 <% @events.each_with_index do |event, index| %>
-  <%= content_tag :li, :class => spine_position(index),  :data => {:date => "#{event.created_at.to_s(:db)}"} do -%>
+  <%= content_tag :li, :class => spine_position(index),  :data => {:date => "#{event.published_at.to_s(:db)}"} do -%>
      <i class="pointer"></i>
 
        <div class="unit-<%= event.class.to_s.downcase %>">
