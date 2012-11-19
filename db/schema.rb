@@ -11,11 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121119184837) do
+ActiveRecord::Schema.define(:version => 20121119222935) do
 
   create_table "gh_events", :force => true do |t|
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
     t.string   "category"
     t.string   "content"
     t.datetime "published_at"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(:version => 20121119184837) do
     t.integer  "person_id"
     t.string   "url"
     t.string   "headline"
+    t.string   "classname",    :default => "ghevent"
   end
 
   create_table "people", :force => true do |t|
@@ -40,10 +41,11 @@ ActiveRecord::Schema.define(:version => 20121119184837) do
     t.string   "title"
     t.text     "content"
     t.string   "url"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
     t.datetime "published_at"
     t.integer  "person_id"
+    t.string   "classname",    :default => "post"
   end
 
   create_table "teams", :force => true do |t|
@@ -57,9 +59,10 @@ ActiveRecord::Schema.define(:version => 20121119184837) do
     t.text     "content"
     t.datetime "published_at"
     t.string   "handle"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
     t.integer  "person_id"
+    t.string   "classname",    :default => "tweet"
   end
 
 end
