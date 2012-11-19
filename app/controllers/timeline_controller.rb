@@ -5,10 +5,12 @@ class TimelineController < ApplicationController
   end
 
   def poll
-    if params[:created_at]
-      new_events = Poller.find_new_events(params[:created_at])
-      @events = Sorter.sort_by_created_at(new_events)
+    if params[:published_at]
+      new_events = Poller.find_new_events(params[:published_at])
+      @events = Sorter.sort_by_published_at_asc(new_events)
       render :json => @events
+    else
+      render :json => 'empty'
     end
   end
 end

@@ -1,9 +1,8 @@
 class Post < ActiveRecord::Base
   attr_accessible :content, :title, :url, :published_at, :person
-  
+  validates :content, :uniqueness => true  
+  validates :published_at, :presence => true
   belongs_to :person
-
-  # default_scope order('published_at DESC')
 
   def self.update_from_feed(feed)
     begin

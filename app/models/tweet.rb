@@ -1,9 +1,9 @@
 class Tweet < ActiveRecord::Base
   attr_accessible :content, :handle, :published_at, :person
-  validates_uniqueness_of :published_at, :scope => :person_id 
+  validates_uniqueness_of :published_at, :scope => :person_id
+  validates :published_at, :presence => true
+  validates :content, :uniqueness => true
   belongs_to :person
-
-  # default_scope order("published_at DESC")
 
   def self.update_from_timeline(timeline)
     timeline.each { |tweet| create_from_tweet(tweet) }
