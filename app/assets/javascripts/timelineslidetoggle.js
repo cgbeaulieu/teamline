@@ -1,6 +1,5 @@
 $(document).ready(function(){
 
-    $(".secondary").hide();
 
 
   $(".event").mouseenter(function(){
@@ -11,9 +10,11 @@ $(document).ready(function(){
   });
 
 
-});
 
-$(document).ready(function(){
+
+
+
+
 
   $(".subnav").hide();
 
@@ -23,9 +24,7 @@ $(document).ready(function(){
 
     });
 
-});
 
-$(document).ready(function(){
 
   $("#blog").click(function(){
     $(".event:not(.post)").slideToggle();

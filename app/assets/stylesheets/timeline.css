@@ -126,7 +126,8 @@ li#github {
   background-color: #d53e0f;
 }
 
-.event.secondary {
+.event .secondary {
+  display: none;
   position: relative;
 }
 
