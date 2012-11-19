@@ -22,12 +22,23 @@ class OctokitWrapper
       event.content = event.repo.name
     when 'PushEvent'
       event.content = event.repo.name
+      #name = event.actor.login
+      #repo_name = event.repo.name
+      #commit_messages = event.payload.commits.first.message
+      #sha = event.payload.commits.first.sha
+      #commit_links = http://www.github.com/[name]/[repo_name]/commit/[sha]
     when 'CreateEvent'
       event.content = event.payload.description
+      # name = event.actor.login
+      # repo_name = event.repo.name
+      # repo_link = http://www.github.com/[ghuser]/[repo_name]
+      # description = event.payload.description
     when 'GistEvent'
       event.content = event.payload.gist.description
+      #link = event.payload.gist.html_url
     when 'PullRequestEvent'
       event.content = event.payload.pull_request.patch_url
+      #title = event.payload.pull_request.title
     else
       ignore_event = true
     end
