@@ -15,32 +15,23 @@ class OctokitWrapper
     ignore_event = false
     case event.type
     when 'PushEvent'
-      name = event.actor.login
-      repo_name = event.repo.name
-      commit_messages = event.payload.commits.first.message
-      sha = event.payload.commits.first.sha
-      commit_links = "http://www.github.com/#{name}/#{repo_name}/commit/#{sha}"
-      content_string = "#{name} pushed to #{repo_name}"
-      event.content = event.repo.name
-
-    when 'CreateEvent'
-      name = event.actor.login
-      repo_name = event.repo.name
-      description = event.payload.description
-      repo_link = "http://www.github.com/#{name}/#{repo_name}"
-
-      event.content = "#{name} created #{repo_name}: #{description}"
-    when 'GistEvent'
-      name = event.actor.login
-      description = event.payload.gist.description
-      link = event.payload.gist.html_url
-
-      event.content = "#{name} created a new gist: #{description}"
-    when 'PullRequestEvent'
-      patch_url = event.payload.pull_request.patch_url
-      title = event.payload.pull_request.title
+      commit_messages = event.payload.commits.map { |commmit| commit.message }.join(',')
       
-      event.content = "#{name} had a Pull Request Event: #{title}, #{patch_url}"
+      event.headline = "#{event.actor.login} pushed to #{event.repo.name}"
+      event.content  = commit_messages
+      event.url      = "http://www.github.com/#{event.actor.login}/#{event.repo.name}"
+    when 'CreateEvent'
+      event.headline = "#{event.actor.login} created #{event.repo.name}"
+      event.content  = event.payload.description
+      event.url      = "http://www.github.com/#{event.actor.login}/#{event.repo.name}"
+    when 'GistEvent'
+      event.headline = "#{event.actor.login} created a new gist"
+      event.content  = event.payload.gist.description
+      event.url      = event.payload.gist.html_url
+    when 'PullRequestEvent'
+      event.headline = "#{event.actor.login} #{event.payload.action} a Pull Request for #{event.repo.name}" 
+      event.content  = event.payload.pull_request.title
+      event.url      = event.payload.pull_request.diff_url
     else
       ignore_event = true
     end
