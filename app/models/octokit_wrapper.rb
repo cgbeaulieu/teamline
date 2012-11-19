@@ -14,31 +14,33 @@ class OctokitWrapper
   def self.parse_content(event)
     ignore_event = false
     case event.type
-    when 'WatchEvent'
-      event.content = event.repo.url
-    when 'FollowEvent'
-      event.content = event.payload.target.login
-    when 'ForkEvent'
-      event.content = event.repo.name
     when 'PushEvent'
+      name = event.actor.login
+      repo_name = event.repo.name
+      commit_messages = event.payload.commits.first.message
+      sha = event.payload.commits.first.sha
+      commit_links = "http://www.github.com/#{name}/#{repo_name}/commit/#{sha}"
+      content_string = "#{name} pushed to #{repo_name}"
       event.content = event.repo.name
-      #name = event.actor.login
-      #repo_name = event.repo.name
-      #commit_messages = event.payload.commits.first.message
-      #sha = event.payload.commits.first.sha
-      #commit_links = http://www.github.com/[name]/[repo_name]/commit/[sha]
+
     when 'CreateEvent'
-      event.content = event.payload.description
-      # name = event.actor.login
-      # repo_name = event.repo.name
-      # repo_link = http://www.github.com/[ghuser]/[repo_name]
-      # description = event.payload.description
+      name = event.actor.login
+      repo_name = event.repo.name
+      description = event.payload.description
+      repo_link = "http://www.github.com/#{name}/#{repo_name}"
+
+      event.content = "#{name} created #{repo_name}: #{description}"
     when 'GistEvent'
-      event.content = event.payload.gist.description
-      #link = event.payload.gist.html_url
+      name = event.actor.login
+      description = event.payload.gist.description
+      link = event.payload.gist.html_url
+
+      event.content = "#{name} created a new gist: #{description}"
     when 'PullRequestEvent'
-      event.content = event.payload.pull_request.patch_url
-      #title = event.payload.pull_request.title
+      patch_url = event.payload.pull_request.patch_url
+      title = event.payload.pull_request.title
+      
+      event.content = "#{name} had a Pull Request Event: #{title}, #{patch_url}"
     else
       ignore_event = true
     end
