@@ -5,9 +5,28 @@ class OctokitWrapper
 
   def self.get_gh_events(ghuser)
     begin
-  	Octokit.user_events(ghuser).each { |event| self.parse_content(event) }  		  
+    id = 'dc7f6a9b8f696bbe50f8'
+    secret = 'ded6e57d0547445c9a854d81f28e868f190ed4de'
+    url = "https://api.github.com/users/#{ghuser}/events/public?page=1&client_id=#{id}&client_secret=#{secret}"
+    
+    events = fetching_user_events(url)
+
+    response.each { |event| self.parse_content(event) }  		  
     rescue => e
       puts "Rate limit exceeded"
+    end
+  end
+
+  def fetching_user_events(url)
+    response = HTTParty.get(url)
+    
+    if response.headers['link'].match /next/
+      link = response.headers['link']
+      link.slice!(/>.+$/)
+      link.slice!(/</)
+      JSON.parse(response.body) + fetching_user_events(link)
+    else
+      JSON.parse(response.body)
     end
   end
 
