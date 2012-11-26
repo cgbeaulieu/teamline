@@ -16,4 +16,3 @@
 //= require pickadate
 //= require timeline
 //= require timelineslidetoggle
-
