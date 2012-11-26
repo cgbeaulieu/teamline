@@ -12,7 +12,4 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require moment
-//= require pickadate
-//= require timeline
-//= require timelineslidetoggle
+//= require_tree .
