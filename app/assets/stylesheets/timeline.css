@@ -78,11 +78,14 @@ li#github {
 
 #date-header {
   color: #DDD;
+  background: #000 url("dark_dotted.png") repeat;
   font-style: bold;
   font-size: 40px;
   padding-left: 40px;
   text-align: center;
   margin: 20px;
+  padding-top: 10px; 
+  padding-bottom: 10px; 
 }
 
 #logo {
