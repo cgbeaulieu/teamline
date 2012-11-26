@@ -1,3 +1,10 @@
+
+    <fieldset>
+        <input id="input_02" class="datepicker" type="text" value="FFFUUUUCCKKKK">
+    </fieldset>
+
+
+
 <nav>
     <ol id="filter-nav">
       <li id="topnav">Filters</li>
@@ -21,3 +28,7 @@
   </div>
 
 <%= will_paginate @events %>
+
+<script type="text/javascript">
+    $( '[type=date], .datepicker' ).pickadate()
+</script>

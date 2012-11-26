@@ -1,4 +1,24 @@
 
+input[type=date],
+input[type=text] {
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 10px 12px;
+    border: 4px solid #e2e2e2;
+
+    -webkit-box-shadow: none;
+       -moz-box-shadow: none;
+            box-shadow: none;
+}
+
+input[type=date]:focus,
+input[type=text]:focus,
+input.pickadate--input__focused {
+    outline: none;
+    border-color: #0089ec;
+}
+
+
 
 .pickadate--holder {
     width: 100%;

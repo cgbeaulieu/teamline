@@ -11,11 +11,6 @@ $(document).ready(function(){
 
 
 
-
-
-
-
-
   $(".subnav").hide();
 
     $("#topnav").mouseenter(function(){
