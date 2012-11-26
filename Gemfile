@@ -38,6 +38,7 @@ gem 'debugger'
 gem 'html_truncator'
 gem 'timecop'
 gem 'whenever', :require => false
+gem 'exception_notification'
 
 gem 'will_paginate'
 
