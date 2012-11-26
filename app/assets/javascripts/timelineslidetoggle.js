@@ -45,3 +45,15 @@ $(document).ready(function(){
 });
 
 
+$(document).ready(function(){
+
+  $("#yesterday").click(function(){
+    $("li.event").not("[data-date^='2012-11-19']").slideToggle();
+  })
+
+  $("#month").click(function(){
+    $("li.event[data-date^='2012-11']").slideToggle();
+  })
+
+});
+
