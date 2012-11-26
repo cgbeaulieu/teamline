@@ -39,7 +39,7 @@ gem 'html_truncator'
 gem 'timecop'
 gem 'whenever', :require => false
 gem 'exception_notification'
-
+gem 'omniauth-github'
 gem 'will_paginate'
 
 # To use ActiveModel has_secure_password
