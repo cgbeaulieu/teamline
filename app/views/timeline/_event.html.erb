@@ -6,10 +6,9 @@
 
     <%= content_tag :li, :class => "event #{event_type(event)} #{spine_position(index)}",  :data => {:date => "#{event.published_at.to_s(:db)}"} do -%>
         <div class="<%= "pointer #{spine_position(index)}" %>"></div>
-        <h2><%= time_ago_in_words(event.published_at) %></h2>
-        <div class="secondary"><%= raw(event.content) %></div>
+        <h2><%= raw(event.content) %></h2>
+        <div class="secondary"></div>
     <% end -%>
     <div class="clear-<%=spine_position(index)%>"></div>
 
   <% end %>
-<% end %>
