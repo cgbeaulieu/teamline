@@ -10,6 +10,7 @@ class TimelineController < ApplicationController
       new_events = Poller.find_new_events(params[:published_at])
       @events = Sorter.sort_by_published_at_asc(new_events)
       render :json => @events
+      # render :json => render_to_string(@events)
     else
       render :json => 'empty'
     end
