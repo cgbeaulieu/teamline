@@ -6,27 +6,27 @@ class Post < ActiveRecord::Base
 
   def self.update_from_feed(feed)
     begin
-      feed_url = feed.feed_url
-      # find all urls
-      # load all posts with that url
-      # check that array
+      #all of the posts
+      feed_url = feed.url
+      # existing_posts = Post.where(:url => entry.url).collect { |p| p.url }
+      urls = feed.entries.map { |e| e.url  }
 
-      # existing_posts = Post.where(:url => entry.url).collect{|p| p.url}
-      # TODO: Is it possible to consolidate the Post.find_by_url
-      # and avoid the n+1?
-      # feed.entries.reject{|e| existing_posts.include?(e) } each do |entry|
-      #   create_from_entry(entry, feed_url) 
-      # end
+      feed.entries.reject { |e| existing_posts.include?(e) }.each do |entry|
+        create_from_entry(entry, feed_url) 
+      end
     rescue => e
-      puts "Error parsing feed"
+      puts e.inspect
     end
   end
 
   def self.create_from_entry(entry, feed_url)
-    # TODO: Make this pretty.
-    create(:title => entry.title, :content => entry.content,
-           :url => entry.url, :published_at => entry.published,
-           :person => Person.find_by_rss_feed(feed_url))
+    create(
+      :title => entry.title, 
+      :content => entry.content,
+      :url => entry.url,
+      :published_at => entry.published,
+      :person => Person.find_by_rss_feed(feed_url)
+    )
   end
 end
 
