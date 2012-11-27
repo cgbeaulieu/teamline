@@ -28,8 +28,9 @@ class Timeline
     #delegates to the correct filter action
   end
 
-  def filter_by_date
-    #...
+  def filter_events_by_date(date)
+    @events = Events.map { |class_name| class_name.constantize.
+      where('published_at LIKE ?', "#{date}%") }.flatten 
   end
 
   private
@@ -39,6 +40,10 @@ class Timeline
     end
 
     def parse_date(date)
-      DateTime.parse(published_at) + 1.seconds
+      DateTime.parse(date) + 1.seconds
+    end
+
+    def parse_filter_date(date)
+      DateTime.parse(date)
     end
 end

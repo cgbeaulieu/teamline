@@ -55,8 +55,12 @@ $('.datepicker').pickadate({
       var calendar = this
       // var date = calendar.getDate();
       var date = $("input[type='hidden']").val();
+      // console.log(date);
+      
+      $.get('/timeline/filter', { date: date });
 
-      $("li.event").not("[data-date^='" + date + "']").slideToggle();
+
+      // $("li.event").not("[data-date^='" + date + "']").slideToggle();
       // console.log($("input[name='custom_date_hidden']").val())
     }
 })
