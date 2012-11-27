@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-
+// TODO: Crazy whitespace much?
 
   $(".event").mouseenter(function(){
 

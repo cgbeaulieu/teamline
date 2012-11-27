@@ -3,7 +3,8 @@ $(setInterval(function(){
     var raw_date  = $('ol.timeline li:first').data('date');
     var last_date = formatTimestamp(raw_date);
     console.log(last_date);
-
+    // Use a higher level function
+    // like $.get
     $.ajax({
       url: '/timeline/poll',
       data: {published_at: last_date},
@@ -31,12 +32,16 @@ function insertEvent(object){
   console.log(object)
   if ($("ol.timeline li:first").is(".right")) {
     var align = "left";
-  } else { 
+  } else {
     var align = "right";
   };
+  // TODO: build this part in strings
+  // $("ol.timeline:first").prepend("<li class='event " + object.classname + " " + align + "' data-date='" +
+  //   object.published_at + "'><div class='pointer" + " " + align + "'></div><h2>" + formatTimestamp(object.published_at) +
+  //   "</h2><div class='secondary'>" + object.content + "</div></li><div class='clear-" + align + "'></div>");
 
-  $("div#date-header:first").after("<li class='event " + object.classname + " " + align + "' data-date='" + 
-    object.published_at + "'><div class='pointer" + " " + align + "'></div><h2>" + formatTimestamp(object.published_at) + 
-    "</h2><div class='secondary'>" + object.content + "</div></li><div class='clear-" + align + "'></div>"); 
+  $("div#date-header:first").after("<li class='event " + object.classname + " " + align + "' data-date='" +
+    object.published_at + "'><div class='pointer" + " " + align + "'></div><h2>" + formatTimestamp(object.published_at) +
+    "</h2><div class='secondary'>" + object.content + "</div></li><div class='clear-" + align + "'></div>");
 
 }
