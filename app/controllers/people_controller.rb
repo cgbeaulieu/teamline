@@ -1,3 +1,6 @@
+# TODO: Is this going to be publicly accessible?
+# Where are logins / admin control?
+
 class PeopleController < ApplicationController
   # GET /people
   # GET /people.json
