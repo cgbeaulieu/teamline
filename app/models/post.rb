@@ -11,12 +11,12 @@ class Post < ActiveRecord::Base
       # load all posts with that url
       # check that array
 
-      existing_posts = Post.where(:url => entry.url).collect{|p| p.url}
+      # existing_posts = Post.where(:url => entry.url).collect{|p| p.url}
       # TODO: Is it possible to consolidate the Post.find_by_url
       # and avoid the n+1?
-      feed.entries.reject{|e| existing_posts.include?(e) } each do |entry|
-        create_from_entry(entry, feed_url) 
-      end
+      # feed.entries.reject{|e| existing_posts.include?(e) } each do |entry|
+      #   create_from_entry(entry, feed_url) 
+      # end
     rescue => e
       puts "Error parsing feed"
     end

@@ -1,5 +1,5 @@
 class TimelineController < ApplicationController
-  def index
+	def index
     timeline = Timeline.new
     timeline.load_recent_events(20)
     grouped_events = timeline.group_by_date
