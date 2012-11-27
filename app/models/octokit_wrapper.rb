@@ -1,8 +1,4 @@
 class OctokitWrapper
-  def self.create_gh_event(event)
-    GhEvent.create_from_octokit_event(event)
-  end
-
   def self.get_gh_events(ghuser)
     Octokit.client_id = GITHUB_ID
     Octokit.client_secret = GITHUB_SECRET
@@ -34,5 +30,9 @@ class OctokitWrapper
       ignore_event = true
     end
      self.create_gh_event(event) unless ignore_event
+  end
+  
+  def self.create_gh_event(event)
+    GhEvent.create_from_octokit_event(event)
   end
 end
