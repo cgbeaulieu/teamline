@@ -15,7 +15,7 @@ namespace :fetch do
 
   task :posts => :environment do
     puts "Fetching posts"
-    RssParser.update_feeds(Person.all_feeds)
+    RssParser.update_feeds(Person.all_feeds.compact)
   end
 
   task :tweets => :environment do

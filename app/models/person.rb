@@ -21,9 +21,7 @@ class Person < ActiveRecord::Base
   end
 
   def self.all_feeds
-    # TODO: make use of select to only get the data you need
-    # self.select("rss_feed").all.collect(&:rss_feed)
-    self.all.collect { |person| person.rss_feed }
+    select("rss_feed").all.collect(&:rss_feed)
   end
 
   def self.all_handles
