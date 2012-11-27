@@ -10,6 +10,10 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
+// TODO:
+// pickdate belongs in vendor as you didn't write it
+// gemify js would gemify that though
+
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
