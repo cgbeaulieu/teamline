@@ -7,6 +7,7 @@ class Person < ActiveRecord::Base
   belongs_to :team
 
   def self.from_omniauth(auth)
+    # TODO: Use limit with first, limit(1)
     where(auth.slice("provider", "uid")).first || create_from_omniauth(auth)
   end
 
@@ -20,14 +21,18 @@ class Person < ActiveRecord::Base
   end
 
   def self.all_feeds
+    # TODO: make use of select to only get the data you need
+    # self.select("rss_feed").all.collect(&:rss_feed)
     self.all.collect { |person| person.rss_feed }
   end
 
   def self.all_handles
+    # TODO: Ibid.
     self.all.collect { |person| person.twitter_handle }
   end
 
   def self.all_gh_usernames
+    # TODO: Sameseez
     self.all.collect { |person| person.gh_username }
   end
 end

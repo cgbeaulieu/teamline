@@ -9,12 +9,17 @@ class OctokitWrapper
     Octokit.user_events(ghuser).each { |event| self.parse_content(event) }
   end
 
+  # TODO: There is a way to refactor this using subclasses
+  # it's hard and not important but in theory
+  # if there was a class defined PushEvent < OctoKitEvents
+  # then you just constantize (turn the string 'PushEvent')
+  # into the actual ruby class and then call a method on it
+  # so each subclass defines it's own parser
   def self.parse_content(event)
     ignore_event = false
     case event.type
     when 'PushEvent'
       commit_messages = event.payload.commits.map { |commit| commit.message }.join(',')
-      
       event.headline = "#{event.actor.login} pushed to #{event.repo.name}"
       event.content  = commit_messages
       event.url      = "http://www.github.com/#{event.actor.login}/#{event.repo.name}"
@@ -27,7 +32,7 @@ class OctokitWrapper
       event.content  = event.payload.gist.description
       event.url      = event.payload.gist.html_url
     when 'PullRequestEvent'
-      event.headline = "#{event.actor.login} #{event.payload.action} a Pull Request for #{event.repo.name}" 
+      event.headline = "#{event.actor.login} #{event.payload.action} a Pull Request for #{event.repo.name}"
       event.content  = event.payload.pull_request.title
       event.url      = event.payload.pull_request.diff_url
     else

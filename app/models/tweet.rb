@@ -10,18 +10,25 @@ class Tweet < ActiveRecord::Base
   end
 
   def self.create_from_tweet(tweet)
+    # TODO This can be refactored to a post hoc attributazation
+    # like first create the instance
+    # then call the methods
+    # like tweet.person = Person.find vs
+    # person = Person.find
+    # tweet.create(:person => person)
     content = linkup_mentions_and_hashtags(tweet.attrs[:text])
     handle  = tweet.attrs[:user][:screen_name]
     person = Person.find_by_twitter_handle(handle)
     person.update_attributes(:avatar_url => tweet.user.profile_image_url)
-    person.tweets.create(:content => content, 
+    person.tweets.create(:content => content,
             :handle => handle,
             :published_at => tweet.attrs[:created_at])
   end
 
   private
 
-  def self.linkup_mentions_and_hashtags(text)    
+  # TODO: Not into this being here
+  def self.linkup_mentions_and_hashtags(text)
     text.gsub!(/@([\w]+)(\W)?/, '<a href="http://twitter.com/\1">@\1</a>\2')
     text.gsub!(/#([\w]+)(\W)?/, '<a href="http://twitter.com/search?q=%23\1">#\1</a>\2')
     text
