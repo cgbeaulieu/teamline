@@ -2,6 +2,12 @@ class GhEventsController < ApplicationController
   # GET /gh_events
   # GET /gh_events.json
   def index
+    # TODO: Think about what GhEvent.all is doing
+    # in terms of efficiency.
+
+    # TODO: Is Sorter the best name for this class
+    # and what class maybe should be responsible for
+    # this functionality.
     @gh_events = Sorter.sort_by_published_at(GhEvent.all)
 
     respond_to do |format|
@@ -23,6 +29,10 @@ class GhEventsController < ApplicationController
 
   # GET /gh_events/new
   # GET /gh_events/new.json
+
+  # TODO: Are these actions/routes required?
+  # maybe go through the app and start removing
+  # unused / illogical code?
   def new
     @gh_event = GhEvent.new
 
