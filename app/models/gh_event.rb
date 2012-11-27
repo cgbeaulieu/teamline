@@ -9,6 +9,6 @@ class GhEvent < ActiveRecord::Base
   def self.create_from_octokit_event(event)
     create(:published_at => event.created_at, :category => event.type, 
            :username => event.actor.login, :content => event.content, :url => event.url, 
-           :headline => event.headline, :person => Person.find_by_gh_username(username))
+           :headline => event.headline, :person => Person.find_by_gh_username(event.actor.login))
   end
 end

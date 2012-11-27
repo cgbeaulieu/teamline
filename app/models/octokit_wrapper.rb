@@ -4,20 +4,16 @@ class OctokitWrapper
   end
 
   def self.get_gh_events(ghuser)
-    begin
-      Octokit.client_id = GITHUB_ID
-      Octokit.client_secret = GITHUB_SECRET
-      Octokit.user_events(ghuser).each { |event| self.parse_content(event) }
-    rescue => e
-      puts "Rate limit exceeded"
-    end
+    Octokit.client_id = GITHUB_ID
+    Octokit.client_secret = GITHUB_SECRET
+    Octokit.user_events(ghuser).each { |event| self.parse_content(event) }
   end
 
   def self.parse_content(event)
     ignore_event = false
     case event.type
     when 'PushEvent'
-      commit_messages = event['payload']['commits'].map { |commmit| commit.message }.join(',')
+      commit_messages = event.payload.commits.map { |commit| commit.message }.join(',')
       
       event.headline = "#{event.actor.login} pushed to #{event.repo.name}"
       event.content  = commit_messages
