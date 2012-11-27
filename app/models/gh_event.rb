@@ -12,4 +12,16 @@ class GhEvent < ActiveRecord::Base
            :username => event.actor.login, :content => event.content, :url => event.url,
            :headline => event.headline, :person => Person.find_by_gh_username(event.actor.login))
   end
+
+  def self.create_from_github_event(event)
+    create(
+      :published_at => event.created_at,
+      :category => event.category,
+      :username => event.username,
+      :content => event.content,
+      :url => event.url,
+      :headline => event.headline,
+      :person => event.person
+    )
+  end
 end

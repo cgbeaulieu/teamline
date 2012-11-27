@@ -35,11 +35,12 @@ function insertEvent(object){
   } else {
     var align = "right";
   };
+  
   // TODO: build this part in strings
   // $("ol.timeline:first").prepend("<li class='event " + object.classname + " " + align + "' data-date='" +
   //   object.published_at + "'><div class='pointer" + " " + align + "'></div><h2>" + formatTimestamp(object.published_at) +
   //   "</h2><div class='secondary'>" + object.content + "</div></li><div class='clear-" + align + "'></div>");
-
+  
   $("div#date-header:first").after("<li class='event " + object.classname + " " + align + "' data-date='" +
     object.published_at + "'><div class='pointer" + " " + align + "'></div><h2>" + formatTimestamp(object.published_at) +
     "</h2><div class='secondary'>" + object.content + "</div></li><div class='clear-" + align + "'></div>");

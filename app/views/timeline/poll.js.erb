@@ -1,0 +1,7 @@
+  console.log(object)
+  if ($("ol.timeline li:first").is(".right")) {
+    var align = "left";
+  } else { 
+    var align = "right";
+  };
+  $("div#date-header:first").after("<%= j render(:partial => @events) %>")

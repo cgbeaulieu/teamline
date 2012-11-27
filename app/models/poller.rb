@@ -11,6 +11,9 @@ class Poller
   def self.detect_new_events(query_date)
     classes = ['GhEvent', 'Post', 'Tweet']
     # TODO: That's cool but it should be a do end block for style
-    classes.map { |class_name| class_name.constantize.where('published_at > ?', query_date) }.flatten
+    classes.map {|class_name| 
+      class_name.constantize.
+      where('published_at > ?', query_date) 
+    .}flatten
   end
 end
