@@ -43,14 +43,23 @@ $(document).ready(function(){
 $(document).ready(function(){
 
 
-  $('.filterbutton').click(function(){
-    var input = $('.datepicker').pickadate(
-    );
-    var calendar = input.data( 'pickadate');
-    console.log(calendar.getDate());
-  })
+  // $('.filterbutton').click(function(){
+  //   var input = $('.datepicker').pickadate();
+  //   var calendar = input.data( 'pickadate');
+  //   console.log(calendar.getDate());
+  // })
 
+$('.datepicker').pickadate({
+    format_submit: 'yyyy-mm-dd',
+    onSelect: function() {
+      var calendar = this
+      // var date = calendar.getDate();
+      var date = $("input[type='hidden']").val();
 
+      $("li.event").not("[data-date^='" + date + "']").slideToggle();
+      // console.log($("input[name='custom_date_hidden']").val())
+    }
+})
 
 
 
