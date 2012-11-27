@@ -3,8 +3,6 @@ $(setInterval(function(){
     var raw_date  = $('ol.timeline li:first').data('date');
     var last_date = formatTimestamp(raw_date);
     console.log(last_date);
-    // Use a higher level function
-    // like $.get
     $.ajax({
       url: '/timeline/poll',
       data: {published_at: last_date},
@@ -46,3 +44,8 @@ function insertEvent(object){
     "</h2><div class='secondary'>" + object.content + "</div></li><div class='clear-" + align + "'></div>");
 
 }
+
+// getScript({
+//   url: '/timeline/poll',
+//   data: {published_at: last_date}
+// )
