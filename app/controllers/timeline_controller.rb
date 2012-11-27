@@ -23,15 +23,3 @@ class TimelineController < ApplicationController
     #params => some 
   end
 end
-
-# @json = @events.map do |e|
-#   {
-#     :event => e,
-#     :html => render_to_string(:partial => 'events/event', :e => e)
-#   }
-# @json = {
-#   :events => @events,
-#   :html => render_to_string('events')
-# }
-# end
-# render :json => @json
