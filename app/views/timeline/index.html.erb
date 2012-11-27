@@ -1,8 +1,10 @@
-
+  <form>
     <fieldset>
-        <input id="input_02" class="datepicker" type="text" value="Filter By Date">
+        <input id="input_02" class="datepicker" name="custom_date" type="date" value="Filter by Date">
+        <input type="hidden" name="custom_date_submit">
+        <button type="button" class="filterbutton">Filter Date</button>
     </fieldset>
-
+  </form>
 
 
 <nav>
@@ -31,6 +33,18 @@
 
 <script type="text/javascript">
     $(function(){
-      $( '[type=date], .datepicker' ).pickadate()  
+      $( '[type=date], .datepicker' ).pickadate({
+
+          // onStart: function() {
+          //   var calendar = this
+          // }
+
+          date_min: [ 2012, 10, 02 ],
+          date_max: true
+           
+      })  
     });
+
+
+
 </script>

@@ -42,6 +42,19 @@ $(document).ready(function(){
 
 $(document).ready(function(){
 
+
+  $('.filterbutton').click(function(){
+    var input = $('.datepicker').pickadate(
+    );
+    var calendar = input.data( 'pickadate');
+    console.log(calendar.getDate());
+  })
+
+
+
+
+
+
   $("#yesterday").click(function(){
     $("li.event").not("[data-date^='2012-11-19']").slideToggle();
   })
@@ -51,4 +64,9 @@ $(document).ready(function(){
   })
 
 });
+
+
+
+
+
 
