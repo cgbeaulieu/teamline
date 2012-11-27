@@ -8,7 +8,7 @@ class Person < ActiveRecord::Base
 
   def self.from_omniauth(auth)
     # TODO: Use limit with first, limit(1)
-    where(auth.slice("provider", "uid")).first || create_from_omniauth(auth)
+    where(auth.slice("provider", "uid")).limit(1).first || create_from_omniauth(auth)
   end
 
   def self.create_from_omniauth(auth)

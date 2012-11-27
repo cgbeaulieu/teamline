@@ -13,6 +13,8 @@ class Tweet < ActiveRecord::Base
     # TODO This can be refactored to a post hoc attributazation
     # like first create the instance
     # then call the methods
+    # t = person.tweets.build
+    # t.person = Person.find
     # like tweet.person = Person.find vs
     # person = Person.find
     # tweet.create(:person => person)
