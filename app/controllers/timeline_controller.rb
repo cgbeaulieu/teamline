@@ -4,7 +4,7 @@ class TimelineController < ApplicationController
     timeline.load_recent_events(5)
     # raise timeline.events.inspect
     timeline.group_by_date
-    @grouped_events = timeline.events.paginate(:page => params[:page], :per_page => 5)
+    @grouped_events = timeline.events.paginate(:page => params[:page], :per_page => 6)
   end
 
   def poll
@@ -15,7 +15,7 @@ class TimelineController < ApplicationController
       @grouped_events = timeline.events
       #TODO: Render HTML instead of JSON
       @json = render_to_string :partial => "event", :locals => {:grouped_events => @grouped_events}
-      render :json => @json
+      render :json => @json.to_json
     else
       render :json => 'empty'
     end
@@ -27,8 +27,9 @@ class TimelineController < ApplicationController
       timeline = Timeline.new
       timeline.filter_events_by_date(date)
       timeline.group_by_date
-      @grouped_events = timeline.events.paginate(:page => params[:page], :per_page => 5)
-      render 'index'
+      @grouped_events = timeline.events.paginate(:page => params[:page], :per_page => 6)
+      @json = render_to_string :partial => "event", :locals => {:grouped_events => @grouped_events}
+      render :json => @json.to_json
     end
   end
   

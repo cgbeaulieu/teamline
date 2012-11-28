@@ -47,13 +47,13 @@ $(document).ready(function(){
       onSelect: function() {
         var date = $("input[type='hidden']").val();
         console.log(date);
-        
-        $.get('/timeline/filter', { date: date }, function(data){
-          $("ol#timeline").html(data)
-        });
+        $.get('/timeline/filter', { date: date }, 
+            function(data){
+              $("ol.timeline").html(data);
+          });
 
       }
-});
+  });
 
 });
 
