@@ -8,10 +8,15 @@ class Timeline
     @events = Events.map { |class_name| class_name.constantize.order('published_at DESC').
       limit(class_limit) }.flatten
   end
-
+  
   def group_by_date
-    events.group_by { |event| format_published_at(event) }.
-    map { |date, events| [date, events] }
+    self.events = self.events.group_by { |event| format_published_at(event) }
+    format_grouped_events
+  end
+
+  def format_grouped_events
+    formatted = self.events.map { |date, events| [date, events] }
+    self.events = formatted.sort_by { |el| el[0] }.reverse
   end
 
   def find_new_events(date)
