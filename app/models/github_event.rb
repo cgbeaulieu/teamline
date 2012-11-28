@@ -1,11 +1,11 @@
 class GithubEvent
   attr_accessor :headline, :content, :url, :event, :created_at, :username, :category
 
-  # VALID_EVENTS = ["PushEvent",
-  #   "GistEvent",
-  #   "PullRequestEvent",
-  #   "CreateEvent"
-  # ]
+  VALID_EVENTS = ["PushEvent",
+    "GistEvent",
+    "PullRequestEvent",
+    "CreateEvent"
+  ]
 
   def initialize(event)
     @event = event

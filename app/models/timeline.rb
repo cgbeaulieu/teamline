@@ -3,10 +3,10 @@ class Timeline
 
   attr_accessor :events
 
-  def load_recent_events(limit)
-    class_limit = limit/(Events.length)
-    @events = Events.map { |class_name| class_name.constantize.order('published_at DESC').
-      limit(class_limit) }.flatten
+  def load_recent_events(from)
+    query_date = from.days.ago.to_date.to_s
+    @events = Events.map { |class_name| class_name.constantize.where("published_at > ?", query_date ).order('published_at DESC')}.
+      flatten
   end
   
   def group_by_date

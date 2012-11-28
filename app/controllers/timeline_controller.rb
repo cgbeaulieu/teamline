@@ -1,7 +1,8 @@
 class TimelineController < ApplicationController
 	def index
     timeline = Timeline.new
-    timeline.load_recent_events(20)
+    timeline.load_recent_events(5)
+    # raise timeline.events.inspect
     timeline.group_by_date
     @grouped_events = timeline.events.paginate(:page => params[:page], :per_page => 5)
   end

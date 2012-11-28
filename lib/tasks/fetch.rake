@@ -9,6 +9,7 @@ namespace :fetch do
   task :github => :environment do
     puts "Fetching github"
     Person.all_gh_usernames.each do |user|
+      puts user
       OctokitWrapper.get_gh_events(user)
     end
   end
