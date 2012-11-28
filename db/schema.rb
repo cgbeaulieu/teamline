@@ -11,19 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121128224539) do
+ActiveRecord::Schema.define(:version => 20121128225018) do
 
   create_table "gh_events", :force => true do |t|
-    t.datetime "created_at",                                         :null => false
-    t.datetime "updated_at",                                         :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
     t.string   "category"
-    t.text     "content",      :limit => 255
+    t.text     "content"
     t.datetime "published_at"
     t.string   "username"
     t.integer  "person_id"
     t.string   "url"
     t.string   "headline"
-    t.string   "classname",                   :default => "ghevent"
+    t.string   "classname",    :default => "ghevent"
   end
 
   create_table "people", :force => true do |t|
