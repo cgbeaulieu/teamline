@@ -42,39 +42,18 @@ $(document).ready(function(){
 
 $(document).ready(function(){
 
+  $('.datepicker').pickadate({
+      format_submit: 'yyyy-mm-dd',
+      onSelect: function() {
+        var date = $("input[type='hidden']").val();
+        console.log(date);
+        
+        $.get('/timeline/filter', { date: date }, function(data){
+          $("ol#timeline").html(data)
+        });
 
-  // $('.filterbutton').click(function(){
-  //   var input = $('.datepicker').pickadate();
-  //   var calendar = input.data( 'pickadate');
-  //   console.log(calendar.getDate());
-  // })
-
-$('.datepicker').pickadate({
-    format_submit: 'yyyy-mm-dd',
-    onSelect: function() {
-      var calendar = this
-      // var date = calendar.getDate();
-      var date = $("input[type='hidden']").val();
-      // console.log(date);
-      
-      $.get('/timeline/filter', { date: date });
-
-
-      // $("li.event").not("[data-date^='" + date + "']").slideToggle();
-      // console.log($("input[name='custom_date_hidden']").val())
-    }
-})
-
-
-
-
-  $("#yesterday").click(function(){
-    $("li.event").not("[data-date^='2012-11-19']").slideToggle();
-  })
-
-  $("#month").click(function(){
-    $("li.event[data-date^='2012-11']").slideToggle();
-  })
+      }
+});
 
 });
 

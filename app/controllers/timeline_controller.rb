@@ -22,12 +22,14 @@ class TimelineController < ApplicationController
   end
 
   def filter
-    date = params[:date]
-    timeline = Timeline.new
-    timeline.filter_events_by_date(date)
-    grouped_events = timeline.group_by_date
-    @grouped_events = grouped_events.paginate(:page => params[:page], :per_page => 5)
-    render :index
+    if params[:date]
+      date = params[:date]
+      timeline = Timeline.new
+      timeline.filter_events_by_date(date)
+      timeline.group_by_date
+      @grouped_events = timeline.events.paginate(:page => params[:page], :per_page => 5)
+      render 'index'
+    end
   end
   
 end
