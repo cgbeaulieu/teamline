@@ -11,10 +11,10 @@ class TimelineController < ApplicationController
     if params[:published_at]
       timeline = Timeline.new
       timeline.find_new_events(params[:published_at])
-      @sorted_events = timeline.sort_events_ascending
+      @grouped_events = timeline.group_by_date
       #TODO: Render HTML instead of JSON
-      render :json => @sorted_events
-      # render :json => render_to_string(@events)
+      render_to_string :partial => "event", :locals => {:sorted_events => @sorted_events}
+     # render :json => @sorted_events
     else
       render :json => 'empty'
     end
@@ -42,5 +42,5 @@ end
 # end
 # render :json => @json
 
-# @m = render_to_string :template => "template", :locals => {:sender => sender}
 
+# @m = render_to_string :template => "template", :locals => {:sender => sender}
