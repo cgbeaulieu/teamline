@@ -7,6 +7,7 @@ class Timeline
     query_date = from.days.ago.to_date.to_s
     @events = Events.map { |class_name| class_name.constantize.where("published_at > ?", query_date ).order('published_at DESC')}.
       flatten
+      self.events = self.events.sort_by {|event| event.published_at}.reverse
   end
   
   def group_by_date
@@ -25,8 +26,8 @@ class Timeline
       where('published_at > ?', query_date) }.flatten
   end
 
-  def sort_events_ascending
-    events.sort_by { |event| event.published_at }
+  def sort_events_descending
+    self.events.sort_by { |event| event.published_at }.reverse
   end
 
   def filter(type, params)
