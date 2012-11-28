@@ -22,7 +22,8 @@ function formatTimestamp(timestamp){
 
 function displayNew(collection){
   $.each(collection, function(i, object){
-    insertEvent(object);
+    // insertEvent(object);
+    $("div#date-header:first").after(object);
   });
 }
 
