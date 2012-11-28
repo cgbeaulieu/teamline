@@ -2,8 +2,8 @@ class TimelineController < ApplicationController
 	def index
     timeline = Timeline.new
     timeline.load_recent_events(20)
-    grouped_events = timeline.group_by_date
-    @grouped_events = grouped_events.paginate(:page => params[:page], :per_page => 5)
+    timeline.group_by_date
+    @grouped_events = timeline.events.paginate(:page => params[:page], :per_page => 5)
   end
 
   def poll
