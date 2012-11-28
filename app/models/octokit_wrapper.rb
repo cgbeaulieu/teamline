@@ -6,7 +6,7 @@ class OctokitWrapper
   def self.parse_content(event)
     # if GithubEvent::VALID_EVENTS.include?(event.type)
     begin 
-      e = event.type.constantize.new(event) 
+      e = event.type.constantize.new(event)
       e.create_gh_event 
     rescue NameError
     end
