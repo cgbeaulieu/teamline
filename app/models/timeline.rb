@@ -35,8 +35,11 @@ class Timeline
   end
 
   def filter_events_by_date(date)
+    start_of = date.to_date.at_beginning_of_day
+    end_of   = date.to_date.end_of_day
+
     self.events = Events.map { |class_name| class_name.constantize.
-      where('published_at LIKE ?', "#{date}%") }.flatten 
+      where('published_at >= ? and published_at <= ?', start_of, end_of) }.flatten 
   end
 
   def filter_events_by_type(types)
@@ -55,6 +58,7 @@ class Timeline
     end
 
     def parse_filter_date(date)
-      DateTime.parse(date)
+      # date.to_date.at_beginning_of_day
+      # DateTime.parse(date)
     end
 end
