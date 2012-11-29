@@ -5,6 +5,7 @@
 #   git config --global core.excludesfile ~/.gitignore_global
 
 #Ignore database.yml
+config/database.yml
 
 # Ignore bundler config
 /.bundle
@@ -17,3 +18,4 @@
 /tmp
 
 #Ignore the db config yml file.
+/config/database.yml
