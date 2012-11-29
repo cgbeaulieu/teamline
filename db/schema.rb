@@ -13,17 +13,31 @@
 
 ActiveRecord::Schema.define(:version => 20121128225018) do
 
+  create_table "commit_parsers", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "commits", :force => true do |t|
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "username"
+    t.string   "content"
+    t.string   "commit_time"
+    t.string   "link"
+  end
+
   create_table "gh_events", :force => true do |t|
-    t.datetime "created_at",                          :null => false
-    t.datetime "updated_at",                          :null => false
+    t.datetime "created_at",                                         :null => false
+    t.datetime "updated_at",                                         :null => false
     t.string   "category"
     t.text     "content"
-    t.datetime "published_at"
+    t.datetime "published_at", :limit => 255
     t.string   "username"
     t.integer  "person_id"
     t.string   "url"
     t.string   "headline"
-    t.string   "classname",    :default => "ghevent"
+    t.string   "classname",                   :default => "ghevent"
   end
 
   create_table "people", :force => true do |t|

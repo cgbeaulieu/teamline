@@ -1,0 +1,180 @@
+
+<div id="headline">Welcome to The Flatiron School Teamline - <a href="#">Sign up to add your info to the timeline</a>.</div>
+
+<div class="container">
+  <div class="four columns alpha">
+    <a href="#">
+      <h1 id="logo-top">
+      Teamline - a timeline for teams.
+      </h1>
+    </a>
+  </div>
+  <div class="eight columns">
+    <div id="filters">
+      <ul>
+        <a href="#">
+          <li class="dates"><h2>Dates</h2></li>
+        </a>    
+        <a href="#">
+          <li class="events"><h2>Events</h2></li>
+        </a>
+        <a href="#">
+          <li class="people"><h2>People</h2></li>
+        </a>
+      </ul>
+    </div>
+   </div>
+  <div class="four columns omega">
+    <div id="nav">
+
+<% if current_user %>
+  Signed in as <%= current_user.name %>!
+  <%= link_to "Sign out", signout_path %>
+<% else %>
+  <a href="/auth/github"><p id="signup">Sign Up</p></a>
+<% end %>
+
+
+        <a href="#"><p id="learnmore">Learn More</p></a>
+    </div>
+  </div>
+
+  <div class="row clearfix"></div>
+
+    <div class="sixteen columns">
+      <div class="dates-expand">
+        <form>
+          <fieldset>
+              <input class="datepicker filter" name="custom_date" type="date">
+              <!-- <input type="hidden" name="custom_date_hidden" value> -->
+              <!-- <button type="button" class="filterbutton">Filter Date</button> -->
+          </fieldset>
+        </form>
+      </div>
+
+      <div class="events-expand">
+        <form>  
+          <fieldset>
+            <label for="datefilter">
+              <input type="checkbox" id="Blogs" value="Blogs" checked/>
+              <span>Blogs</span>
+            </label>
+            <label for="secondRegularCheckbox">
+              <input type="checkbox" id="Twitter" value="Twitter" checked/>
+              <span>Twitter</span>
+            </label>
+            <label for="secondRegularCheckbox">
+              <input type="checkbox" id="Github" value="Github" checked/>
+              <span>Github</span>
+            </label>
+          </fieldset>
+          <button type="submit">Filter Events</button>
+        </form>
+      </div>
+
+      <div class="people-expand">
+        <form>  
+          <fieldset>
+            <label for="datefilter">
+              <input type="checkbox" id="David Baker" value="David Baker" checked/>
+              <span>David Baker</span>
+            </label>
+            <label for="datefilter">
+              <input type="checkbox" id="Corinna Brock" value="Corinna Brock" checked/>
+              <span>Corinna Brock</span>
+            </label>
+            <label for="datefilter">
+              <input type="checkbox" id="Stephen Chen" value="Stephen Chen" checked/>
+              <span>Stephen Chen</span>
+            </label>
+            <label for="datefilter">
+              <input type="checkbox" id="Kevin Curtin" value="Kevin Curtin" checked/>
+              <span>Kevin Curtin</span>
+            </label>
+            <label for="datefilter">
+              <input type="checkbox" id="Joseph DeVenuta" value="Joseph DeVenuta" checked/>
+              <span>Joseph DeVenuta</span>
+            </label>
+            <label for="datefilter">
+              <input type="checkbox" id="Rex Feng" value="Rex Feng" checked/>
+              <span>Rex Feng</span>
+            </label>
+            <label for="datefilter">
+              <input type="checkbox" id="Adam Jonas" value="Adam Jonas" checked/>
+              <span>Adam Jonas</span>
+            </label>
+            <label for="datefilter">
+              <input type="checkbox" id="Akiva Leeder" value="Akiva Leeder" checked/>
+              <span>Akiva Leeder</span>
+            </label>
+            <label for="datefilter">
+              <input type="checkbox" id="Kevin McNamee" value="Kevin McNamee" checked/>
+              <span>Kevin McNamee</span>
+            </label>
+            <label for="datefilter">
+              <input type="checkbox" id="Jack Nolan" value="Jack Nolan" checked/>
+              <span>Jack Nolan</span>
+            </label>
+            <label for="datefilter">
+              <input type="checkbox" id="Li Ouyang" value="Li Ouyang" checked/>
+              <span>Li Ouyang</span>
+            </label>
+            <label for="datefilter">
+              <input type="checkbox" id="Josh Rowley" value="Josh Rowley" checked/>
+              <span>Josh Rowley</span>
+            </label>
+            <label for="datefilter">
+              <input type="checkbox" id="Matt Salerno" value="Matt Salerno" checked/>
+              <span>Matt Salerno</span>
+            </label>
+            <label for="datefilter">
+              <input type="checkbox" id="Aaron Streiter" value="Aaron Streiter" checked/>
+              <span>Aaron Streiter</span>
+            </label>
+            <label for="datefilter">
+              <input type="checkbox" id="Nikhil Thomas" value="Nikhil Thomas" checked/>
+              <span>Nikhil Thomas</span>
+            </label>
+            <label for="datefilter">
+              <input type="checkbox" id="James Vanneman" value="James Vanneman" checked/>
+              <span>James Vanneman</span>
+            </label>
+            <label for="datefilter">
+              <input type="checkbox" id="Ericka Ward" value="Ericka Ward" checked/>
+              <span>Ericka Ward</span>
+            </label>
+            <label for="datefilter">
+              <input type="checkbox" id="Brad Wheel" value="Brad Wheel" checked/>
+              <span>Brad Wheel</span>
+            </label>
+            <label for="datefilter">
+              <input type="checkbox" id="Jenya Zueva" value="Jenya Zueva" checked/>
+              <span>Jenya Zueva</span>
+            </label>          
+          </fieldset>
+          <button type="submit">Filter People</button>
+        </form>
+      </div>
+    </div>
+
+  <div class="row clearfix"></div>
+
+</div><!-- end container -->
+
+<script type="text/javascript"> 
+    $("li.dates").click(function() {
+      $('.dates-expand').show('slow');
+      $('.events-expand').hide('slow');
+      $('.people-expand').hide('slow');
+    });
+    $("li.events").click(function() {
+      $('.dates-expand').hide('slow');
+      $('.events-expand').show('slow');
+      $('.people-expand').hide('slow');
+    });
+    $("li.people").click(function() {
+      $('.dates-expand').hide('slow');
+      $('.events-expand').hide('slow');
+      $('.people-expand').show('slow');
+    });
+</script>

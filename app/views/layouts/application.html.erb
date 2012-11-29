@@ -1,24 +1,30 @@
 <!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <html>
 <head>
-  <title>Teamline</title>
-    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+  <meta charset="utf-8">
+  <title>TEAMLINE - a timeline for teams</title>   
+
+  <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114x114.png">
+
 </head>
 <body>
-<% if current_user %>
-  Signed in as <%= current_user.name %>!
-  <%= link_to "Sign out", signout_path %>
-<% else %>
-  <%= link_to "Sign in with Github", "/auth/github" %>
-<% end %>
-<!-- <div id="notice_bar">
-  <p id="title"><#%= link_to "TEAMLINE", root_url %> <em>a timeline for teams</em></p>
-  <p id="nav">
-  <#%= link_to "Teamline", root_url %> / <#%= link_to "Team Members", people_path %> / <#%= link_to "Blog Posts", posts_path %> / <#%= link_to "Github Activity", gh_events_path %> / <#%= link_to "Tweets", tweets_path %>
-</div> -->
+
+<%= render "_shared/header" %>
 
 <%= yield %>
 
