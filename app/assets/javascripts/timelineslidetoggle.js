@@ -7,7 +7,7 @@
 
 $(document).ready(function(){
   
-  var filterToggle = false;
+  var filterToggle = true;
   
   $('.datepicker').pickadate({
       format_submit: 'yyyy-mm-dd',
@@ -20,6 +20,24 @@ $(document).ready(function(){
           });
       }
   });
+
+  $('#resourcefilter').submit(function(e){
+    e.preventDefault();
+
+    filterToggle = true;
+    var types = []
+    $.each($("input:checked"), function(){
+      var type = $(this).attr("id");
+      types.push(type);
+    });
+
+    $.get('/timeline/filter', { types: types }, function(data) {
+      $("ol.timeline").html(data);
+    });
+    
+     
+  });
+
 
   $(setInterval(function(){
     if(filterToggle === false){

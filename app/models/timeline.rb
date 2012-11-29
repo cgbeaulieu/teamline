@@ -35,9 +35,13 @@ class Timeline
   end
 
   def filter_events_by_date(date)
-    # query_date = parse_filter_date(date)
     self.events = Events.map { |class_name| class_name.constantize.
       where('published_at LIKE ?', "#{date}%") }.flatten 
+  end
+
+  def filter_events_by_type(types)
+    self.events = types.map { |class_name| class_name.constantize.order('published_at DESC').
+      limit(10)}.flatten
   end
 
   private
