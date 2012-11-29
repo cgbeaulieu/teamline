@@ -36,6 +36,14 @@ class TimelineController < ApplicationController
       @grouped_events = timeline.events.paginate(:page => params[:page], :per_page => 6)
       @json = render_to_string :partial => "event", :locals => {:grouped_events => @grouped_events}
       render :json => @json.to_json
+     elsif params[:people]
+      people = params[:people]
+      timeline = Timeline.new
+      timeline.filter_events_by_people(people)
+      timeline.group_by_date
+      @grouped_events = timeline.events.paginate(:page => params[:page], :per_page => 6)
+      @json = render_to_string :partial => "event", :locals => {:grouped_events => @grouped_events}
+      render :json => @json.to_json
     end
   end
   

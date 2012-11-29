@@ -47,6 +47,13 @@ class Timeline
       limit(10)}.flatten
   end
 
+  def filter_events_by_people(people)
+    people_events = people.each_with_object([]) do |person_id, array|
+      array << Events.map {|class_name| class_name.constantize.where("person_id = ?", person_id) }
+    end
+    self.events = people_events.flatten
+  end
+
   private
   
     def format_published_at(event)

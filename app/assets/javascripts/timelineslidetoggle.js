@@ -34,8 +34,22 @@ $(document).ready(function(){
     $.get('/timeline/filter', { types: types }, function(data) {
       $("ol.timeline").html(data);
     });
-    
-     
+  });
+
+  $('#peoplefilter').submit(function(e){
+    e.preventDefault();
+
+    var people = []
+    $.each($("input:checked"), function(){
+      var person = $(this).attr("id");
+      people.push(person);
+    });
+
+    $.get('/timeline/filter', { people: people }, function(data) {
+      console.log(data)
+      $("ol.timeline").html(data);
+    });
+
   });
 
 
