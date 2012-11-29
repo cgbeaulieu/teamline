@@ -2,27 +2,18 @@
   <form>
     <fieldset>
         <input class="datepicker filter" name="custom_date" type="date">
-        <!-- <input type="hidden" name="custom_date_hidden" value> -->
-        <!-- <button type="button" class="filterbutton">Filter Date</button> -->
     </fieldset>
   </form>
-   <form id="resourcefilter">  
-      <fieldset>
-        <label for="datefilter">
-          <input type="checkbox" class="filter" id="Post" value="Blogs" />
-          <span>Blogs</span>
-        </label>
-        <label for="secondRegularCheckbox">
-          <input type="checkbox" class="filter" id="Tweet" value="Twitter" />
-          <span>Twitter</span>
-        </label>
-        <label for="secondRegularCheckbox">
-          <input type="checkbox" class="filter" id="GhEvent" value="Github" />
-          <span>Github</span>
-        </label>
-      </fieldset>
-      <button type="submit">Filter Events</button>
-    </form>
+ <form id="resourcefilter"> 
+  <fieldset>
+    <% Timeline::Events.each do |event| %>
+      <%= content_tag :input, :type => "checkbox", :class => "filter", :id => "#{event}", :value => "#{event}" do %>
+      <span><%= "#{event}" %></span>
+      <% end %>
+    <% end %>
+  </fieldset>
+  <button type="submit">Filter Events</button>
+</form>
   <form id="peoplefilter">
     <fieldset>
       <% Person.all.each do |person|%>
