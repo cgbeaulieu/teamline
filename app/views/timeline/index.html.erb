@@ -1,28 +1,4 @@
- <form>
-    <fieldset>
-        <input class="datepicker filter" name="custom_date" type="date">
-    </fieldset>
-  </form>
- <form id="resourcefilter"> 
-  <fieldset>
-    <% Timeline::Events.each do |event| %>
-      <%= content_tag :input, :type => "checkbox", :class => "filter", :id => "#{event}", :value => "#{event}" do %>
-      <span><%= "#{event}" %></span>
-      <% end %>
-    <% end %>
-  </fieldset>
-  <button type="submit">Filter Events</button>
-</form>
-  <form id="peoplefilter">
-    <fieldset>
-      <% Person.all.each do |person|%>
-        <%= content_tag :input, :type => "checkbox", :class => "filter", :id =>"#{person.id}", :value => "#{person.name}" do-%>
-        <span><%= "#{person.name}" %></span>
-        <% end %>
-      <% end %>
-    </fieldset>
-    <button type="submit">Filter People</button>
-  </form>
+
     
 <div id="teamline">
 <!--     <div id="date-header"><h2><%= Date.today.strftime("%B %d, %Y") %></h2></div>

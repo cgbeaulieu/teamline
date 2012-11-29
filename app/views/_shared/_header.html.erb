@@ -54,107 +54,30 @@
       </div>
 
       <div class="events-expand">
-        <form>  
-          <fieldset>
-            <label for="datefilter">
-              <input type="checkbox" id="Blogs" value="Blogs" checked/>
-              <span>Blogs</span>
-            </label>
-            <label for="secondRegularCheckbox">
-              <input type="checkbox" id="Twitter" value="Twitter" checked/>
-              <span>Twitter</span>
-            </label>
-            <label for="secondRegularCheckbox">
-              <input type="checkbox" id="Github" value="Github" checked/>
-              <span>Github</span>
-            </label>
-          </fieldset>
-          <button type="submit">Filter Events</button>
-        </form>
+ <form id="resourcefilter"> 
+  <fieldset>
+    <% Timeline::Events.each do |event| %>
+      <%= content_tag :input, :type => "checkbox", :class => "filter", :id => "#{event}", :value => "#{event}" do %>
+      <span><%= "#{event}" %></span>
+      <% end %>
+    <% end %>
+  </fieldset>
+  <button type="submit">Filter Events</button>
+</form>
+ 
       </div>
 
       <div class="people-expand">
-        <form>  
-          <fieldset>
-            <label for="datefilter">
-              <input type="checkbox" id="David Baker" value="David Baker" checked/>
-              <span>David Baker</span>
-            </label>
-            <label for="datefilter">
-              <input type="checkbox" id="Corinna Brock" value="Corinna Brock" checked/>
-              <span>Corinna Brock</span>
-            </label>
-            <label for="datefilter">
-              <input type="checkbox" id="Stephen Chen" value="Stephen Chen" checked/>
-              <span>Stephen Chen</span>
-            </label>
-            <label for="datefilter">
-              <input type="checkbox" id="Kevin Curtin" value="Kevin Curtin" checked/>
-              <span>Kevin Curtin</span>
-            </label>
-            <label for="datefilter">
-              <input type="checkbox" id="Joseph DeVenuta" value="Joseph DeVenuta" checked/>
-              <span>Joseph DeVenuta</span>
-            </label>
-            <label for="datefilter">
-              <input type="checkbox" id="Rex Feng" value="Rex Feng" checked/>
-              <span>Rex Feng</span>
-            </label>
-            <label for="datefilter">
-              <input type="checkbox" id="Adam Jonas" value="Adam Jonas" checked/>
-              <span>Adam Jonas</span>
-            </label>
-            <label for="datefilter">
-              <input type="checkbox" id="Akiva Leeder" value="Akiva Leeder" checked/>
-              <span>Akiva Leeder</span>
-            </label>
-            <label for="datefilter">
-              <input type="checkbox" id="Kevin McNamee" value="Kevin McNamee" checked/>
-              <span>Kevin McNamee</span>
-            </label>
-            <label for="datefilter">
-              <input type="checkbox" id="Jack Nolan" value="Jack Nolan" checked/>
-              <span>Jack Nolan</span>
-            </label>
-            <label for="datefilter">
-              <input type="checkbox" id="Li Ouyang" value="Li Ouyang" checked/>
-              <span>Li Ouyang</span>
-            </label>
-            <label for="datefilter">
-              <input type="checkbox" id="Josh Rowley" value="Josh Rowley" checked/>
-              <span>Josh Rowley</span>
-            </label>
-            <label for="datefilter">
-              <input type="checkbox" id="Matt Salerno" value="Matt Salerno" checked/>
-              <span>Matt Salerno</span>
-            </label>
-            <label for="datefilter">
-              <input type="checkbox" id="Aaron Streiter" value="Aaron Streiter" checked/>
-              <span>Aaron Streiter</span>
-            </label>
-            <label for="datefilter">
-              <input type="checkbox" id="Nikhil Thomas" value="Nikhil Thomas" checked/>
-              <span>Nikhil Thomas</span>
-            </label>
-            <label for="datefilter">
-              <input type="checkbox" id="James Vanneman" value="James Vanneman" checked/>
-              <span>James Vanneman</span>
-            </label>
-            <label for="datefilter">
-              <input type="checkbox" id="Ericka Ward" value="Ericka Ward" checked/>
-              <span>Ericka Ward</span>
-            </label>
-            <label for="datefilter">
-              <input type="checkbox" id="Brad Wheel" value="Brad Wheel" checked/>
-              <span>Brad Wheel</span>
-            </label>
-            <label for="datefilter">
-              <input type="checkbox" id="Jenya Zueva" value="Jenya Zueva" checked/>
-              <span>Jenya Zueva</span>
-            </label>          
-          </fieldset>
-          <button type="submit">Filter People</button>
-        </form>
+ <form id="peoplefilter">
+    <fieldset>
+      <% Person.all.each do |person|%>
+        <%= content_tag :input, :type => "checkbox", :class => "filter", :id =>"#{person.id}", :value => "#{person.name}" do-%>
+        <span><%= "#{person.name}" %></span>
+        <% end %>
+      <% end %>
+    </fieldset>
+    <button type="submit">Filter People</button>
+  </form>
       </div>
     </div>
 
