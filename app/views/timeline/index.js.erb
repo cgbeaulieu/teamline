@@ -1,6 +1,0 @@
-$('#spine').append('<%= j render "event" %>');
-<% if (@grouped_events.next_page) %>
-  $('.pagination').replaceWith('<%= j will_paginate(@grouped_events) %>');
-<% else %>
-  $('.pagination').remove();
-<% end %>

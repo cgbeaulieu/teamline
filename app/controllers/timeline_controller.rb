@@ -3,7 +3,7 @@ class TimelineController < ApplicationController
     timeline = Timeline.new
     timeline.load_recent_events(5)
     timeline.group_by_date
-    @grouped_events = timeline.events.paginate(:page => params[:page], :per_page => 6)
+    @grouped_events = timeline.events
   end
 
   def poll
@@ -19,13 +19,24 @@ class TimelineController < ApplicationController
     end
   end
 
+  def infinite
+    if params[:published_at]
+      timeline = Timeline.new
+      timeline.get_next_day(params[:published_at])
+      timeline.group_by_date
+      @grouped_events = timeline.events
+      @json = render_to_string :partial => "event", :locals => {:grouped_events => @grouped_events}
+      render :json => @json.to_json      
+    end
+  end
+
   def filter
     if params[:date]
       date = params[:date]
       timeline = Timeline.new
       timeline.filter_events_by_date(date)
       timeline.group_by_date
-      @grouped_events = timeline.events.paginate(:page => params[:page], :per_page => 6)
+      @grouped_events = timeline.events
       @json = render_to_string :partial => "event", :locals => {:grouped_events => @grouped_events}
       render :json => @json.to_json
     elsif params[:types]
@@ -33,7 +44,7 @@ class TimelineController < ApplicationController
       timeline = Timeline.new
       timeline.filter_events_by_type(types)
       timeline.group_by_date
-      @grouped_events = timeline.events.paginate(:page => params[:page], :per_page => 6)
+      @grouped_events = timeline.events
       @json = render_to_string :partial => "event", :locals => {:grouped_events => @grouped_events}
       render :json => @json.to_json
      elsif params[:people]
@@ -41,7 +52,7 @@ class TimelineController < ApplicationController
       timeline = Timeline.new
       timeline.filter_events_by_people(people)
       timeline.group_by_date
-      @grouped_events = timeline.events.paginate(:page => params[:page], :per_page => 6)
+      @grouped_events = timeline.events
       @json = render_to_string :partial => "event", :locals => {:grouped_events => @grouped_events}
       render :json => @json.to_json
     end

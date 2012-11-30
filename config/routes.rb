@@ -19,6 +19,7 @@ Teamline::Application.routes.draw do
   end
 
   get 'timeline/poll' => 'timeline#poll', :as => 'poll_timeline'
+  get 'timeline/infinite' => 'timeline#infinite', :as => 'infinite_timeline'
   get 'timeline/filter' => 'timeline#filter', :as => 'filter_timeline'
 
 

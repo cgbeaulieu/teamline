@@ -26,6 +26,15 @@ class Timeline
       where('published_at > ?', query_date) }.flatten
   end
 
+  def get_next_day(date)
+    date = date.to_date.yesterday
+    start_of = date.to_date.at_beginning_of_day
+    end_of   = date.to_date.end_of_day
+
+    self.events = Events.map { |class_name| class_name.constantize.
+      where('published_at >= ? and published_at <= ?', start_of, end_of) }.flatten 
+  end
+
   def sort_events_descending
     self.events.sort_by { |event| event.published_at }.reverse
   end

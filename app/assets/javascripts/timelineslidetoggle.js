@@ -52,6 +52,34 @@ $(document).ready(function(){
 
   });
 
+  var loadScrollDetect = function(){
+    if ($(window).scrollTop() > $(document).height() - $(window).height() - 200) {    
+      $(window).unbind('scroll');
+      loadEvents();
+    }
+  };
+
+  var loadEvents = function(){
+    var last_date = $('ol.timeline li:last').data('date');
+    $.ajax({
+      url: 'timeline/infinite',
+      data: {published_at: last_date},
+      success: function(data){
+        if (data.length > 1){
+          $("ol.timeline").append(data);
+        } else {
+          var new_date = moment(last_date).subtract('days', 1).format('YYYY-MM-DD');
+          new_date = String(new_date);
+          $("ol.timeline li:last").after('<li data-date=' + new_date + '></li>').hide();
+        }
+      },
+      complete: function(date, textStatus){
+        $(window).bind('scroll', loadScrollDetect);
+      }
+    });
+  }
+
+  $(window).bind('scroll', loadScrollDetect);
 
   $(setInterval(function(){
     if(filterToggle === false){
@@ -82,3 +110,16 @@ function formatTimestamp(timestamp){
 
 
 
+    // $(window).scroll(function() {
+    //   if ($(window).scrollTop() > $(document).height() - $(window).height() - 200) {
+    //     $(window).unbind('scroll');
+    //     var last_date = $('ol.timeline li:last').data('date');
+    //     $.get('timeline/infinite',
+    //       {published_at: last_date},
+    //       function(data){
+    //         $("ol.timeline").append(data);
+    //       }
+    //     );
+    //   }
+    // });
+    //   $(window).bind('scroll');

@@ -17,4 +17,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require pickadate
+//= require moment
 //= require_tree .
