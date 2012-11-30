@@ -9,49 +9,65 @@ $(document).ready(function(){
   })
 
   var filterToggle = false;
-  
-  $('.datepicker').pickadate({
-      format_submit: 'yyyy-mm-dd',
-      onSelect: function() {
-        filterToggle = true;
-        var date = $("input[type='hidden']").val();
-        $.get('/timeline/filter', { date: date }, 
-            function(data){
-              $("ol.timeline").html(data);
-          });
-      }
-  });
 
-  $('#resourcefilter').submit(function(e){
-    e.preventDefault();
 
+  $('#published_at').pickadate({
+      format_submit: 'yyyy-mm-dd'
+    })
+
+  $('form#filterForm').submit(function(){
     filterToggle = true;
-    var types = []
-    $.each($("input:checked"), function(){
-      var type = $(this).attr("id");
-      types.push(type);
-    });
-
-    $.get('/timeline/filter', { types: types }, function(data) {
-      $("ol.timeline").html(data);
-    });
   });
 
-  $('#peoplefilter').submit(function(e){
-    e.preventDefault();
-
-    var people = []
-    $.each($("input:checked"), function(){
-      var person = $(this).attr("id");
-      people.push(person);
-    });
-
-    $.get('/timeline/filter', { people: people }, function(data) {
-      console.log(data)
+  $('form#filterForm').bind('ajax:success', function(xhr, data, status) {
       $("ol.timeline").html(data);
-    });
-
   });
+
+
+
+  
+  // $('.datepicker').pickadate({
+  //     format_submit: 'yyyy-mm-dd',
+  //     onSelect: function() {
+  //       filterToggle = true;
+  //       var date = $("input[type='hidden']").val();
+  //       $.get('/timeline/filter', { date: date }, 
+  //           function(data){
+  //             $("ol.timeline").html(data);
+  //         });
+  //     }
+  // });
+
+  // $('#resourcefilter').submit(function(e){
+  //   e.preventDefault();
+
+  //   filterToggle = true;
+  //   var types = []
+  //   $.each($("input:checked"), function(){
+  //     var type = $(this).attr("value");
+  //     types.push(type);
+  //   });
+
+  //   $.get('/timeline/filter', { filter: types }, function(data) {
+  //     $("ol.timeline").html(data);
+  //   });
+  // });
+
+  // $('#peoplefilter').submit(function(e){
+  //   e.preventDefault();
+
+  //   var people = []
+  //   $.each($("input:checked"), function(){
+  //     var person = $(this).attr("id");
+  //     people.push(person);
+  //   });
+
+  //   $.get('/timeline/filter', { people: people }, function(data) {
+  //     console.log(data)
+  //     $("ol.timeline").html(data);
+  //   });
+
+  // });
 
   var loadScrollDetect = function(){
     if ($(window).scrollTop() > $(document).height() - $(window).height() - 200) {    
