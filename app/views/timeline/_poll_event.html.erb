@@ -1,6 +1,6 @@
 <% @grouped_events.each_with_index do |event, index| %>
 
-  <%= content_tag :li, :class => "event #{event_type(event)} #{spine_position(index)}",  :data => {:date => "#{event.published_at.to_s(:db)}"} do -%>
+  <%= content_tag :li, :class => "event item #{event_type(event)} #{spine_position(index)}",  :data => {:date => "#{event.published_at.to_s(:db)}"} do -%>
       <div class="<%= "pointer #{spine_position(index)}" %>"></div>
       <h2><%= raw(event.content) %></h2>
       <div class="secondary"></div>

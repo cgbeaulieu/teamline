@@ -27,6 +27,8 @@ class TimelineController < ApplicationController
       @grouped_events = timeline.events
       @json = render_to_string :partial => "event", :locals => {:grouped_events => @grouped_events}
       render :json => @json.to_json      
+    else
+      render :json => 'empty'
     end
   end
 

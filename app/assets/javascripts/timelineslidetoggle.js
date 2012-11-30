@@ -60,7 +60,7 @@ $(document).ready(function(){
   };
 
   var loadEvents = function(){
-    var last_date = $('ol.timeline li:last').data('date');
+    var last_date = $('ol.timeline li.item:last').data('date');
     $.ajax({
       url: 'timeline/infinite',
       data: {published_at: last_date},
@@ -70,7 +70,7 @@ $(document).ready(function(){
         } else {
           var new_date = moment(last_date).subtract('days', 1).format('YYYY-MM-DD');
           new_date = String(new_date);
-          $("ol.timeline li:last").after('<li data-date=' + new_date + '></li>').hide();
+          $("ol.timeline li.item:last").after("<li class='item' display='none;' data-date='" + new_date + "'></li>");
         }
       },
       complete: function(date, textStatus){
@@ -83,7 +83,7 @@ $(document).ready(function(){
 
   $(setInterval(function(){
     if(filterToggle === false){
-      var raw_date  = $('ol.timeline li:first').data('date');
+      var raw_date  = $('ol.timeline li.item:first').data('date');
       var last_date = formatTimestamp(raw_date);
       console.log(last_date);
       $.ajax({
@@ -113,7 +113,7 @@ function formatTimestamp(timestamp){
     // $(window).scroll(function() {
     //   if ($(window).scrollTop() > $(document).height() - $(window).height() - 200) {
     //     $(window).unbind('scroll');
-    //     var last_date = $('ol.timeline li:last').data('date');
+    //     var last_date = $('ol.timeline li.event:last').data('date');
     //     $.get('timeline/infinite',
     //       {published_at: last_date},
     //       function(data){
