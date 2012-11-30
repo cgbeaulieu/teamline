@@ -38,9 +38,34 @@ class Timeline
   def sort_events_descending
     self.events.sort_by { |event| event.published_at }.reverse
   end
+# { 
+#   "person_ids"=>["1", "3"],
+#   "type"=>["Post", "Tweet"],
+#   "published_at"=>"13 November, 2012"
+#  }
+  def filter(params)
+    ids   = params[:filter].fetch('person_ids')   #=> ['1', '2']
+    types = params[:filter].fetch('type')         #=> ["Post", "Tweet"]
+    date  = params.fetch('published_at') #=> "13 November, 2012"
+    if ids
+      self.events = ids.map do |id|
+        fetch_with_id(id, types, date)
+      end.flatten
+    elsif types
+    elsif date
+    end
+  end
 
-  def filter(type, params)
-    #delegates to the correct filter action
+  def fetch_with_id(id, types=Events, date=nil)
+    start_of = date.to_date.at_beginning_of_day
+    end_of   = date.to_date.end_of_day
+    
+    if date
+      types.map { |class_name| class_name.constantize.
+        where("person_id = ? AND published_at >= ? AND published_at <= ?", id, start_of, end_of) }
+    else
+      types.map { |class_name| class_name.constantize.where("person_id = ?", id) }
+    end
   end
 
   def filter_events_by_date(date)

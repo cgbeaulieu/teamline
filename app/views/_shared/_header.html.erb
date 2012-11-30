@@ -53,22 +53,41 @@
         </form>
       </div>
 
-      <div class="events-expand">
- <form id="resourcefilter"> 
-  <fieldset>
-    <% Timeline::Events.each do |event| %>
-      <%= content_tag :input, :type => "checkbox", :class => "filter", :id => "#{event}", :value => "#{event}" do %>
-      <span><%= "#{event}" %></span>
+    <%= form_tag('/timeline/filter', :method => :get, :remote => true, :id => 'filterForm' ) %>
+      <% Person.all.each do |person| %>
+        <%= check_box_tag 'filter[person_ids][]', person.id -%>
+        <%= h person.name -%>
+      <% end %><br>
+      <% Timeline::Events.each do |event| %>
+        <%= check_box_tag 'filter[type][]', event -%>
+        <%= h event -%>
       <% end %>
-    <% end %>
-  </fieldset>
-  <button type="submit" style="margin-top:20px; margin-left:75px;">Filter Events</button>
-</form>
- 
-      </div>
+
+      <%= text_field_tag 'published_at' %>
+    <%= submit_tag "Submit" %>
+
+    <div class="events-expand">
+     <form id="resourcefilter" style="width: 500px;">
+        <fieldset>
+          <% Timeline::Events.each do |event| %>
+            <%= content_tag :input, :type => "checkbox", :class => "filter", :id => "#{event}", :name => "types[]", :value => "#{event}" do %>
+            <span><%= "#{event}" %></span>
+            <% end %>
+          <% end %>
+        </fieldset>
+        <fieldset>
+          <% Person.all.each do |person|%>
+            <%= content_tag :input, :type => "checkbox", :class => "filter", :id =>"#{person.id}", :value => "#{person.id}" do-%>
+            <span><%= "#{person.name}" %></span>
+            <% end %>
+          <% end %>
+        </fieldset>
+        <button type="submit">Filter Events</button>
+      </form>
+    </div>
 
       <div class="people-expand">
- <form id="peoplefilter">
+ <<!-- form id="peoplefilter">
     <fieldset>
       <% Person.all.each do |person|%>
         <%= content_tag :input, :type => "checkbox", :class => "filter", :id =>"#{person.id}", :value => "#{person.name}" do-%>
@@ -77,7 +96,7 @@
       <% end %>
     </fieldset>
     <button type="submit">Filter People</button>
-  </form>
+  </form> -->
       </div>
     </div>
 
