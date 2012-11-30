@@ -101,6 +101,10 @@ li#github {
 
 }
 
+.avatar {
+  border: white solid 1px;
+}
+
 .event {
   color: white;
   font-style: bold;
@@ -132,6 +136,7 @@ li#github {
 .event .secondary {
   display: none;
   position: relative;
+  padding-top: 10px;
 }
 
 .timeline > li {
