@@ -11,7 +11,7 @@ $(document).ready(function(){
   var filterToggle = false;
 
 
-  $('#published_at').pickadate({
+  $('#start_of').pickadate({
       format_submit: 'yyyy-mm-dd'
     })
 
