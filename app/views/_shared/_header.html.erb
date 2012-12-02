@@ -67,35 +67,11 @@
 
     <div class="events-expand">
      <form id="resourcefilter" style="width: 500px;">
-        <fieldset>
-          <% Timeline::Events.each do |event| %>
-            <%= content_tag :input, :type => "checkbox", :class => "filter", :id => "#{event}", :name => "types[]", :value => "#{event}" do %>
-            <span><%= "#{event}" %></span>
-            <% end %>
-          <% end %>
-        </fieldset>
-        <fieldset>
-          <% Person.all.each do |person|%>
-            <%= content_tag :input, :type => "checkbox", :class => "filter", :id =>"#{person.id}", :value => "#{person.id}" do-%>
-            <span><%= "#{person.name}" %></span>
-            <% end %>
-          <% end %>
-        </fieldset>
-        <button type="submit">Filter Events</button>
       </form>
     </div>
 
       <div class="people-expand">
- <<!-- form id="peoplefilter">
-    <fieldset>
-      <% Person.all.each do |person|%>
-        <%= content_tag :input, :type => "checkbox", :class => "filter", :id =>"#{person.id}", :value => "#{person.name}" do-%>
-        <span><%= "#{person.name}" %></span>
-        <% end %>
-      <% end %>
-    </fieldset>
-    <button type="submit">Filter People</button>
-  </form> -->
+
       </div>
     </div>
 
