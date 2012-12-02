@@ -1,7 +1,7 @@
 class TimelineController < ApplicationController
 	def index
     timeline = Timeline.new
-    timeline.load_recent_events(5)
+    timeline.load_recent_events(3)
     timeline.group_by_date
     @grouped_events = timeline.events
   end
@@ -33,31 +33,7 @@ class TimelineController < ApplicationController
   end
 
   def filter
-    if params[:date]
-      date = params[:date]
-      timeline = Timeline.new
-      timeline.filter_events_by_date(date)
-      timeline.group_by_date
-      @grouped_events = timeline.events
-      @json = render_to_string :partial => "event", :locals => {:grouped_events => @grouped_events}
-      render :json => @json.to_json
-    elsif params[:types]
-      types = params[:types]
-      timeline = Timeline.new
-      timeline.filter_events_by_type(types)
-      timeline.group_by_date
-      @grouped_events = timeline.events
-      @json = render_to_string :partial => "event", :locals => {:grouped_events => @grouped_events}
-      render :json => @json.to_json
-    elsif params[:people]
-      people = params[:people]
-      timeline = Timeline.new
-      timeline.filter_events_by_people(people)
-      timeline.group_by_date
-      @grouped_events = timeline.events
-      @json = render_to_string :partial => "event", :locals => {:grouped_events => @grouped_events}
-      render :json => @json.to_json
-    elsif params[:filter]
+    if params[:filter] || params.key?('start_of')
       timeline = Timeline.new
       timeline.filter(params)
       timeline.group_by_date
