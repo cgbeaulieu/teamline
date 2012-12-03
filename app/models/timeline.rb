@@ -5,9 +5,9 @@ class Timeline
 
   def load_recent_events(from)
     query_date = from.days.ago.to_date.to_s
-    @events = Events.map do |class_name|
-      class_name.constantize.where("published_at > ?", query_date)
-    end.flatten.sort_by {|event| event.published_at}.reverse
+    @events = Events.map { |class_name| class_name.constantize.where("published_at > ?", query_date ).order('published_at DESC')}.
+      flatten
+      self.events = self.events.sort_by {|event| event.published_at}.reverse
   end
   
   def find_new_events(date)
@@ -18,12 +18,17 @@ class Timeline
 
   def get_next_day(params)
     date = params[:published_at]
+    person_ids = params[:filter][:person_ids] || nil
     type = params[:filter][:type] || Events
     date = DateTime.parse(date).yesterday
     start_of = date.at_beginning_of_day
     end_of   = date.end_of_day
 
-    search_without_person_ids(start_of, end_of, type)
+    if person_ids
+      search_with_person_ids(person_ids, start_of, end_of, type)
+    else
+      search_without_person_ids(start_of, end_of, type)
+    end
   end
 
   def filter(params)
