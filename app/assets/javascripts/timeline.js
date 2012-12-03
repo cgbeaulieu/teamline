@@ -94,7 +94,7 @@ $(document).ready(function(){
         }
       });
     }
-  }, 20000));
+  }, 3000));
 
   //make string timestamps friendly for active record queries
   function formatTimestamp(timestamp){
