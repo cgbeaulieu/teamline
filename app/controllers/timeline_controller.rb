@@ -33,7 +33,7 @@ class TimelineController < ApplicationController
   end
 
   def filter
-    if params[:filter] || params.key?('start_of')
+    if params[:filter] || params.key?('start_date')
       timeline = Timeline.new
       timeline.filter(params)
       timeline.group_by_date

@@ -18,54 +18,54 @@ class Timeline
 
   def get_next_day(params)
     date = params[:published_at]
-    person_ids = params[:filter][:person_ids] || nil
-    type = params[:filter][:type] || Events
+    person_ids = params.fetch(:filter, {}).fetch('person_ids', nil)
+    types      = params.fetch(:filter, {}).fetch('type', nil) || Events
+    
     date = DateTime.parse(date).yesterday
-    start_of = date.at_beginning_of_day
-    end_of   = date.end_of_day
-
+    start_date = date.at_beginning_of_day
+    end_date   = date.end_of_day
+    
     if person_ids
-      search_with_person_ids(person_ids, start_of, end_of, type)
+      search_with_person_ids(person_ids, start_date, end_date, types)
     else
-      search_without_person_ids(start_of, end_of, type)
+      search_without_person_ids(start_date, end_date, types)
     end
   end
 
   def filter(params)
     person_ids = params.fetch(:filter, {}).fetch('person_ids', nil)
     types      = params.fetch(:filter, {}).fetch('type', nil) || Events
-    start_of   = params.fetch('start_of', nil) || nil
-    # end_of     = params.fetch('end_of')   || DateTime.now + 1.day
+    start_date   = params.fetch('start_date', nil) || nil
 
-    if start_of.present?
-      start_of = start_of.to_date.at_beginning_of_day
-      end_of   = start_of.end_of_day
+    if start_date.present?
+      start_date = start_date.to_date.at_beginning_of_day
+      end_date   = start_date.end_of_day
     else
-      start_of = '1111-11-11'
-      end_of   = DateTime.now + 1.day
+      start_date = DateTime.now - 30.days
+      end_date   = DateTime.now + 1.day
     end
 
     if person_ids
-      search_with_person_ids(person_ids, start_of, end_of, types)
+      search_with_person_ids(person_ids, start_date, end_date, types)
     else
-      search_without_person_ids(start_of, end_of, types)
+      search_without_person_ids(start_date, end_date, types)
     end
   end
 
   #search each person passed, with or without date, for any type of event
-  def search_with_person_ids(person_ids, start_of, end_of, types)
+  def search_with_person_ids(person_ids, start_date, end_date, types)
     self.events = person_ids.map do |person_id|
       types.map do |type|
         type.constantize.
-          where("person_id = ? AND published_at >= ? AND published_at <= ?", person_id, start_of, end_of)
+          where("person_id = ? AND published_at >= ? AND published_at <= ?", person_id, start_date, end_date)
       end
     end.flatten
   end
 
   #specific types or no types with or without date range
-  def search_without_person_ids(start_of, end_of, types)
+  def search_without_person_ids(start_date, end_date, types)
     self.events = types.map do |type|
-      type.constantize.where("published_at >= ? AND published_at <= ?", start_of, end_of)
+      type.constantize.where("published_at >= ? AND published_at <= ?", start_date, end_date)
     end.flatten
   end
 

@@ -9,16 +9,24 @@ $(document).ready(function(){
   })
 
   //set up toggle to control polling as a global variable
-  var filterToggle = false;
-
-  //calendar plugin
-  $('#start_of').pickadate({
-    format_submit: 'yyyy-mm-dd'
-  })
+  var filterOff = false;
 
   //stop the pollling when someone is filtering
   $('form#filterForm').submit(function(){
-    filterToggle = true;
+    filterOff = true;
+  });
+
+  //calendar plugin
+  $('#start_date').pickadate({
+    format_submit: 'yyyy-mm-dd',
+    onSelect: function() {
+      $('form#filterForm').submit();
+    }
+  })
+
+  //submit form when checkbox is clicked for live filter
+  $('form#filterForm input').on('click', function() {
+    $(this).submit();
   });
 
   //rails form success callback that inserts the data into the DOM
@@ -26,23 +34,16 @@ $(document).ready(function(){
       $("ol.timeline").html(data);
   });
 
-  //submit form when checkbox is clicked for live filter
-  $('form#filterForm input').on('click', function() {
-    $(this).submit();
-  });
-
   //create the paramers to be submitted to infinite scroll action based on what's selected and last date
-  var buildParams = function(){
-    var last_date = $('ol.timeline li.item:last').data('date');
-    var search_params = { name: 'published_at', value: last_date }
-    var final_params = search_params;
-    
+  var buildParams = function(last_date){
     if($('form#filterForm :checked').length){
-      checked_params = $('form#filterForm').serializeArray();
-      checked_params.push(search_params);
-      final_params = checked_params;
+      var checked_params = $('form#filterForm').serializeArray();
+      checked_params.push({ name: 'published_at', value: last_date });
+      return $.param(checked_params);
+    } else {
+      var date = { published_at: last_date }
+      return date;
     }
-    return $.param(final_params);
   }
 
   //watch to see when user scrolls down to a certain point on the page
@@ -55,8 +56,8 @@ $(document).ready(function(){
 
   //submit a GET request to load the next day's data
   var loadEvents = function(){
-    params = buildParams();
     var last_date = $('ol.timeline li.item:last').data('date');
+    params = buildParams(last_date);
     $.ajax({
       url: 'timeline/infinite',
       data: params,
@@ -79,7 +80,7 @@ $(document).ready(function(){
 
   //poll server to check for new data
   $(setInterval(function(){
-    if(filterToggle === false){
+    if(filterOff === false){
       var raw_date  = $('ol.timeline li.item:first').data('date');
       var last_date = formatTimestamp(raw_date);
       console.log(last_date);
