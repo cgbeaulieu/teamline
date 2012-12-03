@@ -29,7 +29,7 @@ end
 
 class PushEvent < GithubEvent
   def content
-    @content ||= event.payload.commits.map { |commit| commit.message }.join(',')
+    @content ||= event.payload.commits.last.message
   end
 
   def headline
