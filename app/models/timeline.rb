@@ -16,12 +16,14 @@ class Timeline
       where('published_at > ?', query_date) }.flatten
   end
 
-  def get_next_day(date)
+  def get_next_day(params)
+    date = params[:published_at]
+    type = params[:filter][:type] || Events
     date = DateTime.parse(date).yesterday
     start_of = date.at_beginning_of_day
     end_of   = date.end_of_day
 
-    search_without_person_ids(start_of, end_of, Events)
+    search_without_person_ids(start_of, end_of, type)
   end
 
   def filter(params)

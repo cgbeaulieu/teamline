@@ -1,7 +1,7 @@
 class TimelineController < ApplicationController
 	def index
     timeline = Timeline.new
-    timeline.load_recent_events(3)
+    timeline.load_recent_events(1)
     timeline.group_by_date
     @grouped_events = timeline.events
   end
@@ -22,7 +22,7 @@ class TimelineController < ApplicationController
   def infinite
     if params[:published_at]
       timeline = Timeline.new
-      timeline.get_next_day(params[:published_at])
+      timeline.get_next_day(params)
       timeline.group_by_date
       @grouped_events = timeline.events
       @json = render_to_string :partial => "event", :locals => {:grouped_events => @grouped_events}

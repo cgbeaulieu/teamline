@@ -3,7 +3,7 @@ development:
   encoding: unicode
   database: teamline_development
   pool: 5
-  username: erickaward
+  username: topica
   password:
   host: localhost
 
@@ -12,7 +12,7 @@ test:
   encoding: unicode
   database: teamline_test
   pool: 5
-  username: erickaward
+  username: topica
   password:
   host: localhost
   

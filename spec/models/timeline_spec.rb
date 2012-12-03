@@ -5,6 +5,7 @@ describe Timeline do
     @gh1 = GhEvent.create(:content => "gh1", :published_at => '2012-11-28')
     @t1  = Tweet.create(:content => "t1",:published_at => '2012-11-28')
     @p1  = Post.create(:content => "p1",:published_at => '2012-11-28')
+    
     @gh2 = GhEvent.create(:content => "gh2",:published_at => '2012-11-29')
     @t2  = Tweet.create(:content => "t2",:published_at => '2012-11-30')
     @p2  = Post.create(:content => "p2",:published_at => '2012-11-30')
@@ -12,8 +13,8 @@ describe Timeline do
   context ".load_recent_events" do
     it "should set events to some number" do
       timeline = Timeline.new
-      timeline.load_recent_events(5)
-      timeline.events.should == [@gh2, @p2, @t2]
+      timeline.load_recent_events(2)
+      timeline.events.should == [@t2, @p2, @gh2]
     end
   end
   context ".format_grouped_events" do

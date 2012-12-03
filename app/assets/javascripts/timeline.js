@@ -1,4 +1,5 @@
 $(document).ready(function(){
+  var params;
 
   $("#teamline").on("mouseenter", ".event", function(){
     $(".secondary", this).slideToggle(500);
@@ -19,55 +20,32 @@ $(document).ready(function(){
     filterToggle = true;
   });
 
+  $('form#filterForm').bind('ajax:beforeSend', function(event, xhr, settings) {
+      params = settings.url.replace(/filter/, 'infinite');
+     //  var allVals = [];
+     // $('form#filterForm input:checked').each(function() {
+     //   allVals.push($(this).val());
+     // });
+     // alert(allVals);
+  });
+
   $('form#filterForm').bind('ajax:success', function(xhr, data, status) {
       $("ol.timeline").html(data);
   });
 
 
-
-  
-  // $('.datepicker').pickadate({
-  //     format_submit: 'yyyy-mm-dd',
-  //     onSelect: function() {
-  //       filterToggle = true;
-  //       var date = $("input[type='hidden']").val();
-  //       $.get('/timeline/filter', { date: date }, 
-  //           function(data){
-  //             $("ol.timeline").html(data);
-  //         });
-  //     }
-  // });
-
-  // $('#resourcefilter').submit(function(e){
-  //   e.preventDefault();
-
-  //   filterToggle = true;
-  //   var types = []
-  //   $.each($("input:checked"), function(){
-  //     var type = $(this).attr("value");
-  //     types.push(type);
-  //   });
-
-  //   $.get('/timeline/filter', { filter: types }, function(data) {
-  //     $("ol.timeline").html(data);
-  //   });
-  // });
-
-  // $('#peoplefilter').submit(function(e){
-  //   e.preventDefault();
-
-  //   var people = []
-  //   $.each($("input:checked"), function(){
-  //     var person = $(this).attr("id");
-  //     people.push(person);
-  //   });
-
-  //   $.get('/timeline/filter', { people: people }, function(data) {
-  //     console.log(data)
-  //     $("ol.timeline").html(data);
-  //   });
-
-  // });
+  var buildParams = function(){
+    var last_date = $('ol.timeline li.item:last').data('date');
+    var search_params = { name: 'published_at', value: last_date }
+    var final_params = search_params;
+    
+    if($('form#filterForm :checked').length){
+      checked_params = $('form#filterForm').serializeArray();
+      checked_params.push(search_params);
+      final_params = checked_params;
+    }
+    return $.param(final_params);
+  }
 
   var loadScrollDetect = function(){
     if ($(window).scrollTop() > $(document).height() - $(window).height() - 200) {    
@@ -77,10 +55,11 @@ $(document).ready(function(){
   };
 
   var loadEvents = function(){
+    params = buildParams();
     var last_date = $('ol.timeline li.item:last').data('date');
     $.ajax({
       url: 'timeline/infinite',
-      data: {published_at: last_date},
+      data: params,
       success: function(data){
         if (data.length > 1){
           $("ol.timeline").append(data);
@@ -95,8 +74,6 @@ $(document).ready(function(){
       }
     });
   }
-
-
 
   $(window).bind('scroll', loadScrollDetect);
 
@@ -116,7 +93,7 @@ $(document).ready(function(){
         }
       });
     }
-  }, 3000));
+  }, 20000));
 
 function formatTimestamp(timestamp){
   return timestamp.replace(/Z/,'').replace(/T/, ' ');
