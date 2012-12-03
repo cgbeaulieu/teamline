@@ -19,7 +19,7 @@ class GithubEvent
   end
 
   def url
-    @url ||= "http://www.github.com/#{event.actor.login}/#{event.repo.name}"
+    @url ||= "http://www.github.com/#{event.repo.name}"
   end
 
   def person
@@ -72,6 +72,6 @@ class PullRequestEvent < GithubEvent
   end
 
   def url
-    @url ||= event.payload.pull_request.diff_url
+    @url ||= event.payload.pull_request.html_url
   end
 end
