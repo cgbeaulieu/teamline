@@ -1,5 +1,5 @@
 class Tweet < ActiveRecord::Base
-  attr_accessible :content, :handle, :published_at, :person
+  attr_accessible :content, :handle, :published_at, :person, :link
   validates_uniqueness_of :published_at, :scope => :person_id
   validates :published_at, :presence => true
   validates :content, :uniqueness => true
@@ -22,9 +22,13 @@ class Tweet < ActiveRecord::Base
     handle  = tweet.attrs[:user][:screen_name]
     person = Person.find_by_twitter_handle(handle)
     person.update_attributes(:avatar_url => tweet.user.profile_image_url)
+    twitter_user_id = tweet.attrs[:user][:id]
+    tweet_status_id = tweet.attrs[:id]
+    link = "http://twitter.com/#{twitter_user_id}/status/#{tweet_status_id}"
     person.tweets.create(:content => content,
-            :handle => handle,
-            :published_at => tweet.attrs[:created_at])
+                         :handle => handle,
+                         :link => link,
+                         :published_at => tweet.attrs[:created_at])
   end
 
   private

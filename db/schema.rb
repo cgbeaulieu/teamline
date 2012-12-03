@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121128225018) do
+ActiveRecord::Schema.define(:version => 20121203153231) do
 
   create_table "gh_events", :force => true do |t|
     t.datetime "created_at",                          :null => false
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(:version => 20121128225018) do
     t.datetime "updated_at",                        :null => false
     t.integer  "person_id"
     t.string   "classname",    :default => "tweet"
+    t.string   "link"
   end
 
 end
