@@ -17,5 +17,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require pickadate
+//= require scrollTo-min
 //= require moment
 //= require_tree .

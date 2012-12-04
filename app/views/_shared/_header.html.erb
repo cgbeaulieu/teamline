@@ -76,15 +76,28 @@
     </ul>
     </div>
 
-
     </div>
         </div>
 
     </div>
 
+  <a href="/"><div class="scroller-high"></div></a>
+  <div class="scroller-low"></div>
+
+
   <div class="row clearfix"></div>
 
 </div><!-- end container -->
+
+<script type="text/javascript"> 
+$(".scroller-low").hover(function(){
+    var $this = $(this);
+    $("body").scrollTo($this, 13000);
+},function(){
+    $("body").stop();
+    // stop on unhover
+});
+</script>
 
 <script type="text/javascript"> 
     $("li.dates").click(function() {
