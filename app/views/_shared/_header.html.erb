@@ -44,31 +44,42 @@
 
     <div class="sixteen columns">
       <div class="dates-expand">
-        <form>
-
-        </form>
       </div>
-
-    <%= form_tag('/timeline/filter', :method => :get, :remote => true, :id => 'filterForm' ) %>
-      <% Person.all.each do |person| %>
-        <%= check_box_tag 'filter[person_ids][]', person.id -%>
-        <%= h person.name -%>
-      <% end %><br>
-      <% Timeline::Events.each do |event| %>
-        <%= check_box_tag 'filter[type][]', event -%>
-        <%= h event -%>
-      <% end %>
-      <%= text_field_tag 'start_date' %>
-    <%= submit_tag "Submit" %>
-
-    <div class="events-expand">
-     <form id="resourcefilter" style="width: 500px;">
-      </form>
-    </div>
 
       <div class="people-expand">
 
-      </div>
+       <%= form_tag('/timeline/filter', :method => :get, :remote => true, :id => 'filterForm' ) %>
+
+    <div class="people-filters"> 
+      <ul>
+      <% Person.all.each do |person| %>
+        <li><%= check_box_tag 'filter[person_ids][]', person.id -%>
+        <img src="<%= h person.avatar_url -%>">        <%= h person.name -%>
+        </li>
+      <% end %>
+      </ul>
+    </div>
+
+    <div class="center-filter-jams">    
+
+    <div class="date-filters"> 
+      <%= text_field_tag 'start_date' %>
+    </div>
+
+    <div class="event-filters"> 
+      <ul>
+      <% Timeline::Events.each do |event| %>
+        <li><%= check_box_tag 'filter[type][]', event -%>
+        <div class="<%= h event -%>">
+        </li>
+      <% end %>
+    </ul>
+    </div>
+
+
+    </div>
+        </div>
+
     </div>
 
   <div class="row clearfix"></div>
@@ -77,14 +88,14 @@
 
 <script type="text/javascript"> 
     $("li.dates").click(function() {
-      $('.dates-expand').show('slow');
+      $('.dates-expand').hide('slow');
       $('.events-expand').hide('slow');
-      $('.people-expand').hide('slow');
+      $('.people-expand').show('slow');
     });
     $("li.events").click(function() {
       $('.dates-expand').hide('slow');
-      $('.events-expand').show('slow');
-      $('.people-expand').hide('slow');
+      $('.events-expand').hide('slow');
+      $('.people-expand').show('slow');
     });
     $("li.people").click(function() {
       $('.dates-expand').hide('slow');

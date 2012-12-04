@@ -126,6 +126,66 @@ body{
   text-align: center;
 }
 
+.people-filters ul{
+  column-count:5; -moz-column-count:5; -webkit-column-count:5; 
+  column-gap:2em; -moz-column-gap:2em; -webkit-column-gap:2em;
+}
+
+.people-filters li{
+  text-align: left;
+  font-size: 11px;
+}
+
+.people-filters img{
+  height: 30px;
+  width: 30px;
+  border-radius: 19px;
+}
+
+.event-filters ul{
+  text-align: center;
+  float: right;
+  margin-left: 135px;
+}
+
+.GhEvent{
+  background: url(icon-github-full.png);
+  width: 65px;
+  height: 65px;
+}
+
+.Post{
+  background: url(icon-post-full.png);
+  width: 65px;
+  height: 65px;
+}
+
+.Tweet{
+  background: url(icon-twitter-full.png);
+  width: 65px;
+  height: 65px;
+}
+
+
+.center-filter-jams {
+    width: 650px;
+     margin: 0 auto;
+}
+
+.event-filters li{
+    float: left;
+  text-align: left;
+  font-size: 12px;
+  display: inline;
+  list-style-type: none;
+  padding-right: 20px;
+}
+
+.date-filters{
+float: right;
+padding-top: 19px;
+}
+
 .people-expand label, legend {
   display: inline;
   padding-left: 15px;

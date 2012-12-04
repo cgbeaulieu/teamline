@@ -1,10 +1,12 @@
 input[type=date],
 input[type=text] {
-    font-size: 1.5em;
+      background: url(icon-date-full.png) 0 0 no-repeat;
+    width: 65px;
+      height: 65px;
+    font-size: 1em;
+text-indent: -9999px;
     font-weight: bold;
-    padding: 10px 12px;
-    border: 4px solid #e2e2e2;
-
+    border: 0px;
     -webkit-box-shadow: none;
        -moz-box-shadow: none;
             box-shadow: none;
@@ -14,14 +16,13 @@ input[type=date]:focus,
 input[type=text]:focus,
 input.pickadate--input__focused {
     outline: none;
-    border-color: #0089ec;
 }
 
 
 .pickadate__holder {
-    width: 100%;
+    width: 65px;
     height: 0;
-    position: absolute;
+    display: inline;
     z-index: 10000;
 }
 
@@ -51,8 +52,7 @@ input.pickadate--input__focused {
     font-size: 1em;
     line-height: 1.5;
     color: #000;
-    background: #fff;
-    border: 1px solid #ccc;
+    background: #ccc;
 
     -webkit-border-radius: 6px;
        -moz-border-radius: 6px;
@@ -87,7 +87,7 @@ input.pickadate--input__focused {
     width: 14.285714286%; /* 100/7 */
     font-size: .8em;
     padding-bottom: .75em;
-    color: #999;
+    color: #000;
     font-weight: 500;
 }
 
@@ -142,7 +142,6 @@ input.pickadate--input__focused {
 .pickadate__month--selector,
 .pickadate__year--selector {
     font-size: .8em;
-    border: 1px solid #ccc;
     height: 32px;
 }
 
