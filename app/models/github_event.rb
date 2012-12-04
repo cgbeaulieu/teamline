@@ -24,7 +24,7 @@ class GithubEvent
   end
 
   def person
-    @person ||= Person.find_or_create_by_gh_username(event.actor.login)
+    @person ||= Person.find_by_gh_username(event.actor.login)
   end
 end
 
