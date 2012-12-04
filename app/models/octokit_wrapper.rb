@@ -15,5 +15,4 @@ class OctokitWrapper
       e.create_gh_event
     end
   end
-
 end
