@@ -1,7 +1,8 @@
 class GithubEvent
   attr_accessor :headline, :content, :url, :event, :created_at, :username, :category
 
-  VALID_EVENTS = ["PushEvent",
+  VALID_EVENTS = [
+    "PushEvent",
     "GistEvent",
     "PullRequestEvent",
     "CreateEvent"

@@ -1,9 +1,7 @@
 class OctokitWrapper
   def self.get_gh_events(ghuser)
     begin
-      Octokit.user_events(ghuser).each do |event| 
-        self.parse_content(event) 
-      end
+      Octokit.user_events(ghuser).each { |event| self.parse_content(event) }
     rescue => e
       puts e.inspect
     end
