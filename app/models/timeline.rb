@@ -82,7 +82,7 @@ class Timeline
 
 
   def sort_events_descending
-    self.events.sort_by { |event| event.published_at }.reverse
+    self.events = self.events.sort_by { |event| event.published_at }.reverse
   end
 
 
