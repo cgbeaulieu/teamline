@@ -1,15 +1,13 @@
 $(document).ready(function(){
 
-  $("#teamline").on("mouseenter", ".event", function(){
-    $(".secondary", this).slideToggle(500);
-  })
-
-  $("#teamline").on("mouseleave", ".event", function(){
-    $(".secondary", this).slideToggle(500);
-  })
-
   //set up toggle to control polling as a global variable
   var filterOff = false;
+
+  $('form#filterForm li').click(function(){
+    var el = $(this).find('input:checkbox');
+    el.attr('checked', !el.attr('checked'));
+    $('form#filterForm').submit();
+  });
 
   //stop the pollling when someone is filtering
   $('form#filterForm').submit(function(){
