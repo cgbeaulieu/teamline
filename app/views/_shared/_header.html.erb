@@ -89,14 +89,17 @@
 
 </div><!-- end container -->
 
-<script type="text/javascript"> 
-$(".scroller-low").hover(function(){
-    var $this = $(this);
-    $("body").scrollTo($this, 13000);
-},function(){
-    $("body").stop();
-    // stop on unhover
-});
+<script type="text/javascript">
+var repeater = function(){
+  $(".scroller-low").hover(function(){
+      var $this = $(this);
+      $("body").scrollTo('ol.timeline li:last', 160000);
+  },function(){
+      $("body").stop();
+      // stop on unhover
+  });
+}
+repeater();
 </script>
 
 <script type="text/javascript"> 
