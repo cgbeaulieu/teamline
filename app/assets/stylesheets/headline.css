@@ -2,48 +2,24 @@ body{
   background: #000;
   color: #fff;
   font-family:'Montserrat', sans-serif;vertical-align:baseline;
-  padding: 0px;
-  margin: 0px;
+  margin-top: 211px;
 }
 
 #headline {
   width: 100%;
-  height: 30px;
-  background: #ff9538;
-  color: #000;
-  margin: 0 auto;
-  text-align: center;
-  padding-top: 18px;
-  font-size: 14px;
-}
-
-#headline a {
-  color: #000;
-  text-decoration: none;
-}
-
-#headline a:hover {
-  color: #222;
-  text-decoration: underline;
-}
-
-#navbar {
-  width: 100%;
-  height: 165px;
+  height: 80px;
   background: #000;
+  color: #000;
   margin: 0 auto;
+  padding-top: 22px;
   text-align: center;
-  padding-top: 18px;
   font-size: 14px;
+  position: fixed;
+  top: 0px;
+  z-index: 9999999999991;
 }
 
-#logo-top {
-  text-indent: -9999px;
-  margin-top: 60px;
-  background: url('header-sprite.png') no-repeat -407px -52px;
-  width: 190px;
-  height: 81px;
-}
+
 
 #filters h2{
   text-align: center; 
