@@ -16,7 +16,7 @@ We would love any contributions!
 - Submit pull request
 
 ##Setting Up Teamline
-####Setup configuation files
+####Setup configuration files
 1. add your computer/username to database.yml
 2. Set up your API keys github and twitter
 

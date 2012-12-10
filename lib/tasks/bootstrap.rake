@@ -1,13 +1,10 @@
 namespace :bootstrap do 
   desc 'Setting up teamline'
-  task :setup => [:environment] do
+  task :setup do
   puts 'Welcome to Teamline, wait a moment while we get setup' 
-    Rake::Task['bootstrap:bundle'].invoke()
-    Rake::Task['db:reset'].invoke()
-  end
-
-  task :bundle => :environment do 
     `bundle install`
-    puts "running bundle install"
+    `cp config/database.example.yml config/database.yml`
+    Rake::Task['db:create'].invoke()
+    `cp config/api_keys.example.yml config/api_keys.yml`
   end
 end
