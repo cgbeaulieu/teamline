@@ -19,7 +19,22 @@ body{
   z-index: 9999999999991;
 }
 
+.logo_filters{
+  margin: 0 auto;
+  width: 420px;
+}
 
+.logo {
+  float: left;
+  width: 344px;
+  height: 75px;
+}
+.filters{
+  float: right;
+  margin-top: 22px;
+  width: 68px;
+  height: 31px;
+}
 
 #filters h2{
   text-align: center; 
