@@ -3,5 +3,14 @@
 #
 # Examples:
 #
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+# @user = Person.create(
+#   :gh_username => "user_gh_username",
+#   :twitter_handle => "user_twitter_handle",
+#   :name => "First Last",
+#   :rss_feed => 'user_rss_feed'
+# )
+# puts "Created #{@user.name}"
+
+#repeat the above block for all users you would like to seed 
+
+
