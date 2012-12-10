@@ -20,3 +20,4 @@ config/database.yml
 #Ignore the db config yml file.
 /config/database.yml
 config/api_keys.yml
+db/import_people.rb
