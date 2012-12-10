@@ -19,8 +19,9 @@ We would love any contributions!
 ####Setup configuation files
 1. add your computer/username to database.yml
 2. Set up your API keys github and twitter
-```ruby
-#we have included a sample .yml file to get you started:
+
+We created an example config file for you, run the following command to copy it into the correct file and put your keys and secrets in config/api_keys.yml
+```
 cp config/api_keys.example.yml config/api_keys.yml
 ```
 
