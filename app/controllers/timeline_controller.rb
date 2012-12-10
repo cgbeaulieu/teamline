@@ -1,4 +1,6 @@
 class TimelineController < ApplicationController
+  before_filter :teams_only
+
 	def index
     timeline = Timeline.new
     timeline.load_recent_events(1)
