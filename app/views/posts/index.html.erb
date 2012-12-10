@@ -1,6 +1,0 @@
-<% @posts.each do |post| %>
-  <%= time_ago_in_words(post.published_at) %> ago
-  <ul>
-    <li><%= raw((post.content).truncate(140)) %></li>
-  </ul>
-<% end %>
