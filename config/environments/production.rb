@@ -20,12 +20,6 @@ Teamline::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
-  config.middleware.use ExceptionNotifier,
-  :email_prefix => "[Exception(al)] Teamline",
-  :sender_address => %{"Exception Notifier" <kevin.curtin@flatironschool.com>},
-  :exception_recipients => %w{kevin.curtin@flatironschool.com david.baker@flatironschool.com
-                              ericka.ward@flatironschool.com matt.selerno@flatironschool.com}
-
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
 

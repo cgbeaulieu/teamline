@@ -34,7 +34,6 @@ gem 'debugger'
 gem 'html_truncator'
 gem 'timecop'
 gem 'whenever', :require => false
-gem 'exception_notification', :require => 'exception_notifier'
 gem 'omniauth-github'
 gem 'will_paginate'
 gem 'httparty'
