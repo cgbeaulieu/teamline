@@ -17,10 +17,10 @@ We would love any contributions!
 
 ##Setting Up Teamline
 ####Setup configuation files
-1. add your computer/username to database.yml
+- add your computer/username to database.yml
 
 ####Run basic setup tasks
     rake bootstrap:setup
 
 ##Copyright
-Copyright (c) 2012 Flatiron School, David Baker, Matthew Salerno, Kevin Curtin, Ericka Ward. See LICENSE for details.
+Copyright (c) 2012 [Flatiron School](http://flatironschool.com/), [David Baker](https://github.com/davidbakertv), [Matthew Salerno](https://github.com/seldomatt), [Kevin Curtin](https://github.com/kcurtin), [Ericka Ward](https://github.com/ejw1). See [LICENSE](https://github.com/flatiron-school/teamline/blob/master/LICENSE) for details.
