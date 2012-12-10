@@ -1,0 +1,15 @@
+development: 
+  GITHUB_ID: 'your info'
+  GITHUB_SECRET: 'your info'
+  TWITTER_CONSUMER_KEY: 'your info'
+  TWITTER_CONSUMER_SECRET: 'your info'
+  TWITTER_OAUTH_TOKEN: 'your info'
+  TWITTER_OAUTH_TOKEN_SECRET: 'your info'
+
+production: 
+  GITHUB_ID: 'your info'
+  GITHUB_SECRET: 'your info'
+  TWITTER_CONSUMER_KEY: 'your info'
+  TWITTER_CONSUMER_SECRET: 'your info'
+  TWITTER_OAUTH_TOKEN: 'your info'
+  TWITTER_OAUTH_TOKEN_SECRET: 'your info'

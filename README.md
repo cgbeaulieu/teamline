@@ -17,7 +17,12 @@ We would love any contributions!
 
 ##Setting Up Teamline
 ####Setup configuation files
-- add your computer/username to database.yml
+1. add your computer/username to database.yml
+2. Set up your API keys github and twitter
+```ruby
+#we have included a sample .yml file to get you started:
+cp config/api_keys.example.yml config/api_keys.yml
+```
 
 ####Run basic setup tasks
     rake bootstrap:setup
