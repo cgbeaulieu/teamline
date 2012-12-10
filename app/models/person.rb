@@ -1,5 +1,5 @@
 class Person < ActiveRecord::Base
-  attr_accessible :gh_username, :name, :rss_feed, :twitter_handle, :avatar_url
+  attr_accessible :gh_username, :name, :rss_feed, :twitter_handle, :avatar_url, :team_id
 
   validates_presence_of :name
   
