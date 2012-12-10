@@ -1,5 +1,5 @@
 development:
-  adapter: your_db
+  adapter: sqlite3
   encoding: unicode
   database: teamline_development
   pool: 5
@@ -8,7 +8,7 @@ development:
   host: localhost
 
 test:
-  adapter: your_db
+  adapter: sqlite3
   encoding: unicode
   database: teamline_test
   pool: 5
@@ -17,7 +17,7 @@ test:
   host: localhost
 
 production:
-  adapter: your_db
+  adapter: sqlite3
   database: teamline_production
   host: localhost
   username: teamline
