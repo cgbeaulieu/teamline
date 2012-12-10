@@ -21,6 +21,6 @@ config/database.yml
 /config/database.yml
 config/api_keys.yml
 
-#Ignore the import_people file and rake task 
 /db/import_people.rb
 /lib/tasks/import_users.rake
+db/import_people.rb
