@@ -19,4 +19,4 @@
 //= require pickadate
 //= require scrollTo-min
 //= require moment
-//= require_tree .
+//= require_directory .

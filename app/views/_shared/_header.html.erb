@@ -1,54 +1,37 @@
-<div id="headline">
-  <div class="logo_filters">
-    <a class="logo" href="/"><%= image_tag "teamlinelogo-1.png"%></a>
-    <a class="filters-expand">
-      <input type="submit" value="FILTERS" class="filters">
-    </a>
-  </div>
-</div>
-
-<div class="container">
+  <div class="container">
     <div class="sixteen columns">
       <div class="people-expand" style="padding-top: 120px;">
-
-       <%= form_tag('/timeline/filter', :method => :get, :remote => true, :id => 'filterForm' ) %>
-
-    <div class="people-filters"> 
-      <ul>
-      <% Person.all.each do |person| %>
-        <li><%= check_box_tag 'filter[person_ids][]', person.id -%>
-        <img src="<%= h person.avatar_url -%>">        <%= h person.name -%>
-        </li>
-      <% end %>
-      </ul>
-    </div>
-
-    <div class="center-filter-jams">    
-
-    <div class="date-filters"> 
-      <%= text_field_tag 'start_date' %>
-    </div>
-
-    <div class="event-filters"> 
-      <ul>
-      <% Timeline::Events.each do |event| %>
-        <li><%= check_box_tag 'filter[type][]', event -%>
-        <div class="<%= h event -%>">
-        </li>
-      <% end %>
-    </ul>
-    </div>
-
-    </div>
+      <%= form_tag('/timeline/filter', :method => :get, :remote => true, :id => 'filterForm' ) do %>
+        <div class="people-filters"> 
+          <ul>
+          <% Person.all.each do |person| %>
+            <li><%= check_box_tag 'filter[person_ids][]', person.id -%>
+            <img src="<%= h person.avatar_url -%>">        <%= h person.name -%>
+            </li>
+          <% end %>
+          </ul>
         </div>
+        <div class="center-filter-jams">    
+          <div class="date-filters"> 
+            <%= text_field_tag 'start_date' %>
+          </div>
 
-    </div>
-
-  <a href="/"><div class="scroller-high"></div></a>
-  <div class="scroller-low"></div>
-
-
-</div><!-- end container -->
+          <div class="event-filters"> 
+            <ul>
+            <% Timeline::Events.each do |event| %>
+              <li><%= check_box_tag 'filter[type][]', event -%>
+              <div class="<%= h event -%>">
+              </li>
+            <% end %>
+            </ul>
+          </div> <!-- event filters  -->
+        </div> <!-- center filter jams  -->
+        <% end %>
+      </div> <!-- people expand  -->
+    </div> <!-- sixteen column -->
+    <a href="/"><div class="scroller-high"></div></a>
+    <div class="scroller-low"></div>
+  </div><!-- end container -->
 
 <script type="text/javascript">
 var repeater = function(){

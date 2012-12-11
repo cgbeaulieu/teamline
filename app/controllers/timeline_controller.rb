@@ -1,5 +1,5 @@
 class TimelineController < ApplicationController
-  before_filter :teams_only
+  # before_filter :teams_only
 
 	def index
     timeline = Timeline.new
