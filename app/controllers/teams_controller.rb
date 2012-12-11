@@ -19,16 +19,13 @@ class TeamsController < ApplicationController
   end
 
   def new
+    # @person = Person.new
     @team = Team.new
 
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @team }
     end
-  end
-
-  def edit
-    @team = Team.find(params[:id])
   end
 
   def create
@@ -45,6 +42,9 @@ class TeamsController < ApplicationController
     end
   end
 
+  def edit
+    @team = Team.find(params[:id])
+  end
   def update
     @team = Team.find(params[:id])
 

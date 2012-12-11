@@ -235,3 +235,10 @@ label span, legend span {
 }
 
 
+.mid-center{
+  margin: 0 auto;
+  padding-top: 150px;
+  width: 300px;  
+}
+
+

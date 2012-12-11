@@ -1,5 +1,5 @@
-input[type=date],
-input[type=text] {
+.date-filters input[type=date],
+.date-filters input[type=text] {
       background: url(icon-date-full.png) 0 0 no-repeat;
     width: 65px;
       height: 65px;
