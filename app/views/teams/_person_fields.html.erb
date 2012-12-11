@@ -1,0 +1,30 @@
+<fieldset>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :rss_feed %><br />
+    <%= f.text_field :rss_feed %>
+  </div>
+  <div class="field">
+    <%= f.label :twitter_handle %><br />
+    <%= f.text_field :twitter_handle %>
+  </div>
+  <div class="field">
+    <%= f.label :gh_username %><br />
+    <%= f.text_field :gh_username %>
+  </div>
+    <%= f.hidden_field :_destroy %>
+   <%= link_to "remove", '#', class: "remove_fields" %>
+</fieldset>
+
+<%= javascript_tag do %>
+$(document).ready(function(){
+  return $('form').on('click', '.remove_fields', function(event) {
+    $(this).prev('input[type=hidden]').val('1');
+    $(this).closest('fieldset').hide();
+    return event.preventDefault();
+  });
+});
+<% end %>
