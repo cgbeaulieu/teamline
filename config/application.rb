@@ -15,6 +15,8 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
+ENV.update YAML.load(File.read(File.expand_path('../api_keys.yml', __FILE__)))
+
 module Teamline
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
