@@ -2,6 +2,8 @@ Teamline::Application.routes.draw do
   # get 'homepage/index'
   # get '', to: 'teamline#index', constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' }
   
+  resources :users
+
   match 'auth/:provider/callback', to: 'sessions#create'
   match 'auth/failure', to: redirect('/')
   match 'signout', to: 'sessions#destroy', as: 'signout'
