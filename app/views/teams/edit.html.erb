@@ -2,7 +2,6 @@
 <div class="mid-center">
 
 <h1>Editing team</h1>
-
 <%= form_for @team do |f| %>
   <% if @team.errors.any? %>
     <div id="error_explanation">
@@ -30,11 +29,29 @@
   <%= f.fields_for :people do |builder| %>
     <%= render 'person_fields', f: builder %>
   <% end %>
+  <%= link_to_add_fields "Add People", f, :people %>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
 
+<%= javascript_tag do %>
+$(document).ready(function(){
+  $('form').on('click', '.remove_fields', function(event) {
+    $(this).prev('input[type=hidden]').val('1');
+    $(this).closest('fieldset').hide();
+    event.preventDefault();
+  });
+
+  $('form').on('click', '.add_fields', function(event) {
+    var regexp, time;
+    time = new Date().getTime();
+    regexp = new RegExp($(this).data('id'), 'g');
+    $(this).before($(this).data('fields').replace(regexp, time));
+    event.preventDefault();
+  });
+});
+<% end %>
 
 <%= link_to 'Show', @team %> |
 <%= link_to 'Back', teams_path %>

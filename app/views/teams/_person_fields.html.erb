@@ -1,4 +1,4 @@
-<fieldset>
+<fieldset class='peeps'>
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
@@ -18,13 +18,3 @@
     <%= f.hidden_field :_destroy %>
    <%= link_to "remove", '#', class: "remove_fields" %>
 </fieldset>
-
-<%= javascript_tag do %>
-$(document).ready(function(){
-  return $('form').on('click', '.remove_fields', function(event) {
-    $(this).prev('input[type=hidden]').val('1');
-    $(this).closest('fieldset').hide();
-    return event.preventDefault();
-  });
-});
-<% end %>
