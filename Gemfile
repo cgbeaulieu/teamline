@@ -22,6 +22,7 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'guard-rspec'
 end
 
 gem 'jquery-rails'
@@ -38,3 +39,4 @@ gem 'omniauth-github'
 gem 'will_paginate'
 gem 'httparty'
 gem 'bcrypt-ruby', :require => "bcrypt"
+
