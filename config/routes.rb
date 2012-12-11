@@ -27,6 +27,12 @@ Teamline::Application.routes.draw do
   get 'timeline/infinite' => 'timeline#infinite', :as => 'infinite_timeline'
   get 'timeline/filter' => 'timeline#filter', :as => 'filter_timeline'
 
+  get "log_out" => "sessions#destroy", :as => "log_out"
+  get "log_in" => "sessions#new", :as => "log_in"
+  get "sign_up" => "users#new", :as => "sign_up"
+  root :to => "users#new"
+  resources :users
+  resources :sessions
 
 
   # The priority is based upon order of creation:
