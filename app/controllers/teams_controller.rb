@@ -19,7 +19,6 @@ class TeamsController < ApplicationController
   end
 
   def new
-    # @person = Person.new
     @team = Team.new
 
     respond_to do |format|
@@ -50,7 +49,7 @@ class TeamsController < ApplicationController
 
     respond_to do |format|
       if @team.update_attributes(params[:team])
-        format.html { redirect_to @team, notice: 'Team was successfully updated.' }
+        format.html { render action: "edit", notice: 'Team was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

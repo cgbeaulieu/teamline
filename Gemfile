@@ -38,5 +38,5 @@ gem 'whenever', :require => false
 gem 'omniauth-github'
 gem 'will_paginate'
 gem 'httparty'
-gem 'bcrypt-ruby', :require => "bcrypt"
+gem 'bcrypt-ruby', '~> 3.0.0'
 

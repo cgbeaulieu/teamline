@@ -25,6 +25,7 @@ class UsersController < ApplicationController
   # GET /users/new.json
   def new
     @user = User.new
+    @team = @user.teams.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,15 +42,10 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
-
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'Signed Up!' }
-        format.json { render json: @user, status: :created, location: @user }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    if @user.save
+      redirect_to edit_team_path(user.teams.first.id), notice: "Thank you for signing up!"
+    else
+      render "new"
     end
   end
 
