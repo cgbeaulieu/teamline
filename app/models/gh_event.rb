@@ -1,10 +1,13 @@
 class GhEvent < ActiveRecord::Base
+  extend Teamable
   attr_accessible :published_at, :category, :username, :content, :url, :person, :headline, :classname
   validates_uniqueness_of :published_at, :scope => :person_id
   validates :published_at, :presence => true
   validates :content, :uniqueness => true
 
   belongs_to :person
+
+  # scope :team, lambda { |team_id|  }
 
   def self.create_from_octokit_event(event)
     # TODO: Long constructions can look prettier
@@ -24,4 +27,5 @@ class GhEvent < ActiveRecord::Base
       :person => event.person
     )
   end
+
 end

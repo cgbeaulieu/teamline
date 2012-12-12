@@ -1,4 +1,5 @@
 class Tweet < ActiveRecord::Base
+  extend Teamable
   attr_accessible :content, :handle, :published_at, :person, :link
   validates_uniqueness_of :published_at, :scope => :person_id
   validates :published_at, :presence => true

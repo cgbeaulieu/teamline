@@ -1,4 +1,5 @@
 class Post < ActiveRecord::Base
+  extend Teamable
   attr_accessible :content, :title, :url, :published_at, :person, :classname
   validates :content, :uniqueness => true
   validates :published_at, :presence => true

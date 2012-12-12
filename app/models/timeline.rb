@@ -3,11 +3,11 @@ class Timeline
 
   attr_accessor :events
 
-  Events.each do |class_name|
-    class_name.constantize.class_eval do
-      scope :team, lambda { |team_id| joins(:person => :team).where('people.team_id = ?', team_id) }
-    end
-  end
+  # Events.each do |class_name|
+  #   class_name.constantize.class_eval do
+  #     scope :team, lambda { |team_id| joins(:person => :team).where('people.team_id = ?', team_id) }
+  #   end
+  # end
 
   def load_recent_events(from, current_team)
     query_date = from.days.ago.to_date.to_s
