@@ -1,6 +1,5 @@
 Teamline::Application.routes.draw do
   get '', to: 'timeline#index', constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' }
-  # root :to => 'users#edit'
   root :to => 'timeline#index'
   
   resources :teams
