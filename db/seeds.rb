@@ -5,7 +5,7 @@
 #
 # @user = Person.create(
 #   :gh_username => "user_gh_username",
-#   :twitter_handle => "user_twitter_handle",
+#   :twitter_handle => "user_twitter_handle" NOTE: do not include the @ symbol in your twitter handle,
 #   :name => "First Last",
 #   :rss_feed => 'user_rss_feed'
 # )

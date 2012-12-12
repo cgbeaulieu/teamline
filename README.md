@@ -16,18 +16,11 @@ We would love any contributions!
 - Submit pull request
 
 ##Setting Up Teamline
-####Setup configuration files
-1. gem install bundle
-2. run 'bundle install'
-3. run 'rake bootstrap:setup' and follow the instructions
-
-We created an example config file for you, run the following command to copy it into the correct file and put your keys and secrets in config/api_keys.yml
-```
-cp config/api_keys.example.yml config/api_keys.yml
-```
-
-####Run basic setup tasks
-    rake bootstrap:setup
+####Setup
+1. make sure you have postgresql installed
+2. gem install bundle
+3. run 'bundle install'
+4. run 'rake bootstrap:setup' and follow the instructions
 
 ##Copyright
 Copyright (c) 2012 [Flatiron School](http://flatironschool.com/), [David Baker](https://github.com/davidbakertv), [Matthew Salerno](https://github.com/seldomatt), [Kevin Curtin](https://github.com/kcurtin), [Ericka Ward](https://github.com/ejw1). See [LICENSE](https://github.com/flatiron-school/teamline/blob/master/LICENSE) for details.

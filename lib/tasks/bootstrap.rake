@@ -17,7 +17,7 @@ namespace :bootstrap do
       Rake::Task['db:seed'].invoke()
     end
     `cp config/api_keys.example.yml config/api_keys.yml`
-  puts "To fetch content, update the config/api_keys.yml file with your API keys/secrets.  Then, uncomment line 18 in config/application.rb, and type 'continue'"
+  puts "To fetch content, update the config/api_keys.yml file with your API keys/secrets. /n  Then, uncomment line 18 in config/application.rb, and type 'continue'"
   input = STDIN.gets.chomp.downcase
     if input == 'continue'
       Rake::Task['fetch:all'].invoke()
