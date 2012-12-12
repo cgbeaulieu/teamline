@@ -17,8 +17,9 @@ We would love any contributions!
 
 ##Setting Up Teamline
 ####Setup configuration files
-1. add your computer/username to database.yml
-2. Set up your API keys github and twitter
+1. gem install bundle
+2. run 'bundle install'
+3. run 'rake bootstrap:setup' and follow the instructions
 
 We created an example config file for you, run the following command to copy it into the correct file and put your keys and secrets in config/api_keys.yml
 ```
