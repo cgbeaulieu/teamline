@@ -1,9 +1,11 @@
 class TimelineController < ApplicationController
   # before_filter :teams_only
+  before_filter :current_team
 
 	def index
     timeline = Timeline.new
-    timeline.load_recent_events(1)
+    # debugger
+    timeline.load_recent_events(5, @current_team)
     timeline.group_by_date
     @grouped_events = timeline.events
   end

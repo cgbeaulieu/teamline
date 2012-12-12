@@ -43,7 +43,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      redirect_to edit_team_path(user.teams.first.id), notice: "Thank you for signing up!"
+      redirect_to edit_team_path(@user.teams.first.id), notice: "Thank you for signing up!"
     else
       render "new"
     end
