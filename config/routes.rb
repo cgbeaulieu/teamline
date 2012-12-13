@@ -1,6 +1,8 @@
 Teamline::Application.routes.draw do
   get '', to: 'timeline#index', constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' }
   root :to => 'pages#home'
+
+  get 'about' => 'pages#about', :as => 'about'
   
   resources :teams
   resources :people
@@ -19,3 +21,4 @@ Teamline::Application.routes.draw do
   resources :sessions
   resources :users
 end
+

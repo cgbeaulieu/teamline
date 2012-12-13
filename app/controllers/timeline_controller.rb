@@ -4,16 +4,16 @@ class TimelineController < ApplicationController
 
 	def index
     timeline = Timeline.new
-    # debugger
-    timeline.load_recent_events(5, @current_team)
+    timeline.load_recent_events(20, @current_team)
     timeline.group_by_date
+    # debugger
     @grouped_events = timeline.events
   end
 
   def poll
     if params[:published_at]
       timeline = Timeline.new
-      timeline.find_new_events(params[:published_at])
+      timeline.find_new_events(params[:published_at], @current_team)
       timeline.sort_events_descending
       @grouped_events = timeline.events
       @json = render_to_string :partial => "poll_event", :locals => {:grouped_events => @grouped_events}
