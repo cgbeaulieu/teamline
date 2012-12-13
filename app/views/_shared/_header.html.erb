@@ -4,7 +4,8 @@
       <%= form_tag('/timeline/filter', :method => :get, :remote => true, :id => 'filterForm' ) do %>
         <div class="people-filters"> 
           <ul>
-          <% Person.all.each do |person| %>
+          <% team_id = @current_team.id %>
+          <% Person.where(:team_id => team_id).each do |person| %>
             <li><%= check_box_tag 'filter[person_ids][]', person.id -%>
             <img src="<%= h person.avatar_url -%>">        <%= h person.name -%>
             </li>
