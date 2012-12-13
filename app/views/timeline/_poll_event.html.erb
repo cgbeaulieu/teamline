@@ -5,25 +5,17 @@
       </div>
       <h2>"<%= raw(event.content) %>"</h2>
 
-      <div class="secondary">
-        <p><img class="avatar" src="<%= event.person.avatar_url %>"><a href="https://twitter.com/<%= event.person.twitter_handle %>" class="twitter-follow-button" data-show-count="false">Follow</a>
-        
-        </p>
-      </div>
     <% end -%>
     <div class="clear-<%=spine_position(index)%>"></div>
 
     <% elsif event.classname == "ghevent" %>
+    <a href="#">
     <%= content_tag :li, :class => "event item #{event_type(event)} #{spine_position(index)}",  :data => {:date => "#{event.published_at.to_s(:db)}"} do -%>
       <div class="<%= "pointer #{spine_position(index)} #{event_type(event)}" %>">
       <h4 class="<%= "#{spine_position(index)}" %>"><%= event.headline %> <%= time_ago_in_words(event.published_at) %> ago</h4>
       </div>
         <h2 class="ghevent" #{spine_position(index)}><%= raw(event.content) %></h2>
 
-      <div class="secondary">
-        
-        <p><img class="avatar" src="<%= event.person.avatar_url %>"></p>
-      </div>
   <% end -%>
   <div class="clear-<%=spine_position(index)%>"></div>
 
@@ -33,10 +25,6 @@
       <h4 class="<%= "#{spine_position(index)}" %>"><%= event.person.name %> <%= time_ago_in_words(event.published_at) %> ago</h4></div>
         <h2>"<%= event.title %>" - by <%= event.person.name %></h2>
   
-      <div class="secondary">
-        <img class="avatar" src="<%= event.person.avatar_url %>">
-        <h2><%= truncate((raw(event.content)), :length => 100, :separator => ' ', :omission => '...continued' )%></h2>
-      </div>
   <% end -%>
   <div class="clear-<%=spine_position(index)%>"></div>
 
