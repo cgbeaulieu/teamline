@@ -13,3 +13,10 @@
 
 #repeat the above block for all users you would like to seed 
 
+@user = Person.create(
+  :gh_username => "kcurtin",
+  :twitter_handle => "KCurtin",
+  :name => "Kevin Curtin",
+  :rss_feed => 'kcurtin.github.com/atom.xml'
+)
+puts "Created #{@user.name}"
