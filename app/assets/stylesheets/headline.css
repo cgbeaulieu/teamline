@@ -19,6 +19,14 @@ body{
   z-index: 9999999999991;
 }
 
+#footer {
+  text-align: center;
+  margin-top: 22px;
+  padding-bottom: 42px;
+  font-size: 12px;
+  line-height: 22px;
+}
+
 .logo_filters{
   margin: 0 auto;
   width: 420px;
