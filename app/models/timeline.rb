@@ -43,7 +43,7 @@ class Timeline
       start_date = start_date.to_date.at_beginning_of_day
       end_date   = start_date.end_of_day
     else
-      start_date = DateTime.now - 30.days
+      start_date = DateTime.now - 10.days
       end_date   = DateTime.now + 1.day
     end
 
