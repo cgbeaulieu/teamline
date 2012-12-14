@@ -25,6 +25,10 @@
 
 <body>
 
+<% if controller.controller_name == "timeline" %> 
+  <%= render "_shared/header" %>
+<% end %> 
+
 <div id="headline">
   <div class="logo_filters">
     <a class="logo" href="/"><%= image_tag "teamlinelogo-1.png"%></a>
@@ -33,6 +37,7 @@
     </a>
   </div>
 </div>
+
 
 <%= yield %>
 
