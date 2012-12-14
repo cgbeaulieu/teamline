@@ -33,27 +33,3 @@
     <a href="/"><div class="scroller-high"></div></a>
     <div class="scroller-low"></div>
   </div><!-- end container -->
-
-<script type="text/javascript">
-var repeater = function(){
-  $(".scroller-low").hover(function(){
-      var $this = $(this);
-      $("body").scrollTo('ol.timeline li:last', 160000);
-  },function(){
-      $("body").stop();
-      // stop on unhover
-  });
-}
-repeater();
-</script>
-
-<script type="text/javascript"> 
-    $(".filters-expand").toggle(function() {
-      $('.people-expand').toggle('slow');
-      $("#timeline").animate({marginTop: '0'})
-    }, function(){
-      $('.people-expand').toggle('slow');
-      $("#timeline").animate({marginTop: '120px'})
-    }
-    );
-</script>

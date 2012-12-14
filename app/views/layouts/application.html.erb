@@ -28,10 +28,38 @@
 <div id="headline">
   <div class="logo_filters">
     <a class="logo" href="/"><%= image_tag "teamlinelogo-1.png"%></a>
+    <a class="filters-expand">
+      <input type="submit" value="FILTERS" class="filters">
+    </a>
   </div>
 </div>
 
 <%= yield %>
+
+
+<script type="text/javascript">
+var repeater = function(){
+  $(".scroller-low").hover(function(){
+      var $this = $(this);
+      $("body").scrollTo('ol.timeline li:last', 160000);
+  },function(){
+      $("body").stop();
+      // stop on unhover
+  });
+}
+repeater();
+</script>
+
+<script type="text/javascript"> 
+    $(".filters-expand").toggle(function() {
+      $('.people-expand').toggle('slow');
+      $("#timeline").animate({marginTop: '0'})
+    }, function(){
+      $('.people-expand').toggle('slow');
+      $("#timeline").animate({marginTop: '120px'})
+    }
+    );
+</script>
 
 <script type="text/javascript">
 
