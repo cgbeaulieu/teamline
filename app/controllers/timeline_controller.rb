@@ -4,7 +4,7 @@ class TimelineController < ApplicationController
 
 	def index
     timeline = Timeline.new
-    timeline.load_recent_events(20, @current_team)
+    timeline.load_recent_events(5, @current_team)
     timeline.group_by_date
     # debugger
     @grouped_events = timeline.events
