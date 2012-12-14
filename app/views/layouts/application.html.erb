@@ -24,7 +24,6 @@
 </head>
 
 <body>
-
 <% if controller.controller_name == "timeline" %> 
   <%= render "_shared/header" %>
 <% end %> 
@@ -33,13 +32,12 @@
   <div class="logo_filters">
     <a class="logo" href="/"><%= image_tag "teamlinelogo-1.png"%></a>
 <% if controller.controller_name == "timeline" %> 
-    <a class="filters-expand">
+    <a class="filters-expand" >
       <input type="submit" value="FILTERS" class="filters">
     </a>
 <% end %> 
   </div>
 </div>
-
 
 <%= yield %>
 
@@ -59,6 +57,7 @@ repeater();
 
 <script type="text/javascript"> 
     $(".filters-expand").toggle(function() {
+      $('html, body').animate({scrollTop:0}, 'slow');
       $('.people-expand').toggle('slow');
       $("#timeline").animate({marginTop: '0'})
     }, function(){
