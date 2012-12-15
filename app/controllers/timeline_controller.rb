@@ -1,10 +1,13 @@
 class TimelineController < ApplicationController
-  # before_filter :teams_only
   before_filter :current_team
 
-	def index
+  def index
     timeline = Timeline.new
+<<<<<<< HEAD
     timeline.load_recent_events(3, @current_team)
+=======
+    timeline.load_recent_events(2, @current_team.id)
+>>>>>>> started refacts
     timeline.group_by_date
     # debugger
     @grouped_events = timeline.events

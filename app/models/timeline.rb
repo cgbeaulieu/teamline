@@ -3,12 +3,10 @@ class Timeline
 
   attr_accessor :events
 
-  def load_recent_events(from, current_team)
+  def load_recent_events(from, team_id)
     query_date = from.days.ago.to_date.to_s
-    team_id = current_team.id
-    @events = Events.map { |class_name| class_name.constantize.team(team_id).where("published_at > ?", query_date ).order('published_at DESC')}.
-      flatten
-      self.events = self.events.sort_by {|event| event.published_at}.reverse
+    unsorted_events = query_for_date(query_date, team_id)
+    @events = unsorted_events.sort_by { |event| event.published_at }.reverse
   end
   
   def find_new_events(date, current_team)
@@ -88,9 +86,12 @@ class Timeline
   end
 
 
-  private
-  
-    def format_published_at(event)
-      event.published_at.to_s(:db).split(" ").first 
-    end
+private
+  def query_by_date(query_date, team_id)
+    Events.map { |class_name| class_name.constantize.team(team_id).where("published_at > ?", query_date ).order('published_at DESC')}.flatten
+  end
+
+  def format_published_at(event)
+    event.published_at.to_s(:db).split(" ").first 
+  end
 end
