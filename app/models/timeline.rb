@@ -35,10 +35,11 @@ class Timeline
     end
   end
 
-  def filter(params)
+  def filter(params, current_team)
     person_ids = params.fetch(:filter, {}).fetch('person_ids', nil)
     types      = params.fetch(:filter, {}).fetch('type', nil) || Events
     start_date   = params.fetch('start_date', nil) || nil
+    team_id = current_team.id
 
     if start_date.present?
       start_date = start_date.to_date.at_beginning_of_day
@@ -49,9 +50,9 @@ class Timeline
     end
 
     if person_ids
-      search_with_person_ids(person_ids, start_date, end_date, types)
+      search_with_person_ids(person_ids, start_date, end_date, types, team_id)
     else
-      search_without_person_ids(start_date, end_date, types)
+      search_without_person_ids(start_date, end_date, types, team_id)
     end
   end
 
