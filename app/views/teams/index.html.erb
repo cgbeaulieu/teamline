@@ -1,18 +1,37 @@
 <div class="container">
+  <div id="teamline">
+
+  <div id="timeline-top"> </div>
+
+    <div id="timeline">
+      <ol class="timeline" id="spine">
+        <div id="date-header"><h2>Meet the Teams</h2></div>
+        <%= render 'team' %>
+      </ol>
+    </div>
+  </div>
+  <div><%= link_to 'New Team', new_team_path %></div>
+</div>
+
+
+
+
+
+ <!--  </div>
 <div class="mid-center">
 <table>
-<% @teams.each do |team| %>
+<#% @teams.each do |team| %>
   <tr>
-    <td><%= team.name %></td>
-    <td><%= team.website %></td>
-    <td><%= link_to 'Show', team %></td>
-    <td><%= link_to 'Edit', edit_team_path(team) %></td>
-    <td><%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><#%= team.name %></td>
+    <td><#%= team.website %></td>
+    <td><#%= link_to 'Show', team %></td>
+    <td><#%= link_to 'Edit', edit_team_path(team) %></td>
+    <td><#%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
-<% end %>
+<#% end %>
 </table>
 
 <br />
 
 <%= link_to 'New Team', new_team_path %>
-</div></div>
+</div></div> -->
