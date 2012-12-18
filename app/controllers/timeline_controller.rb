@@ -26,7 +26,7 @@ class TimelineController < ApplicationController
   def infinite
     if params[:published_at]
       timeline = Timeline.new
-      timeline.get_next_day(params)
+      timeline.get_next_day(params, @current_team)
       timeline.group_by_date
       @grouped_events = timeline.events
       @json = render_to_string :partial => "event", :locals => {:grouped_events => @grouped_events}

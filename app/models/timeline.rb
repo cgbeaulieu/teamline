@@ -18,7 +18,7 @@ class Timeline
       where('published_at > ?', query_date) }.flatten
   end
 
-  def get_next_day(params)
+  def get_next_day(params, current_team)
     date = params[:published_at]
     person_ids = params.fetch(:filter, {}).fetch('person_ids', nil)
     types      = params.fetch(:filter, {}).fetch('type', nil) || Events
@@ -26,11 +26,12 @@ class Timeline
     date = DateTime.parse(date).yesterday
     start_date = date.at_beginning_of_day
     end_date   = date.end_of_day
+    team_id = current_team.id
     
     if person_ids
-      search_with_person_ids(person_ids, start_date, end_date, types)
+      search_with_person_ids(person_ids, start_date, end_date, types, team_id)
     else
-      search_without_person_ids(start_date, end_date, types)
+      search_without_person_ids(start_date, end_date, types, team_id)
     end
   end
 
@@ -55,19 +56,19 @@ class Timeline
   end
 
   #search each person passed, with or without date, for any type of event
-  def search_with_person_ids(person_ids, start_date, end_date, types)
+  def search_with_person_ids(person_ids, start_date, end_date, types, team_id)
     self.events = person_ids.map do |person_id|
       types.map do |type|
-        type.constantize.
+        type.constantize.team(team_id).
           where("person_id = ? AND published_at >= ? AND published_at <= ?", person_id, start_date, end_date)
       end
     end.flatten
   end
 
   #specific types or no types with or without date range
-  def search_without_person_ids(start_date, end_date, types)
+  def search_without_person_ids(start_date, end_date, types, team_id)
     self.events = types.map do |type|
-      type.constantize.where("published_at >= ? AND published_at <= ?", start_date, end_date)
+      type.constantize.team(team_id).where("published_at >= ? AND published_at <= ?", start_date, end_date)
     end.flatten
   end
 
