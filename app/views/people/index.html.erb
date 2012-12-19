@@ -1,5 +1,11 @@
 <div class="container">
+   <div>
+    <%= link_to edit_team_path(@current_team) do %>
+      <input type="submit" value="Add"<%= @current_team.name %> class="filters">
+    <% end %>
+  </div>
   <div id="teamline">
+
 
   <div id="timeline-top"> </div>
 
@@ -10,43 +16,5 @@
       </ol>
     </div>
   </div>
-    <%= link_to edit_team_path(@current_team) do %>
-      <input type="submit" value="Add"<%= @current_team.name %> class="filters">
-    <% end %>
-</div>
 
-
-<!-- <div class="container">
-<div class="mid-center">
-
-  <h1>Listing people</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Rss feed</th>
-    <th>Twitter handle</th>
-    <th>Gh username</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<#% @people.each do |person| %>
-  <tr>
-    <td><#%= person.name %></td>
-    <td><#%= person.rss_feed %></td>
-    <td><#%= person.twitter_handle %></td>
-    <td><#%= person.gh_username %></td>
-    <td><#%= link_to 'Show', person %></td>
-    <td><#%= link_to 'Edit', edit_person_path(person) %></td>
-    <td><#%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<#% end %>
-</table>
-
-<br /> -->
-
-
-</div>
 </div>
