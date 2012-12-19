@@ -1,0 +1,13 @@
+<% @people.each_with_index do |person, index| %>
+  <%= content_tag :li, :class => "event item post #{spine_position(index)}" do %>
+      <div class="<%= "pointer  #{spine_position(index)} post"%>">
+        <h4 class="<%= spine_position(index) %>"><%= person.name %></h4>
+      </div>
+        <!-- <p>Twitter: <#%= person.twitter_handle %></p>
+        <p>Github Username: <#%= person.gh_username %></p>
+        <p>Twitter: <#%= person.twitter_handle %></p> -->
+        <img src="<%= person.avatar_url %>">
+  <% end %>
+  <div class="clear-<%= spine_position(index) %>"></div>
+
+<% end %>

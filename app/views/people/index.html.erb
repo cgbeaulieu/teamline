@@ -1,4 +1,20 @@
 <div class="container">
+  <div id="teamline">
+
+  <div id="timeline-top"> </div>
+
+    <div id="timeline">
+      <ol class="timeline" id="spine">
+        <div id="date-header"><h2>Meet the Team</h2></div>
+        <%= render 'team' %>
+      </ol>
+    </div>
+  </div>
+  <div><%= link_to 'Add a New Team Member', new_person_path %></div>
+</div>
+
+
+<!-- <div class="container">
 <div class="mid-center">
 
   <h1>Listing people</h1>
@@ -14,21 +30,21 @@
     <th></th>
   </tr>
 
-<% @people.each do |person| %>
+<#% @people.each do |person| %>
   <tr>
-    <td><%= person.name %></td>
-    <td><%= person.rss_feed %></td>
-    <td><%= person.twitter_handle %></td>
-    <td><%= person.gh_username %></td>
-    <td><%= link_to 'Show', person %></td>
-    <td><%= link_to 'Edit', edit_person_path(person) %></td>
-    <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><#%= person.name %></td>
+    <td><#%= person.rss_feed %></td>
+    <td><#%= person.twitter_handle %></td>
+    <td><#%= person.gh_username %></td>
+    <td><#%= link_to 'Show', person %></td>
+    <td><#%= link_to 'Edit', edit_person_path(person) %></td>
+    <td><#%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
-<% end %>
+<#% end %>
 </table>
 
-<br />
+<br /> -->
 
-<%= link_to 'Add a New Team Member', new_person_path %>
+
 </div>
 </div>

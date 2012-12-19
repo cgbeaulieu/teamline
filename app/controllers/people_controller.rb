@@ -2,10 +2,13 @@
 # Where are logins / admin control?
 
 class PeopleController < ApplicationController
+
+  before_filter :current_team
   # GET /people
   # GET /people.json
   def index
-    @people = Person.all
+    team_id = @current_team.id
+    @people = Person.where('team_id = ?', team_id)
 
     respond_to do |format|
       format.html # index.html.erb
