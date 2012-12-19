@@ -10,7 +10,9 @@
       </ol>
     </div>
   </div>
-  <div><%= link_to 'Add a New Team Member', new_person_path %></div>
+    <%= link_to edit_team_path(@current_team) do %>
+      <input type="submit" value="Add"<%= @current_team.name %> class="filters">
+    <% end %>
 </div>
 
 

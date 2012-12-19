@@ -116,7 +116,7 @@ li#github {
 }
 
 .event.tweet:hover {
-    background-color: rgba(62, 202, 204, 0.6);
+  background-color: rgba(62, 202, 204, 0.6);
 }
 
 .event.tweet h4{
@@ -142,6 +142,38 @@ li#github {
   overflow: hidden;
 }
 
+.event.team {
+  z-index: 100;
+  border: 2px solid #FFDD23;
+  background-color: rgba(255, 221, 35, 0.4);
+}
+
+.event.team:hover {
+  background-color: rgba(255, 221, 35, 0.6); 
+}
+
+.event.team h4 {
+  color: #FFDD23;
+  position: absolute;
+  top: 17px;
+  width: 517px;
+  height: 30px;
+  font-size: 13px;
+  text-transform: uppercase;
+  overflow: hidden;
+}
+
+.event.team h4.left{
+  left: 137px;
+  text-align: left;
+  overflow: hidden;
+}
+
+.event.team h4.right{
+  right: 137px;
+  text-align: right;
+  overflow: hidden;
+}
 
 .event.ghevent {
   z-index: 100;
@@ -255,6 +287,10 @@ h2.left{
   background: url(icon-post-right.png) no-repeat;
 }
 
+.pointer.right.team {
+  background: url(icon-team-right.png) no-repeat;
+}
+
 .pointer.left {
   margin-right: -11%;
   float: right;
@@ -267,6 +303,10 @@ h2.left{
 }
 .pointer.left.post {
   background: url(icon-post-left.png) no-repeat;
+}
+
+.pointer.left.team {
+  background: url(icon-team-left.png) no-repeat;
 }
 .sticky {
   position: fixed;

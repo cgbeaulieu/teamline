@@ -193,7 +193,7 @@
 	input[type="submit"].full-width,
 	input[type="reset"].full-width,
 	input[type="button"].full-width {
-		width: 100%;
+		width: 200px;
 		padding-left: 0 !important;
 		padding-right: 0 !important;
 		text-align: center; }
