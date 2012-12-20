@@ -60,7 +60,6 @@ class GistEvent < GithubEvent
   def url
     @url ||= event.payload.gist.html_url
   end
-
 end
 
 class PullRequestEvent < GithubEvent

@@ -1,11 +1,19 @@
-DateRange = Struct.new(:start_date, :end_date)
+DateRange = Struct.new(:start_date, :end_date) do
+  def start_date
+    @start_date ||= Time.now - 3.days
+  end
+
+  def end_date
+    @end_date ||= Time.now + 1.day
+  end
+end
 
 class Timeline
   Events = ['GhEvent', 'Post', 'Tweet']
 
   attr_accessor :events, :date_range
 
-  def initialize(start_date=default_start_date, end_date=default_end_date)
+  def initialize(start_date=nil, end_date=nil)
     @date_range = DateRange.new(start_date, end_date)
   end
 
@@ -76,13 +84,5 @@ class Timeline
   def format_grouped_events
     formatted = self.events.map { |date, events| [date, events] }
     self.events = formatted.sort_by { |el| el[0] }.reverse
-  end
-
-  def default_end_date
-    (Date.today + 1.day).to_s
-  end
-
-  def default_start_date
-    (Date.today - 10.days).to_s
   end
 end

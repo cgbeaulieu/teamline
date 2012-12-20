@@ -5,7 +5,7 @@ describe Timeline do
     @gh1 = GhEvent.create(:content => "gh1", :published_at => '2012-11-28')
     @t1  = Tweet.create(:content => "t1",:published_at => '2012-11-28')
     @p1  = Post.create(:content => "p1",:published_at => '2012-11-28')
-    
+
     @gh2 = GhEvent.create(:content => "gh2",:published_at => '2012-11-29')
     @t2  = Tweet.create(:content => "t2",:published_at => '2012-11-30')
     @p2  = Post.create(:content => "p2",:published_at => '2012-11-30')
@@ -32,7 +32,7 @@ describe Timeline do
 end
 
 
-      # timeline.events.should == 
+      # timeline.events.should ==
       # [
       #   [(Date.today + 2.days), [@p2,@t2]],
       #   [(Date.today + 1.days), [@gh2]],
