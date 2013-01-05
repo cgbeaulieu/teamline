@@ -9,29 +9,20 @@ class TimelineController < ApplicationController
   end
 
   def poll
-    if params[:published_at]
-      date = params[:published_at]
-      timeline = Timeline.new(DateTime.parse(date) + 1.seconds)
-      timeline.find_new_events(@current_team.id)
-      timeline.sort_events_descending
-      @json = render_to_string :partial => "poll_event", :locals => {:grouped_events => timeline.events}
-      render :json => @json.to_json
-    else
-      render :json => 'empty'
-    end
+    timeline = Timeline.new(DateTime.parse(params.fetch(:published_at, Time.now) + 1.seconds)
+    timeline.find_new_events(@current_team.id)
+    timeline.sort_events_descending
+    @content = render_to_string :partial => "poll_event", :locals => {:grouped_events => timeline.events}
+    render :json => @content.to_json
   end
 
   def infinite
-    if params[:published_at]
-      date = DateTime.parse(params[:published_at]).yesterday
-      timeline = Timeline.new(date.at_beginning_of_day, date.end_of_day)
-      timeline.query(params)
-      timeline.group_by_date
-      @json = render_to_string :partial => "event", :locals => {:grouped_events => timeline.events}
-      render :json => @json.to_json
-    else
-      render :json => 'empty'
-    end
+    date = DateTime.parse(params.fetch(:published_at, Time.now)).yesterday
+    timeline = Timeline.new(date.at_beginning_of_day, date.end_of_day)
+    timeline.query(params)
+    timeline.group_by_date
+    @content = render_to_string :partial => "event", :locals => {:grouped_events => timeline.events}
+    render :json => @content.to_json
   end
 
   def filter
@@ -47,8 +38,8 @@ class TimelineController < ApplicationController
 
       timeline.query(params.fetch(:filter, nil))
       timeline.group_by_date
-      @json = render_to_string :partial => "event", :locals => {:grouped_events => timeline.events}
-      render :json => @json.to_json
+      @content = render_to_string :partial => "event", :locals => {:grouped_events => timeline.events}
+      render :json => @content.to_json
     end
   end
 end
